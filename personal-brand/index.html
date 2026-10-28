@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Invullen: jouw kanaal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --soft:#F4F8FE; --ink:#0A2540; --muted:#55657A; --line:#D6E0EC;
+  --accent:#1D6FE0; --accent-dark:#1558B8; --field:#FFFFFF; --ok:#1D6FE0;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;-webkit-font-smoothing:antialiased;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Inter","Segoe UI",Roboto,sans-serif;font-size:16.5px;line-height:1.55}
+.wrap{max-width:660px;margin:0 auto;padding:0 20px 80px}
+.brand{padding-top:28px;font-weight:700;font-size:14px;letter-spacing:.06em;color:var(--accent)}
+header.hero{padding:26px 0 30px}
+.hero h1{font-family:inherit;font-weight:700;font-size:clamp(36px,9vw,56px);line-height:1.05;margin:0 0 16px;letter-spacing:-.025em}
+.hero p{color:var(--muted);margin:0;max-width:56ch}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:28px}
+.bar-inner{display:flex;align-items:center;gap:14px}
+.track{flex:1;height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.count{font-weight:600;font-size:14px;white-space:nowrap}
+.saved{font-size:13px;color:var(--muted);min-width:64px;text-align:right}
+section{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:26px 22px 8px;margin-bottom:20px}
+section h2{font-family:inherit;font-weight:700;font-size:24px;line-height:1.2;margin:0 0 6px;letter-spacing:-.015em}
+section .intro{color:var(--muted);margin:0 0 18px;font-size:15px}
+.q{padding:16px 0 20px;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0;padding-top:4px}
+label.ql,.ql{display:block;font-weight:600;margin-bottom:4px}
+.hint{display:block;color:var(--muted);font-size:14px;margin-bottom:10px}
+input[type=text],textarea,select{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:9px;padding:11px 13px}
+textarea{min-height:92px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent;background:var(--soft)}
+.q.done .ql::after{content:" ✓";color:var(--ok)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border:1px solid var(--line);border-radius:99px;background:var(--bg);cursor:pointer;font-size:14.5px;user-select:none}
+.chips input{accent-color:var(--accent);width:16px;height:16px;margin:0}
+.chips label:has(input:checked){border-color:var(--accent);background:var(--soft);color:var(--accent-dark)}
+.key{font-size:12.5px;font-weight:600;color:var(--accent);margin-left:6px}
+.send{background:var(--accent);color:#fff;border-radius:14px;padding:28px 22px}
+.send h2{font-family:inherit;font-weight:700;font-size:28px;line-height:1.1;margin:0 0 6px;letter-spacing:-.02em}
+.send p{margin:0 0 18px;opacity:.9}
+button{font:inherit;font-weight:600;font-size:16px;border:0;border-radius:10px;padding:14px 20px;cursor:pointer;background:#fff;color:var(--accent-dark)}
+button:disabled{opacity:.6;cursor:default}
+button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
+#out{display:none;margin-top:16px;width:100%;min-height:220px;background:#fff;color:var(--ink);font-size:14px}
+.msg{font-size:15px;margin-top:12px;display:block}
+.part{margin:44px 0 22px}.part span{display:inline-block;font-weight:600;font-size:13px;color:#fff;background:var(--accent);border-radius:99px;padding:4px 11px;margin-bottom:10px}.part h2{font-weight:700;font-size:30px;line-height:1.15;letter-spacing:-.02em;margin:0 0 6px}.part p{color:var(--muted);margin:0}
+.ai{border:1.5px solid var(--accent);background:var(--soft);border-radius:14px;padding:24px 22px;margin:0 0 30px}
+.ai-tag{display:inline-block;font-weight:600;font-size:13px;color:#fff;background:var(--accent);border-radius:99px;padding:4px 11px;margin-bottom:10px}
+.ai h2{font-weight:700;font-size:26px;line-height:1.15;letter-spacing:-.02em;margin:0 0 12px}
+.ai-steps{margin:0 0 18px;padding-left:20px}.ai-steps li{margin:6px 0}
+.ai button{background:var(--accent);color:#fff}
+.ai .ghost2{background:transparent;color:var(--accent-dark);border:1px solid var(--accent)}
+.msg2{display:block;font-size:14.5px;margin-top:10px;color:var(--accent-dark)}
+#prompt{display:none;margin-top:12px;min-height:240px;font-size:13.5px;background:#fff}
+@media (prefers-reduced-motion:reduce){.fill{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">AS MEDIA</div>
+  <header class="hero">
+    <h1>De praktische vragen</h1>
+    <p>Dit is een aanvulling op je personal brand doc. Daar staan de vragen over wie je bent en wat je wil, hier alleen wat we nog nodig hebben om je accounts en je eerste video klaar te zetten. Alles wordt automatisch bewaard op dit toestel, dus je kan stoppen en later verdergaan. Klaar? Onderaan verstuur je alles in één keer.</p>
+  </header>
+
+  <div class="bar"><div class="bar-inner">
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <span class="count" id="count">0 van 0</span>
+    <span class="saved" id="saved"></span>
+  </div></div>
+
+  <form id="f" autocomplete="off" onsubmit="return false">
+
+<section><h2>Chrome The World</h2><p class="intro">Je hebt al een naam en een stijl. Die willen we goed snappen voor we je nieuwe pagina's opzetten.</p>
+<div class="q"><label class="ql" for="ctw1">Wat betekent Chrome The World voor jou? Wil je die naam houden voor je nieuwe pagina's?<span class="key">belangrijk</span></label><span class="hint">Waar komt de naam vandaan, en wat wil je ermee zeggen?</span><textarea id="ctw1" data-label="Chrome The World"></textarea></div>
+<div class="q"><label class="ql" for="ctw2">Welke rol wil je dat je grafisch design speelt?</label><span class="hint">Als content, als je herkenbare stijl, of als iets om te verkopen (posters, prints, wallpapers). Meerdere mag.</span><textarea id="ctw2" data-label="Rol van grafisch design"></textarea></div>
+</section>
+  <section>
+    <h2>Je naam</h2>
+    <p class="intro">Hier hangt alles van af: je accounts, je bio's en je banner. Kies iets dat je over vijf jaar nog steeds goed vindt.</p>
+    <div class="q"><label class="ql" for="handle1">Handle voor pagina één (video)<span class="key">belangrijkst</span></label>
+      <span class="hint">Zonder "rs3" erin. Max 24 tekens, alleen letters, cijfers, punt of underscore. Check of hij vrij is op YouTube, Instagram en TikTok.</span>
+      <input type="text" id="handle1" data-label="Handle pagina één"></div>
+    <div class="q"><label class="ql" for="handle2">Handle voor pagina twee (foto's)</label>
+      <span class="hint">Dezelfde naam met een toevoeging, bijvoorbeeld naam.photo of naam.shots.</span>
+      <input type="text" id="handle2" data-label="Handle pagina twee"></div>
+    <div class="q"><label class="ql" for="callname">Hoe wil je heten in je video's?</label>
+      <span class="hint">Je voornaam, een bijnaam, of iets anders. Dit zeg je in je intro.</span>
+      <input type="text" id="callname" data-label="Naam in video's"></div>
+  </section>
+
+  <section>
+    <h2>Video 1: dream car</h2>
+    <p class="intro">Voor "I bought my dream car at 23". Hoe meer echte details, hoe sterker het verhaal.</p>
+    <div class="q"><label class="ql" for="cupra">Je Cupra</label>
+      <span class="hint">Welk model precies, hoe lang had je hem, en heb je er nog clips of foto's van?</span>
+      <textarea id="cupra" data-label="Cupra"></textarea></div>
+    <div class="q"><label class="ql" for="buy">Hoe je de RS3 kocht</label>
+      <span class="hint">Hoe lang zocht je, waar heb je hem gehaald, hoe voelde die dag? Wat moest je ervoor doen?</span>
+      <textarea id="buy" data-label="Aankoop"></textarea></div>
+    <div class="q"><label class="ql" for="rs3">Je RS3</label>
+      <span class="hint">Bouwjaar, 8V of 8Y, kleur, en is hij stock of al aangepast?</span>
+      <input type="text" id="rs3" data-label="RS3"></div>
+  </section>
+
+  <section>
+    <h2>Je materiaal</h2>
+    <p class="intro">Zodat alles in het plan haalbaar is met wat je al hebt.</p>
+    <div class="q"><label class="ql" for="camera">Camera en lenzen</label>
+      <input type="text" id="camera" data-label="Camera en lenzen"></div>
+    <div class="q"><label class="ql" for="software">Software voor video en foto's</label>
+      <span class="hint">Bijvoorbeeld Premiere, DaVinci Resolve, Final Cut, CapCut, Lightroom, Photoshop.</span>
+      <input type="text" id="software" data-label="Software"></div>
+    <div class="q"><span class="ql">Wat heb je nog?</span>
+      <span class="hint">Duid alles aan wat je hebt.</span>
+      <div class="chips" data-group="gear" data-label="Extra gear">
+        <label><input type="checkbox" value="Statief">Statief</label>
+        <label><input type="checkbox" value="Gimbal">Gimbal</label>
+        <label><input type="checkbox" value="GoPro">GoPro</label>
+        <label><input type="checkbox" value="Meta glasses">Meta glasses</label>
+        <label><input type="checkbox" value="Drone">Drone</label>
+        <label><input type="checkbox" value="Microfoon">Microfoon</label>
+        <label><input type="checkbox" value="Telefoonhouder voor de auto">Telefoonhouder voor de auto</label>
+      </div>
+      <input type="text" id="gearother" data-label="Ander materiaal" placeholder="Iets anders?" style="margin-top:10px"></div>
+  </section>
+
+  <section>
+    <h2>Plannen met de auto</h2>
+    <p class="intro">Hieruit komt je RS3-serie. Alleen wat echt gepland is.</p>
+    <div class="q"><label class="ql" for="mods">Welke mods zijn gepland, en wanneer?</label>
+      <span class="hint">Uitlaat, decat, tune, velgen, wrap, interieur. Komt er een dyno? Nog niks gepland mag ook.</span>
+      <textarea id="mods" data-label="Mods en dyno"></textarea></div>
+  </section>
+
+  <section>
+    <h2>Je tijd</h2>
+    <p class="intro">Het plan moet passen in je echte week, niet in een ideale.</p>
+    <div class="q"><label class="ql" for="hours">Hoeveel uur per week kan je realistisch aan content besteden?<span class="key">belangrijkst</span></label>
+      <select id="hours" data-label="Uren per week">
+        <option value="">Kies…</option>
+        <option>Minder dan 5 uur</option>
+        <option>5 tot 10 uur</option>
+        <option>10 tot 15 uur</option>
+        <option>Meer dan 15 uur</option>
+      </select></div>
+    <div class="q"><span class="ql">Welke dag kan je vaste filmdag zijn?</span>
+      <span class="hint">Meerdere mag.</span>
+      <div class="chips" data-group="days" data-label="Filmdag">
+        <label><input type="checkbox" value="Maandag">Ma</label>
+        <label><input type="checkbox" value="Dinsdag">Di</label>
+        <label><input type="checkbox" value="Woensdag">Wo</label>
+        <label><input type="checkbox" value="Donderdag">Do</label>
+        <label><input type="checkbox" value="Vrijdag">Vr</label>
+        <label><input type="checkbox" value="Zaterdag">Za</label>
+        <label><input type="checkbox" value="Zondag">Zo</label>
+      </div></div>
+    <div class="q"><label class="ql" for="work">Wat doe je naast content? (werk, school, uren)</label>
+      <input type="text" id="work" data-label="Naast content"></div>
+  </section>
+
+  <section>
+    <h2>Werk en ervaring</h2>
+    <p class="intro">Om te weten waar je nu staat richting klanten.</p>
+    <div class="q"><label class="ql" for="grading">Hoe lang doe je al aan foto-editing en color grading?</label>
+      <input type="text" id="grading" data-label="Ervaring editing en grading"></div>
+    <div class="q"><label class="ql" for="meets">Welke carmeets of events ken je in de buurt?</label>
+      <span class="hint">Namen, plaatsen, hoe vaak ze zijn. Ook cars &amp; coffee.</span>
+      <textarea id="meets" data-label="Carmeets en events"></textarea></div>
+    <div class="q"><label class="ql" for="socials">Je huidige persoonlijke IG en TikTok</label>
+      <span class="hint">Handles en ongeveer hoeveel volgers.</span>
+      <input type="text" id="socials" data-label="Huidige accounts"></div>
+  </section>
+
+  <section>
+    <h2>Nog iets?</h2>
+    <div class="q"><label class="ql" for="extra">Alles wat je nog kwijt wil</label>
+      <span class="hint">Ideeën, twijfels, dingen die je zeker wel of niet wil.</span>
+      <textarea id="extra" data-label="Extra"></textarea></div>
+  </section>
+
+  </form>
+
+  <div class="send">
+    <h2>Klaar? Verstuur het</h2>
+    <p>Druk op versturen. Lukt dat niet, kopieer je antwoorden dan en stuur ze in een bericht.</p>
+    <div class="btns">
+      <button type="button" id="submit">Verstuur mijn antwoorden</button>
+      <button type="button" class="ghost" id="copy">Kopieer ze</button>
+    </div>
+    <span class="msg" id="msg" role="status"></span>
+    <textarea id="out" readonly aria-label="Al je antwoorden als tekst"></textarea>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY='kanaal-invullen-v3';
+  var f=document.getElementById('f');
+  var fields=[].slice.call(f.querySelectorAll('input[type=text],textarea,select'));
+  var groups=[].slice.call(f.querySelectorAll('.chips'));
+  var qs=[].slice.call(f.querySelectorAll('.q'));
+  var saveT;
+
+  function load(){
+    var d={};
+    try{d=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){d={};}
+    fields.forEach(function(el){ if(d[el.id]!=null) el.value=d[el.id]; });
+    groups.forEach(function(g){
+      var vals=d['grp_'+g.dataset.group]||[];
+      [].slice.call(g.querySelectorAll('input')).forEach(function(c){c.checked=vals.indexOf(c.value)>-1;});
+    });
+  }
+  function collect(){
+    var d={};
+    fields.forEach(function(el){d[el.id]=el.value;});
+    groups.forEach(function(g){
+      d['grp_'+g.dataset.group]=[].slice.call(g.querySelectorAll('input:checked')).map(function(c){return c.value;});
+    });
+    return d;
+  }
+  function save(){
+    try{localStorage.setItem(KEY,JSON.stringify(collect()));show('Bewaard');}
+    catch(e){show('');}
+  }
+  function show(t){document.getElementById('saved').textContent=t;}
+  function progress(){
+    var done=0;
+    qs.forEach(function(q){
+      var filled=[].slice.call(q.querySelectorAll('input[type=text],textarea,select')).some(function(el){return el.value.trim()!=='';})
+        || q.querySelectorAll('.chips input:checked').length>0;
+      q.classList.toggle('done',filled); if(filled) done++;
+    });
+    document.getElementById('count').textContent=done+' van '+qs.length;
+    document.getElementById('fill').style.width=(qs.length?done/qs.length*100:0)+'%';
+  }
+  function text(){
+    var lines=['ANTWOORDEN KANAAL',''];
+    qs.forEach(function(q){
+      var parts=[];
+      q.querySelectorAll('.chips').forEach(function(g){
+        var v=[].slice.call(g.querySelectorAll('input:checked')).map(function(c){return c.value;});
+        parts.push(g.dataset.label+': '+(v.length?v.join(', '):'-'));
+      });
+      q.querySelectorAll('input[type=text],textarea,select').forEach(function(el){
+        parts.push(el.dataset.label+': '+(el.value.trim()||'-'));
+      });
+      lines.push(parts.join('\n'));
+    });
+    return lines.join('\n');
+  }
+  f.addEventListener('input',function(){progress();show('…');clearTimeout(saveT);saveT=setTimeout(save,400);});
+  f.addEventListener('change',function(){progress();save();});
+
+  // Web3Forms: vul hier je access key in (web3forms.com). Werkt op je eigen site (bv. Netlify).
+  var WEB3FORMS_KEY='YOUR_ACCESS_KEY_HERE';
+  var out=document.getElementById('out'), msg=document.getElementById('msg');
+  function showText(note){out.value=text();out.style.display='block';out.focus();out.select();if(note)msg.textContent=note;}
+  document.getElementById('copy').addEventListener('click',function(){
+    var t=text();
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){msg.textContent='Gekopieerd. Plak het in je bericht.';},
+        function(){showText('Selecteer de tekst hieronder en kopieer hem.');});
+    } else showText('Selecteer de tekst hieronder en kopieer hem.');
+  });
+  var sb=document.getElementById('submit');
+  sb.addEventListener('click',function(){
+    if(!WEB3FORMS_KEY||WEB3FORMS_KEY.indexOf('YOUR_')===0){
+      showText('Versturen staat hier niet aan. Kopieer je antwoorden hieronder en stuur ze in een bericht.');return;}
+    var d=collect(), body={access_key:WEB3FORMS_KEY,subject:'Praktische vragen: '+(d.handle1||d.callname||'nieuw'),from_name:'AS Media invulformulier',antwoorden:text()};
+    fields.forEach(function(el){body[el.dataset.label]=el.value||'-';});
+    groups.forEach(function(g){body[g.dataset.label]=(d['grp_'+g.dataset.group]||[]).join(', ')||'-';});
+    sb.disabled=true;sb.textContent='Versturen…';msg.textContent='';
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){return r.json();})
+      .then(function(j){
+        if(j&&j.success){sb.textContent='Verstuurd';msg.textContent='Top, je antwoorden zijn binnen. Je kan dit venster sluiten.';}
+        else throw new Error('fail');
+      })
+      .catch(function(){sb.disabled=false;sb.textContent='Verstuur mijn antwoorden';
+        showText('Versturen lukte niet. Kopieer je antwoorden hieronder en stuur ze in een bericht.');});
+  });
+
+
+  load(); progress();
+})();
+</script>
+</body>
+</html>
+
