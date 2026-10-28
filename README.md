@@ -2,4 +2,3 @@
 Public lead magnets of AS Media (GitHub Pages). Only public pages: no internal docs, no client data, no keys.
 - roadmap/ · free 90-day roadmap (was as-media-90day-roadmap.netlify.app)
 - before-ads/ · was asmedia-before-ads.netlify.app
-- wat-de-klanten-zeggen/ · was wat-de-klanten-zeggen.netlify.app
