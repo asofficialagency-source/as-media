@@ -3,55 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bahami — Your story</title>
+<title>Bahami — Your nails, your words</title>
 <meta name="description" content="A few quiet questions about your nails at Bahami, Ixelles.">
-<meta property="og:title" content="Bahami — Your story">
+<meta property="og:title" content="Bahami — Your nails, your words">
 <meta property="og:description" content="A few quiet questions about your nails at Bahami.">
 <meta property="og:image" content="img/w1.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Italiana&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <!-- AS Media · Bahami reviews (Web3Forms, antwoorden komen per mail naar AS Media) -->
 <style>
-:root{--bg:#FBF9F7;--ink:#2A2421;--soft:#857770;--line:#E9E1DB;--acc:#A9826F;--acc-d:#7D5B4B;--acc-l:#F4ECE7}
+:root{--bg:#FFFCFA;--ink:#2A2421;--soft:#857770;--line:#E9E1DB;--acc:#A9826F;--acc-d:#7D5B4B;--acc-l:#F4ECE7}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Jost,system-ui,sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:560px;margin:0 auto;padding:34px 22px 80px}
 header{text-align:center;margin-bottom:26px}
-.brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;letter-spacing:12px;font-weight:500;margin:0;padding-left:12px}
+.brand{font-family:Italiana,Georgia,serif;font-size:34px;letter-spacing:9px;font-weight:400;margin:0;padding-left:9px}
 .sub{font-size:10.5px;letter-spacing:4px;text-transform:uppercase;color:var(--acc);margin-top:4px}
 .lang{display:flex;justify-content:center;gap:16px;margin-top:16px}
 .lang button{background:none;border:0;font:inherit;font-size:11px;letter-spacing:2px;color:var(--soft);cursor:pointer;padding:4px 2px;border-bottom:1px solid transparent}
 .lang button.on{color:var(--ink);border-color:var(--acc)}
-.prog{display:flex;align-items:center;gap:10px;margin:8px 0 6px}
+.prog{display:none}
+.pearls{display:flex;justify-content:center;gap:12px;margin:6px 0 8px}
+.pearls i{width:12px;height:12px;border-radius:50%;background:#fff;border:1px solid #DCCBC1;transition:all .4s}
+.pearls i.on{background:radial-gradient(circle at 35% 30%,#fff 0,#F3E7E1 35%,#C9A898 100%);border-color:#C9A898;box-shadow:0 1px 4px rgba(125,91,75,.25)}
 .prog .ln{flex:1;height:1px;background:var(--line);position:relative}
 .prog .ln i{position:absolute;left:0;top:-1px;height:3px;background:var(--acc);border-radius:3px;transition:width .6s ease}
 .prog .ln b{position:absolute;top:-6px;width:13px;height:13px;border-radius:50%;background:#F3E6E0;border:1px solid var(--acc);transition:left .6s ease;margin-left:-6px}
-.meta{display:flex;justify-content:space-between;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--soft);margin-bottom:22px}
-.meta em{font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:0;text-transform:none;font-size:16px;color:var(--acc)}
+.meta{display:flex;justify-content:center;gap:10px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--soft);margin-bottom:22px}
+.meta em{font-style:normal;color:var(--acc)}
+.meta em::before{content:'·';margin-right:10px;color:var(--line)}
 .step{display:none;animation:in .5s ease}
 .step.on{display:block}
 @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.pic{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:26px;border-radius:2px}
-h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:34px;line-height:1.15;text-align:center;margin:0 0 12px}
+.pic{width:62%;max-width:260px;aspect-ratio:4/5;object-fit:cover;display:block;margin:4px auto 24px;border-radius:999px 999px 16px 16px;box-shadow:0 10px 30px rgba(125,91,75,.12)}
+h1{font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:31px;line-height:1.15;text-align:center;margin:0 0 12px}
 .intro{text-align:center;color:var(--soft);font-weight:300;margin:0 auto 6px;max-width:440px}
 hr{border:0;border-top:1px solid var(--line);margin:30px 0}
 .q{margin:0 0 30px}
-.q h2{font-family:Jost,sans-serif;font-weight:400;font-size:18px;margin:0 0 4px;line-height:1.4}
+.q h2{font-family:'DM Sans',sans-serif;font-weight:400;font-size:18px;margin:0 0 4px;line-height:1.4}
 .q p.h{color:var(--soft);font-weight:300;font-size:14.5px;margin:0 0 12px}
 .q h2+.chips,.q h2+textarea,.q h2+input,.q h2+.two,.q h2+.ph{margin-top:12px}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chip{position:relative}
 .chip input{position:absolute;opacity:0;pointer-events:none}
-.chip span{display:inline-block;border:1px solid var(--line);background:#fff;padding:11px 16px;font-size:15px;font-weight:300;cursor:pointer;transition:all .2s;border-radius:2px}
+.chip span{display:inline-block;border:1px solid var(--line);background:#fff;padding:11px 16px;font-size:15px;font-weight:300;cursor:pointer;transition:all .2s;border-radius:4px}
 .chip input:checked+span{border-color:var(--acc);background:var(--acc-l);color:var(--acc-d)}
 .chip input:focus-visible+span{outline:2px solid var(--acc);outline-offset:2px}
-textarea,input[type=text],input[type=email]{width:100%;font:inherit;font-weight:300;font-size:16px;background:#fff;border:1px solid var(--line);padding:13px 14px;color:var(--ink);border-radius:2px}
+textarea,input[type=text],input[type=email]{width:100%;font:inherit;font-weight:300;font-size:16px;background:#fff;border:1px solid var(--line);padding:13px 14px;color:var(--ink);border-radius:4px}
 textarea{min-height:92px;resize:vertical}
 textarea:focus,input:focus{outline:none;border-color:var(--acc)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .why{margin-top:12px;display:none}
 .why.on{display:block;animation:in .3s ease}
-.why label{display:block;color:var(--acc-d);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:17px;margin-bottom:6px}
+.why label{display:block;color:var(--acc-d);font-size:14.5px;font-weight:500;margin-bottom:6px}
+.why label::before{content:'↳ ';color:var(--acc)}
 .why textarea{min-height:64px}
 .ph{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ph label{position:relative;aspect-ratio:4/5;border:1px dashed #D9C9BF;background:#fff;display:grid;place-items:center;cursor:pointer;overflow:hidden;font-size:13px;color:var(--soft);text-align:center;padding:10px}
@@ -60,31 +65,31 @@ textarea:focus,input:focus{outline:none;border-color:var(--acc)}
 .ph label.has img{display:block}
 .ph small{position:absolute;top:8px;left:8px;background:#fff;color:var(--acc-d);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;z-index:2}
 .nav{display:flex;gap:10px;margin-top:10px}
-.btn{flex:1;border:0;background:var(--ink);color:#fff;font:inherit;font-size:13px;letter-spacing:3px;text-transform:uppercase;padding:17px;cursor:pointer;border-radius:2px}
-.btn.ghost{flex:0 0 auto;background:none;color:var(--ink);border:1px solid var(--line);padding:17px 20px}
+.btn{flex:1;border:0;background:var(--acc-d);color:#fff;font:inherit;font-size:15px;font-weight:500;padding:16px;cursor:pointer;border-radius:4px}
+.btn.ghost{flex:0 0 auto;background:#fff;color:var(--ink);border:1px solid var(--line);padding:16px 22px}
 .btn:disabled{opacity:.6}
 .err{color:#A3392F;font-size:14px;min-height:20px;margin-top:10px;text-align:center}
 .gal{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -22px;padding:0 22px 4px;scrollbar-width:none}
 .gal::-webkit-scrollbar{display:none}
-.gal a{flex:0 0 44%;max-width:210px;aspect-ratio:4/5;overflow:hidden;scroll-snap-align:start;position:relative;display:block;background:var(--acc-l)}
+.gal a{flex:0 0 44%;max-width:210px;aspect-ratio:4/5;overflow:hidden;border-radius:16px;scroll-snap-align:start;position:relative;display:block;background:var(--acc-l)}
 .gal img{width:100%;height:100%;object-fit:cover;display:block}
 .gal .v::after{content:'';position:absolute;right:8px;top:8px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%237D5B4B'/%3E%3C/svg%3E") center/14px no-repeat}
 .cap{display:flex;justify-content:space-between;font-size:12px;color:var(--soft);margin-top:10px}
 .cap a{color:var(--acc-d);text-decoration:none}
-.sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--acc-d);text-align:center;margin:8px 0 0}
-.pick{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);padding:16px 18px;margin-bottom:10px;font:inherit;color:var(--ink);cursor:pointer;border-radius:2px}
+.sig{font-family:'Playfair Display',serif;font-style:italic;font-size:24px;color:var(--acc-d);text-align:center;margin:8px 0 0}
+.pick{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);padding:16px 18px;margin-bottom:10px;font:inherit;color:var(--ink);cursor:pointer;border-radius:4px}
 .pick b{font-weight:500}
 .pick span{display:block;font-size:13.5px;color:var(--soft);font-weight:300}
 .pick.top{border-color:var(--acc)}
 .pick .best{float:right;font-style:normal;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--acc-d)}
 .pick.on{background:var(--acc-l);border-color:var(--acc)}
-.how{display:none;background:#fff;border:1px solid var(--line);border-top:0;margin:-10px 0 10px;padding:14px 18px 16px;font-size:15px;font-weight:300}
+.how{display:none;background:#fff;border:1px solid var(--line);border-radius:0 0 4px 4px;border-top:0;margin:-14px 0 10px;padding:14px 18px 16px;font-size:15px;font-weight:300}
 .how.on{display:block;animation:in .3s ease}
 .how ol{margin:6px 0 10px;padding-left:20px}
 .how li{margin-bottom:4px}
 .copy{border:1px solid var(--acc);background:var(--acc-l);color:var(--acc-d);font:inherit;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:11px 14px;cursor:pointer;border-radius:2px}
 pre.rv{white-space:pre-wrap;font:inherit;font-size:14px;background:var(--bg);border:1px solid var(--line);padding:12px;margin:8px 0 10px;max-height:220px;overflow:auto}
-.cta{display:block;text-align:center;margin-top:12px;background:var(--ink);color:#fff;text-decoration:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:16px;border-radius:2px}
+.cta{display:block;text-align:center;margin-top:12px;background:var(--acc-d);color:#fff;text-decoration:none;font-size:15px;font-weight:500;padding:16px;border-radius:4px}
 .cta.o{background:none;color:var(--ink);border:1px solid var(--line)}
 .hp{position:absolute;left:-9999px;opacity:0}
 @media (max-width:380px){h1{font-size:30px}.chip span{padding:10px 13px;font-size:14.5px}}
@@ -98,7 +103,7 @@ pre.rv{white-space:pre-wrap;font:inherit;font-size:14px;background:var(--bg);bor
     <div class="lang" id="lang"><button data-l="en">EN</button><button data-l="fr">FR</button><button data-l="nl">NL</button></div>
   </header>
   <div id="top">
-    <div class="prog"><div class="ln"><i id="pl"></i><b id="pd"></b></div></div>
+    <div class="prog"><div class="ln"><i id="pl"></i><b id="pd"></b></div></div><div class="pearls" id="pearls"><i></i><i></i><i></i><i></i></div>
     <div class="meta"><span id="tOf"></span><em id="tTime"></em></div>
   </div>
   <form id="f" novalidate>
@@ -114,25 +119,25 @@ const WEB3FORMS_KEY='c562f68a-c898-4e91-bdc6-e2ecbd0d3774';
 const PLANITY='https://www.planity.com/bahami-studio-1050-ixelles', IG='https://www.instagram.com/bahami.be/';
 const GAL=[['w1','p/DTLp3BKiJu8',0],['w6','reel/DYAfZRVooE1',1],['w2','p/DVooDdTiINx',0],['w7','reel/DdPROv2ooHq',1],['w4','p/DdENrtBo0iz',0],['w3','reel/Dc_uHajoHRf',1],['w5','p/DfhBBRGIjxo',0]];
 const UI={
- en:{sub:'Natural nails · Ixelles',of:['One of four','Two of four','Three of four','Four of four'],time:'Take your time',cont:'Continue',back:'Back',send:'Send',sending:'Sending…',fail:'Something went wrong. Please try again.',needName:'Just your first name, so Mireille knows who wrote this.',
+ en:{sub:'Natural nails · Ixelles',of:['1 of 4','2 of 4','3 of 4','4 of 4'],time:'about 2 minutes',cont:'Continue',back:'Back',send:'Send',sending:'Sending…',fail:'Something went wrong. Please try again.',needName:'Just your first name, so Mireille knows who wrote this.',
   ph:['Before','Now'],phPick:'Add photo',
-  tyH:'Thank you',tyP:'Truly. Hearing how it feels from your side is the part that stays with me, and it shapes how I look after the next woman who sits at my table.',
+  tyH:'Thank you',tyP:'Your answers just reached me. Every one of them helps me make the next appointment even better, for you and for the next woman.',
   last:'One last thing, if you have a minute',lastP:'A few words in your own voice mean the world to the next client. Send them to Mireille in the chat where she sent you this link (WhatsApp or Instagram). How would you like to do it?',
   best:'Helps most',v:'Record a short video',vS:'20 to 40 seconds, just your phone, show your nails',vo:'Voice note',voS:'Just talk, same points',tx:'Send it as text',txS:'Your answers, ready to paste',
   say:'What to say:',pts:['Your first name','What bothered you about your nails before','Why you chose Bahami','How your nails are now, and how long they last','Who you would send to Mireille'],
   vEnd:'Then send it to Mireille in your chat with her.',copy:'Copy my words',copied:'Copied ✓',txEnd:'Then paste it in your chat with Mireille.',
   book:'Book your next visit',follow:'Follow @bahami.be',work:'Recent work · tap to watch'},
- fr:{sub:'Ongles naturels · Ixelles',of:['Un sur quatre','Deux sur quatre','Trois sur quatre','Quatre sur quatre'],time:'Prenez votre temps',cont:'Continuer',back:'Retour',send:'Envoyer',sending:'Envoi…',fail:'Une erreur est survenue. Réessayez.',needName:'Juste votre prénom, pour que Mireille sache qui a écrit.',
+ fr:{sub:'Ongles naturels · Ixelles',of:['1 sur 4','2 sur 4','3 sur 4','4 sur 4'],time:'environ 2 minutes',cont:'Continuer',back:'Retour',send:'Envoyer',sending:'Envoi…',fail:'Une erreur est survenue. Réessayez.',needName:'Juste votre prénom, pour que Mireille sache qui a écrit.',
   ph:['Avant','Maintenant'],phPick:'Ajouter une photo',
-  tyH:'Merci',tyP:'Sincèrement. Savoir comment vous le vivez, c’est ce qui me reste, et c’est ce qui guide la façon dont je prends soin de la prochaine cliente.',
+  tyH:'Merci',tyP:'Vos réponses viennent de m’arriver. Chacune m’aide à rendre le prochain rendez-vous encore meilleur, pour vous et pour la suivante.',
   last:'Une dernière chose, si vous avez une minute',lastP:'Quelques mots avec votre propre voix comptent énormément pour la prochaine cliente. Envoyez-les à Mireille dans la conversation où elle vous a envoyé ce lien (WhatsApp ou Instagram). Comment préférez-vous ?',
   best:'Le plus utile',v:'Une courte vidéo',vS:'20 à 40 secondes, avec votre téléphone, montrez vos ongles',vo:'Un message vocal',voS:'Parlez simplement, mêmes points',tx:'En texte',txS:'Vos réponses, prêtes à coller',
   say:'Quoi dire :',pts:['Votre prénom','Ce qui vous dérangeait avec vos ongles avant','Pourquoi vous avez choisi Bahami','Vos ongles aujourd’hui, et combien de temps ils tiennent','À qui vous recommanderiez Mireille'],
   vEnd:'Puis envoyez-la à Mireille dans votre conversation.',copy:'Copier mes mots',copied:'Copié ✓',txEnd:'Puis collez-le dans votre conversation avec Mireille.',
   book:'Réserver votre prochain rendez-vous',follow:'Suivre @bahami.be',work:'Travaux récents · touchez pour voir'},
- nl:{sub:'Natuurlijke nagels · Ixelles',of:['Een van vier','Twee van vier','Drie van vier','Vier van vier'],time:'Neem je tijd',cont:'Verder',back:'Terug',send:'Versturen',sending:'Versturen…',fail:'Er ging iets mis. Probeer het opnieuw.',needName:'Alleen je voornaam, zodat Mireille weet wie dit schreef.',
+ nl:{sub:'Natuurlijke nagels · Ixelles',of:['1 van 4','2 van 4','3 van 4','4 van 4'],time:'ongeveer 2 minuten',cont:'Verder',back:'Terug',send:'Versturen',sending:'Versturen…',fail:'Er ging iets mis. Probeer het opnieuw.',needName:'Alleen je voornaam, zodat Mireille weet wie dit schreef.',
   ph:['Voor','Nu'],phPick:'Foto toevoegen',
-  tyH:'Dank je',tyP:'Echt. Horen hoe jij het beleeft, dat blijft me bij, en het bepaalt hoe ik zorg voor de volgende vrouw aan mijn tafel.',
+  tyH:'Dank je',tyP:'Je antwoorden zijn net bij me aangekomen. Elk antwoord helpt me om de volgende afspraak nog beter te maken, voor jou en voor de volgende.',
   last:'Nog één ding, als je een minuutje hebt',lastP:'Een paar woorden in je eigen stem betekenen enorm veel voor de volgende klant. Stuur ze naar Mireille in de chat waar ze je deze link stuurde (WhatsApp of Instagram). Hoe doe je het liefst?',
   best:'Helpt het meest',v:'Een korte video',vS:'20 tot 40 seconden, gewoon met je gsm, toon je nagels',vo:'Spraakbericht',voS:'Gewoon praten, dezelfde punten',tx:'Als tekst',txS:'Je antwoorden, klaar om te plakken',
   say:'Wat je kan zeggen:',pts:['Je voornaam','Wat je vroeger stoorde aan je nagels','Waarom je voor Bahami koos','Hoe je nagels nu zijn, en hoe lang ze mooi blijven','Wie jij naar Mireille zou sturen'],
@@ -141,16 +146,16 @@ const UI={
 };
 const L3=(en,fr,nl)=>({en,fr,nl});
 const CH=[
- {img:'w1',h:L3('We’d love to hear your story','Racontez-nous votre histoire','We horen graag jouw verhaal'),
-  p:L3('A few quiet questions about your nails and how you found Bahami. Answer only what you feel like.','Quelques questions tranquilles sur vos ongles et sur la façon dont vous avez trouvé Bahami. Répondez seulement à ce que vous voulez.','Een paar rustige vragen over je nagels en hoe je Bahami vond. Beantwoord alleen wat je wil.'),
+ {img:'w1',h:L3('Hi, it’s Mireille','Coucou, c’est Mireille','Hoi, het is Mireille'),
+  p:L3('Thank you for sitting at my table. These questions help me understand what you love, so I can keep doing it for you. Skip anything you like.','Merci d’être passée à ma table. Ces questions m’aident à comprendre ce que vous aimez, pour continuer à le faire pour vous. Passez ce que vous voulez.','Dank je dat je aan mijn tafel kwam zitten. Deze vragen helpen me begrijpen wat je fijn vindt, zodat ik dat voor je kan blijven doen. Sla gerust iets over.'),
   qs:[
    {k:'Naam',t:'name',q:L3('Your first name','Votre prénom','Je voornaam')},
    {k:'Klant sinds',t:'one',q:L3('How long have you been coming to Bahami?','Depuis quand venez-vous chez Bahami ?','Hoe lang kom je al naar Bahami?'),o:[L3('This was my first visit','C’était ma première visite','Dit was mijn eerste keer'),L3('A few months','Quelques mois','Een paar maanden'),L3('About a year','Environ un an','Ongeveer een jaar'),L3('2 years or more','2 ans ou plus','2 jaar of langer')]},
    {k:'Behandeling',t:'multi',q:L3('What do you usually get?','Que faites-vous d’habitude ?','Wat laat je meestal doen?'),o:[L3('BIAB','BIAB','BIAB'),L3('Russian manicure','Manucure russe','Russische manicure'),L3('Gel polish','Vernis gel','Gellak'),L3('Natural nail care','Soin des ongles naturels','Verzorging natuurlijke nagels'),L3('Something else','Autre chose','Iets anders')]},
    {k:'Hoe vaak',t:'one',q:L3('How often do you come?','À quelle fréquence venez-vous ?','Hoe vaak kom je?'),o:[L3('Every 3 to 4 weeks','Toutes les 3 à 4 semaines','Elke 3 à 4 weken'),L3('Every 5 to 6 weeks','Toutes les 5 à 6 semaines','Elke 5 à 6 weken'),L3('Now and then','De temps en temps','Af en toe'),L3('Only once so far','Une seule fois pour l’instant','Pas één keer')]}
   ]},
- {img:'w2',h:L3('How you found Bahami','Comment vous avez trouvé Bahami','Hoe je Bahami vond'),
-  p:L3('I’m always curious how someone first hears my name.','Je suis toujours curieuse de savoir comment on entend parler de moi.','Ik ben altijd benieuwd hoe iemand voor het eerst over mij hoort.'),
+ {img:'w2',h:L3('Finding me','Me trouver','Hoe je me vond'),
+  p:L3('Most of my clients come through someone or something. I’d love to know yours.','La plupart de mes clientes arrivent grâce à quelqu’un ou quelque chose. J’aimerais connaître votre histoire.','De meeste klanten komen via iemand of iets. Ik ben benieuwd naar het jouwe.'),
   qs:[
    {k:'Gevonden via',t:'multi',q:L3('How did you first come across Bahami?','Comment avez-vous découvert Bahami ?','Hoe kwam je Bahami voor het eerst tegen?'),o:[L3('Instagram','Instagram','Instagram'),L3('TikTok','TikTok','TikTok'),L3('A friend told me','Une amie m’en a parlé','Een vriendin vertelde het me'),L3('I saw someone’s nails','J’ai vu les ongles de quelqu’un','Ik zag iemands nagels'),L3('Google','Google','Google'),L3('ChatGPT or another AI','ChatGPT ou une autre IA','ChatGPT of een andere AI'),L3('Planity','Planity','Planity'),L3('I walked past','Je suis passée devant','Ik liep voorbij')],
     why:{l:L3('What caught your eye?','Qu’est-ce qui a attiré votre attention ?','Wat viel je op?')}},
@@ -160,31 +165,31 @@ const CH=[
    {k:'Andere nagelstylisten bekeken',t:'one',q:L3('Were you looking at other nail artists too?','Regardiez-vous aussi d’autres prothésistes ?','Keek je ook naar andere nagelstylisten?'),o:[L3('Only Bahami','Seulement Bahami','Alleen Bahami'),L3('Two or three','Deux ou trois','Twee of drie'),L3('More than three','Plus de trois','Meer dan drie')],
     why:{except:['Only Bahami'],l:L3('Why did you choose Bahami over them?','Pourquoi avoir choisi Bahami plutôt qu’elles ?','Waarom koos je voor Bahami en niet voor hen?')}}
   ]},
- {img:'w4',h:L3('Choosing Bahami','Choisir Bahami','Kiezen voor Bahami'),
-  p:L3('The part I can never see from my side.','La partie que je ne vois jamais de mon côté.','Het stuk dat ik van mijn kant nooit zie.'),
+ {img:'w4',h:L3('Before you booked','Avant de réserver','Voor je boekte'),
+  p:L3('What was going on with your nails, and what made you say yes.','Ce qui se passait avec vos ongles, et ce qui vous a fait dire oui.','Wat er met je nagels was, en waardoor je ja zei.'),
   qs:[
    {k:'Probleem ervoor',t:'multi',q:L3('Before Bahami, what bothered you about your nails?','Avant Bahami, qu’est-ce qui vous dérangeait avec vos ongles ?','Wat stoorde je aan je nagels voor Bahami?'),o:[L3('They chipped or lifted within 2 weeks','Ils s’écaillaient ou se décollaient en 2 semaines','Ze braken of kwamen los binnen 2 weken'),L3('The BIAB was too thick','Le BIAB était trop épais','De BIAB was te dik'),L3('Appointments took hours','Les rendez-vous duraient des heures','Afspraken duurden uren'),L3('My natural nails were weak','Mes ongles naturels étaient fragiles','Mijn natuurlijke nagels waren zwak'),L3('I never found someone I trusted','Je ne trouvais personne de confiance','Ik vond nooit iemand die ik vertrouwde'),L3('Nothing, I just wanted nice nails','Rien, je voulais juste de beaux ongles','Niets, ik wilde gewoon mooie nagels')],
     why:{except:['Nothing, I just wanted nice nails'],l:L3('Why did that bother you so much?','Pourquoi est-ce que ça vous dérangeait autant ?','Waarom stoorde dat je zo?')}},
-   {k:'Moment van boeken',t:'text',q:L3('What was going on when you decided to book?','Que se passait-il quand vous avez décidé de réserver ?','Wat was er aan de hand toen je besliste om te boeken?'),h:L3('Not why, but what. The week, the moment, an event coming up.','Pas pourquoi, mais quoi. La semaine, le moment, un événement à venir.','Niet waarom, maar wat. De week, het moment, iets dat eraan kwam.')},
+   {k:'Moment van boeken',t:'text',q:L3('What made you book at that moment?','Qu’est-ce qui vous a fait réserver à ce moment-là ?','Waarom boekte je net op dat moment?'),h:L3('A wedding, a holiday, a new job, or just a moment for yourself?','Un mariage, des vacances, un nouveau travail, ou juste un moment pour vous ?','Een huwelijk, een vakantie, een nieuwe job, of gewoon een moment voor jezelf?')},
    {k:'Waarom Bahami',t:'multi',q:L3('What made Bahami feel right for you?','Qu’est-ce qui vous a fait choisir Bahami ?','Waardoor voelde Bahami juist voor jou?'),o:[L3('Her work on Instagram','Son travail sur Instagram','Haar werk op Instagram'),L3('A friend’s nails','Les ongles d’une amie','De nagels van een vriendin'),L3('Only natural nails, no extensions','Seulement des ongles naturels','Alleen natuurlijke nagels'),L3('Nails that last 3 to 4 weeks','Des ongles qui tiennent 3 à 4 semaines','Nagels die 3 à 4 weken blijven'),L3('Done in about an hour','Fini en environ une heure','Klaar in ongeveer een uur'),L3('How she spoke to me','Sa façon de me parler','Hoe ze met me sprak'),L3('The reviews','Les avis','De reviews'),L3('The price felt fair','Le prix me semblait juste','De prijs voelde eerlijk')],
     why:{l:L3('Why did that matter to you?','Pourquoi est-ce que c’était important pour vous ?','Waarom was dat belangrijk voor jou?')}},
-   {k:'Twijfel',t:'multi',q:L3('Was there anything you hesitated about?','Avez-vous hésité sur quelque chose ?','Twijfelde je ergens over?'),h:L3('Honesty helps me more than kindness here.','Ici, l’honnêteté m’aide plus que la gentillesse.','Eerlijkheid helpt me hier meer dan vriendelijkheid.'),o:[L3('The price','Le prix','De prijs'),L3('Whether it would last','Si ça allait tenir','Of het zou blijven'),L3('Whether it suited my nails','Si ça convenait à mes ongles','Of het bij mijn nagels paste'),L3('Finding a time that worked','Trouver un créneau','Een moment vinden dat paste'),L3('I didn’t know anyone who had been','Je ne connaissais personne qui y était allée','Ik kende niemand die er al was geweest'),L3('Nothing, really','Rien, vraiment','Niets eigenlijk')],
+   {k:'Twijfel',t:'multi',q:L3('Was there anything you hesitated about?','Avez-vous hésité sur quelque chose ?','Twijfelde je ergens over?'),h:L3('Be honest, it really helps me.','Soyez honnête, ça m’aide vraiment.','Wees eerlijk, dat helpt me echt.'),o:[L3('The price','Le prix','De prijs'),L3('Whether it would last','Si ça allait tenir','Of het zou blijven'),L3('Whether it suited my nails','Si ça convenait à mes ongles','Of het bij mijn nagels paste'),L3('Finding a time that worked','Trouver un créneau','Een moment vinden dat paste'),L3('I didn’t know anyone who had been','Je ne connaissais personne qui y était allée','Ik kende niemand die er al was geweest'),L3('Nothing, really','Rien, vraiment','Niets eigenlijk')],
     why:{except:['Nothing, really'],l:L3('What finally made up your mind?','Qu’est-ce qui vous a finalement décidée ?','Wat deed je uiteindelijk beslissen?')}},
    {k:'Wilde vooraf weten',t:'multi',q:L3('What did you want to see or know before you booked?','Qu’auriez-vous voulu voir ou savoir avant de réserver ?','Wat wilde je zien of weten voor je boekte?'),o:[L3('Results on nails like mine','Des résultats sur des ongles comme les miens','Resultaten op nagels zoals de mijne'),L3('Reviews from other women','Des avis d’autres femmes','Reviews van andere vrouwen'),L3('The price up front','Le prix à l’avance','De prijs op voorhand'),L3('How long it lasts','Combien de temps ça tient','Hoe lang het blijft'),L3('What the first visit is like','Comment se passe la première visite','Hoe de eerste afspraak verloopt'),L3('The difference between BIAB and Russian manicure','La différence entre BIAB et manucure russe','Het verschil tussen BIAB en Russische manicure')],
     why:{l:L3('Why was that important to you?','Pourquoi était-ce important pour vous ?','Waarom was dat belangrijk voor jou?')}}
   ]},
- {img:'w5',h:L3('Your nails now','Vos ongles aujourd’hui','Je nagels nu'),
-  p:L3('Last few. Then I’ll leave you in peace.','Les dernières. Ensuite je vous laisse tranquille.','De laatste. Daarna laat ik je met rust.'),
+ {img:'w5',h:L3('Your nails today','Vos ongles aujourd’hui','Je nagels vandaag'),
+  p:L3('Almost done. Just a few words about now.','Presque fini. Juste quelques mots sur maintenant.','Bijna klaar. Nog een paar woorden over nu.'),
   qs:[
    {k:'Houdt nu',t:'one',q:L3('How long do your nails last now, between appointments?','Combien de temps vos ongles tiennent-ils maintenant ?','Hoe lang blijven je nagels nu mooi tussen twee afspraken?'),o:[L3('3 to 4 weeks or longer','3 à 4 semaines ou plus','3 à 4 weken of langer'),L3('2 to 3 weeks','2 à 3 semaines','2 à 3 weken'),L3('Less than 2 weeks','Moins de 2 semaines','Minder dan 2 weken')]},
    {k:'Gevoel nu',t:'multi',q:L3('How do you feel with your nails now?','Comment vous sentez-vous avec vos ongles maintenant ?','Hoe voel je je nu met je nagels?'),o:[L3('Polished and put together','Soignée','Verzorgd'),L3('More confident','Plus confiante','Zelfverzekerder'),L3('No more stress about my nails','Plus de stress pour mes ongles','Geen stress meer over mijn nagels'),L3('Like myself, but better','Comme moi, en mieux','Mezelf, maar beter')],
     why:{l:L3('Why does that matter to you?','Pourquoi est-ce important pour vous ?','Waarom is dat belangrijk voor jou?')}},
    {k:'Complimenten',t:'one',q:L3('Has anyone asked you about your nails?','Quelqu’un vous a-t-il déjà demandé pour vos ongles ?','Heeft iemand je al gevraagd naar je nagels?'),o:[L3('Several people','Plusieurs personnes','Meerdere mensen'),L3('One or two','Une ou deux','Een of twee'),L3('Not really','Pas vraiment','Niet echt')],
     why:{except:['Not really'],l:L3('What did they say?','Qu’ont-ils dit ?','Wat zeiden ze?')}},
-   {k:'Review',t:'text',q:L3('How would you describe Bahami to a friend, in one line?','Comment décririez-vous Bahami à une amie, en une phrase ?','Hoe zou je Bahami in één zin aan een vriendin beschrijven?')},
+   {k:'Review',t:'text',q:L3('If a friend asked you about Bahami, what would you tell her?','Si une amie vous demandait à propos de Bahami, que lui diriez-vous ?','Als een vriendin je naar Bahami vraagt, wat zeg je haar?'),h:L3('A few words is enough. Write it the way you would say it.','Quelques mots suffisent. Écrivez-le comme vous le diriez.','Een paar woorden is genoeg. Schrijf het zoals je het zou zeggen.')},
    {k:'Foto',t:'photos',q:L3('A photo of your nails?','Une photo de vos ongles ?','Een foto van je nagels?'),h:L3('Only your hands. A before photo of your old nails is a big help.','Seulement vos mains. Une photo avant de vos anciens ongles aide énormément.','Alleen je handen. Een voor-foto van je oude nagels helpt enorm.')},
    {k:'Beter maken',t:'text',q:L3('Is there one thing I could do even better?','Y a-t-il une chose que je pourrais faire encore mieux ?','Is er één ding dat ik nog beter kan doen?'),h:L3('Only Mireille reads this.','Seule Mireille lit ceci.','Alleen Mireille leest dit.')},
-   {k:'Toestemming',t:'one',q:L3('May I share your words?','Puis-je partager vos mots ?','Mag ik je woorden delen?'),o:[L3('Yes, with my first name','Oui, avec mon prénom','Ja, met mijn voornaam'),L3('Yes, anonymously','Oui, anonymement','Ja, anoniem'),L3('Rather not','Plutôt pas','Liever niet')]},
+   {k:'Toestemming',t:'one',q:L3('Can I share what you wrote?','Puis-je partager ce que vous avez écrit ?','Mag ik delen wat je schreef?'),o:[L3('Yes, with my first name','Oui, avec mon prénom','Ja, met mijn voornaam'),L3('Yes, without my name','Oui, sans mon nom','Ja, zonder mijn naam'),L3('No, just for Mireille','Non, seulement pour Mireille','Nee, alleen voor Mireille')]},
    {k:'Contact',t:'contact',q:L3('Your Instagram or email','Votre Instagram ou e-mail','Je Instagram of e-mail'),h:L3('Optional. Only so Mireille can thank you or tag you.','Facultatif. Seulement pour que Mireille puisse vous remercier ou vous identifier.','Optioneel. Alleen zodat Mireille je kan bedanken of taggen.')}
   ]}
 ];
@@ -224,7 +229,7 @@ function build(){
   show(cur);
 }
 function show(i){ const u=UI[L], s=[...document.querySelectorAll('#steps .step')]; cur=i; s.forEach((x,k)=>x.classList.toggle('on',k===i));
-  const pct=(i+1)/s.length*100; $('pl').style.width=pct+'%'; $('pd').style.left=pct+'%'; $('tOf').textContent=u.of[i];
+  const pct=(i+1)/s.length*100; $('pl').style.width=pct+'%'; $('pd').style.left=pct+'%'; $('tOf').textContent=u.of[i]; document.querySelectorAll('#pearls i').forEach((x,k)=>x.classList.toggle('on',k<=i));
   $('back').style.display=i?'':'none'; $('next').textContent=i===s.length-1?u.send:u.cont; $('err').textContent=''; }
 function answers(){ save(); const out=[]; ALLQ.forEach(q=>{ if(['photos','contact'].includes(q.t))return;
   if(q.t==='name'||q.t==='text'){ const v=(st[q.k]||'').trim(); if(v) out.push([q.k,v]); }
