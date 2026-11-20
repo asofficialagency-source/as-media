@@ -1,0 +1,1195 @@
+<!doctype html>
+<html lang="nl" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jouw stappen, Mireille</title>
+<style>
+  :root{--pink:#A9826F;--pink-d:#7D5B4B;--pink-m:#E3D2C7;--pink-l:#F8F2EE;--ink:#2B2320;--muted:#7E716B;--line:#EEE3DC;--bg:#FFFFFF}
+  *{box-sizing:border-box;min-width:0}
+  html,body{overflow-x:hidden}
+  body{margin:0;font-family:-apple-system, "SF Pro Display", "SF Pro Text", BlinkMacSystemFont, system-ui, sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+  a{color:var(--pink-d)}
+  .wrap{max-width:820px;margin:0 auto;padding:0 16px 60px}
+  .hero{background:var(--pink-l);padding:40px 16px 30px;text-align:center;border-bottom:1px solid var(--line)}
+  .hero .k{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--pink-d);text-transform:uppercase}
+  .hero h1{font-size:34px;margin:10px 0 6px;letter-spacing:-.4px}
+  .hero p{margin:0;color:var(--muted);font-weight:500}
+  .bar{height:10px;background:var(--pink-m);border-radius:99px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+  .bar i{display:block;height:100%;width:0;background:var(--pink);border-radius:99px;transition:width .3s}
+  .bar.small{height:7px;margin-top:14px}
+  .hero .bar{max-width:420px;margin:22px auto 0}
+  .hero small{display:block;margin-top:8px;font-weight:700;color:var(--pink-d);font-size:13px}
+  .info{border:1px solid var(--line);background:#fff;border-radius:16px;padding:16px 18px;margin:24px 0 0}
+  .info h3{margin:0 0 8px;font-size:16px}
+  .info p{margin:4px 0;font-size:14px}
+  .group{margin-top:30px}
+  .ghead{display:flex;align-items:center;gap:12px;padding:13px 18px;border-radius:14px;background:var(--pink);color:#fff;margin-bottom:12px;flex-wrap:wrap}
+  .ghead b{font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+  .ghead span{font-size:13px;opacity:.9;font-weight:500}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+  .tile{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:4px;border:1px solid var(--line);background:#fff;border-radius:16px;padding:16px 16px 14px;transition:.18s;min-height:132px}
+  .tile:hover,.tile:focus-visible{border-color:var(--pink);transform:translateY(-2px);box-shadow:0 8px 22px rgba(125,91,75,.12)}
+  .tile .n{font-size:30px;font-weight:800;color:var(--pink);line-height:1;letter-spacing:-1px}
+  .tile .t{font-size:16px;font-weight:700;margin-top:6px}
+  .tile .s{font-size:12.5px;color:var(--muted);font-weight:500;flex:1}
+  .tile .p{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--pink-d);margin-top:8px}
+  .tile .p .bar{flex:1;height:6px;border:0;background:var(--pink-l)}
+  .tile.complete{background:var(--pink-l);border-color:var(--pink-m)}
+  .tile.complete .p::after{content:"✓";background:var(--pink);color:#fff;border-radius:99px;width:18px;height:18px;display:grid;place-content:center;font-size:11px}
+  .sec{padding-top:18px}
+  .sechead{position:sticky;top:0;z-index:5;background:#fff;padding:12px 0 14px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+  .back{all:unset;cursor:pointer;font-size:13px;font-weight:700;color:var(--pink-d);padding:6px 0}
+  .sk{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--pink);margin-top:8px}
+  .sechead h2{margin:2px 0 0;font-size:26px;display:flex;align-items:baseline;gap:12px;letter-spacing:-.3px;flex-wrap:wrap}
+  .bign{font-size:24px;font-weight:800;color:#fff;background:var(--pink);border-radius:10px;padding:2px 10px}
+  .secsub{margin:4px 0 0;color:var(--muted);font-weight:500;font-size:14px}
+  .sc{display:block;text-align:right;font-weight:700;color:var(--muted);margin-top:5px;font-size:12px}
+  .step{border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px;background:#fff;transition:.2s}
+  .step.done{background:var(--pink-l);border-color:var(--pink-m)}
+  .head{display:flex;gap:12px;align-items:flex-start}
+  .head input{appearance:none;flex:none;width:26px;height:26px;border:2px solid var(--pink);border-radius:8px;margin:1px 0 0;cursor:pointer;display:grid;place-content:center;background:#fff}
+  .head input:checked{background:var(--pink)}
+  .head input:checked::after{content:"✓";color:#fff;font-weight:800;font-size:15px}
+  .ht{flex:1;cursor:pointer}
+  .sn{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;color:var(--pink-d);background:var(--pink-l);border:1px solid var(--pink-m);border-radius:6px;padding:1px 7px;margin-bottom:5px}
+  .head h3{margin:0;font-size:17px}
+  .head p{margin:2px 0 0;color:var(--muted);font-size:14px;font-weight:500}
+  .chev{flex:none;font-size:26px;line-height:1;color:var(--pink);transition:transform .2s;cursor:pointer;margin-top:2px}
+  .step.open .chev{transform:rotate(90deg)}
+  .step .body{display:none;margin:14px 0 0 38px}
+  .step.open .body{display:block}
+  .where{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:10px}
+  .where b{color:var(--ink)}
+  .sub{font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--pink-d);margin:14px 0 6px}
+  .opt{position:relative;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;background:#fff}
+  .opt.best{border-color:var(--pink)}
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;padding:3px 9px;border-radius:99px;background:var(--pink-l);color:var(--pink-d);margin-bottom:8px}
+  .opt.best .tag{background:var(--pink);color:#fff}
+  .opt pre{margin:0;white-space:pre-wrap;font-family:-apple-system, "SF Pro Display", "SF Pro Text", BlinkMacSystemFont, system-ui, sans-serif;font-size:15px;font-weight:600;padding-right:64px}
+  .copy{position:absolute;top:10px;right:10px;border:0;background:var(--pink-l);color:var(--pink-d);font:inherit;font-size:12px;font-weight:700;padding:6px 10px;border-radius:8px;cursor:pointer}
+  .copy:hover{background:var(--pink-m)}
+  .note{font-size:13px;color:var(--muted);margin:6px 0 0}
+  .dl{display:inline-block;margin:4px 6px 8px 0;background:var(--pink);color:#fff!important;text-decoration:none;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px}
+  .vq{background:#fff;border:1px solid var(--pink-m);border-radius:12px;padding:12px 14px;margin:8px 0}
+  .vq ol{margin:0;padding-left:20px;font-size:14px;font-weight:600}
+  .vq li{margin:5px 0}
+  .secnav{display:flex;gap:10px;justify-content:space-between;margin-top:26px;flex-wrap:wrap}
+  .secnav button{all:unset;cursor:pointer;box-sizing:border-box;border:1px solid var(--pink);border-radius:12px;padding:12px 16px;font-weight:700;font-size:14px;color:var(--pink-d);background:#fff}
+  .secnav button.next{background:var(--pink);color:#fff;margin-left:auto}
+  .check{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:600;margin:6px 0}
+  .check input{margin:4px 0 0;width:18px;height:18px;flex:0 0 18px;accent-color:var(--pink)}
+  .check span{flex:1;min-width:0;overflow-wrap:anywhere}
+  .fld{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0;background:#fff}
+  .fld b{display:block;font-size:14px;margin-bottom:4px}
+  .fld span{font-size:14px;color:var(--ink);font-weight:600}
+  .fld .q{font-size:13px;color:var(--muted);font-weight:500;margin-top:4px}
+  textarea{width:100%;min-height:70px;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin:6px 0 4px;resize:vertical;color:var(--ink);background:#fff}
+  textarea:focus{outline:2px solid var(--pink-l);border-color:var(--pink)}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px}
+  html:not(.js) .step .body{display:block}
+  html:not(.js) .step{margin-bottom:12px}
+  @media(max-width:560px){.hero h1{font-size:28px}.step .body{margin-left:0}.sechead h2{font-size:21px}.bign{font-size:20px}}
+
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .tbin{max-width:760px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .tbin img{width:34px;height:34px;object-fit:contain;flex:none}
+  .tbm{flex:1;min-width:0}
+  .tbt{display:flex;align-items:baseline;gap:8px;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tbt b{font-size:17px;color:var(--pink-d);font-weight:800}
+  .topbar .bar{max-width:none;margin:6px 0 0;height:7px}
+  .topbar small{display:block;font-size:11px;color:var(--muted);margin-top:4px;font-weight:600}
+  .hlogo{display:block;width:min(220px,60%);height:auto;margin:0 auto 18px}
+  #toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#111;color:#fff;padding:12px 18px;border-radius:99px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.35s;z-index:60;max-width:calc(100% - 32px);text-align:center}
+  #toast.show{opacity:1;transform:translate(-50%,0)}
+  .sec.complete .sechead .sc{color:var(--pink-d);font-weight:800}
+  .sec.complete .sechead h2 .bign{animation:pop .5s ease}
+  @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
+
+  .ghead{flex-wrap:wrap}.gp{display:flex;align-items:center;gap:10px;margin-top:10px;flex-basis:100%;width:100%;border:0!important;padding:0!important}.gp .bar{flex:1;height:8px;margin:0;max-width:none;background:rgba(255,255,255,.35);border:0}.gp .bar i{background:#fff}.gp em{font-style:normal;font-size:12px;font-weight:700;color:#fff;white-space:nowrap;opacity:1}
+  .why{font-size:13.5px;background:var(--pink-l);border-radius:10px;padding:9px 12px;margin:8px 0;color:var(--ink)}
+  .why b{color:var(--pink-d)}
+  .cnt{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-top:6px}
+  .bns{display:grid;gap:14px;margin:8px 0;max-width:560px}
+  .bn-wrap{margin:0}
+  .bn{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:4%;text-align:left;border:1px solid var(--line)}
+  .bn img{height:30%;width:auto}
+  .bn .safe{position:absolute;left:19.8%;right:19.8%;top:35.3%;bottom:35.3%;border:1.5px dashed rgba(217,88,127,.55);border-radius:4px;pointer-events:none}
+  .bn-cap{font-size:13px;font-weight:700;color:var(--pink-d);margin-top:6px}
+  .bA{background:#111;color:#fff}.bA img{filter:invert(1);height:34%}
+  .bt{font-family:-apple-system, "SF Pro Display", "SF Pro Text", BlinkMacSystemFont, system-ui, sans-serif;font-size:clamp(14px,3.4vw,28px);letter-spacing:.18em}
+  .bs{font-size:clamp(7px,1.3vw,11px);letter-spacing:.3em;color:#F3B9CA;margin-top:6px}
+  .bB{background:linear-gradient(120deg,#FDEFF4,#F6CFDB);color:#2A1F23}.bB img{height:26%}
+  .bt2{font-family:-apple-system, "SF Pro Display", "SF Pro Text", BlinkMacSystemFont, system-ui, sans-serif;font-style:italic;font-size:clamp(14px,3.4vw,28px)}
+  .bs2{font-size:clamp(7px,1.25vw,11px);margin-top:6px;color:#A8325A;font-weight:600}
+  .bC{background:#fff;color:#111;text-align:center}
+  .bt3{font-family:-apple-system, "SF Pro Display", "SF Pro Text", BlinkMacSystemFont, system-ui, sans-serif;font-size:clamp(13px,3vw,25px);letter-spacing:.08em;line-height:1.15}
+  .bl{width:40px;height:3px;background:#D9587F;margin:8px auto}
+  .bs3{font-size:clamp(7px,1.2vw,11px);letter-spacing:.3em;text-transform:uppercase;color:#A8325A}
+  .pA{background:linear-gradient(120deg,#F6CFDB,#D9587F);color:#fff;text-align:center}
+  .pB{background:#111;color:#fff;text-align:center}
+  .pC{background:#FDEFF4;color:#2A1F23;text-align:center}
+  .pt{font-family:-apple-system, "SF Pro Display", "SF Pro Text", BlinkMacSystemFont, system-ui, sans-serif;font-size:clamp(14px,3.4vw,28px);letter-spacing:.06em;line-height:1.15}
+  .ps{font-size:clamp(7px,1.3vw,11px);letter-spacing:.25em;text-transform:uppercase;margin-top:8px;opacity:.9}
+  .pB .ps{color:#F3B9CA}
+
+  .mark{width:38px;height:38px;border-radius:50%;background:var(--pink-l);border:1px solid var(--pink-m);display:grid;place-content:center;font-weight:800;font-size:13px;color:var(--pink-d);flex:none;letter-spacing:.5px}
+  .wordmark{font-size:30px;letter-spacing:8px;font-weight:600;color:var(--pink-d);margin-bottom:14px}
+  .phase{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;background:#fff}
+  .phase b{color:var(--pink-d)}
+  .data{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+  .data div{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}
+  .data b{display:block;font-size:22px;color:var(--pink-d);letter-spacing:-.5px}
+  .data span{font-size:12.5px;color:var(--muted);font-weight:600}
+  .obj{font-size:13.5px;border-left:3px solid var(--pink);padding:6px 10px;margin:8px 0;background:#fff;color:var(--ink)}
+  .obj b{color:var(--pink-d)}
+  .story{font-size:14px;margin:4px 0;padding-left:4px}
+  table.f{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0}
+  table.f td,table.f th{border:1px solid var(--line);padding:8px;vertical-align:top;text-align:left}
+  table.f th{background:var(--pink-l);color:var(--pink-d)}
+  .opt:not(:has(.copy)) pre{padding-right:0}
+  .ans{font-size:13.5px;background:#fff;border:1px dashed var(--pink-m);border-radius:10px;padding:9px 12px;margin:10px 0;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="tbin"><div class="mark">B</div><div class="tbm"><div class="tbt"><b id="pct">0%</b><span id="msg"></span></div><div class="bar"><i id="bar"></i></div><small id="count"></small></div></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="home">
+  <header class="hero">
+    <div class="wordmark">BAHAMI</div>
+    <div class="k">Gemaakt voor jou door AS Media</div>
+    <h1>Jouw stappen, Mireille</h1>
+    <p>Alles van A tot Z, in 3 fases.</p>
+  </header>
+  <div class="wrap">
+    <div class="info">
+      <h3>Welkom, Mireille 🤍</h3>
+      <p>Dit is je plan voor de komende weken. Het komt rechtstreeks uit jouw documenten, je cijfers en onze audit. Begin bij <b>01 Lees dit eerst</b>: daar staat waar alles vandaan komt en waarom we het zo doen.</p>
+      <p><b>Fase 1 · Jouw data</b> · vragen, mappen en reviews, tegen <b>maandag 23/11</b>.</p>
+      <p><b>Fase 2 · Je profielen</b> · Bahami overal goed, en jouw eigen pagina, tegen <b>vrijdag 27/11</b>.</p>
+      <p><b>Fase 3 · Je content</b> · hoe alles samenwerkt, vanaf <b>maandag 30/11</b>.</p>
+      <p style="margin-top:10px"><b>Zo werkt het:</b> kies een sectie, open een blok, doe het en vink het af. Tik op <b>Kopieer</b> om een tekst te kopiëren. Bij een vraag antwoord je met een <b>voice note</b> in onze WhatsApp-groep (onze aanrader) of met tekst, wat jij het liefst doet.</p>
+    </div>
+    <div id="groups"></div>
+  </div>
+</div>
+
+<div class="wrap" id="secs">
+<section class="sec" id="a1" data-n="01" data-t="Lees dit eerst" data-g="Fase 1 · Jouw data" data-sub="Waar dit plan vandaan komt en wat we gaan doen">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 1 · Jouw data</div>
+    <h2><span class="bign">01</span>Lees dit eerst</h2>
+    <p class="secsub">Waar dit plan vandaan komt en wat we gaan doen</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="a-order">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">01.1</span><h3>Je eerste stappen, in deze volgorde</h3><p>Begin hier · daarna doen wij de rest</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="vq"><ol><li><b>Beantwoord je vragen</b> · sectie 02, blokken A tot I (blok H is je check), ook de vragen over jou in blok C. Spreek ze in met een voice note in onze groep, of typ ze, wat jij het liefst doet. <i>Waarom:</i> met jouw antwoorden schrijven wij al je teksten: bio's, highlights, YouTube, Google, en je personal brand. Hoe beter je antwoordt, hoe meer alles klinkt als jij.</li><li><b>Check onze info</b> · sectie 02, blok H. <i>Waarom:</i> jij bent de specialist. Wij schrijven de teksten, maar alleen jij weet of elke vakterm en elk cijfer 100% klopt.</li><li><b>Zet je foto's en screenshots in je mappen</b> · sectie 03. <i>Waarom:</i> daar maken wij je banners en de achtergronden van je highlights mee.</li><li><b>Stuur je reviewpagina naar je klanten</b> · sectie 04. <i>Waarom:</i> de antwoorden worden je highlight Reviews, de tekst op je boekingspagina en de hooks van je video's.</li><li><b>Stuur je vaste klanten van vroeger een berichtje</b> · sectie 05. <i>Waarom:</i> ±30 klanten die al van je houden, dat is je snelste winst.</li></ol></div><p class="note"><b>Daarna (Fase 2):</b> jij zet je profielen op met de teksten uit dit plan, stap voor stap. Alles staat uitgeschreven, en wij maken je banner en je highlight-achtergronden. Vast? Stuur een voice note in de groep.</p><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="a-fix">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">01.2</span><h3>Wat we uit je audit oplossen</h3><p>Elke fix, en waar hij staat</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Je audit vond 82 punten. Ze komen allemaal terug in dit plan. Dit zijn de belangrijkste, en waar je ze oplost:</p><table class="f"><tr><th>Wat er nu misloopt</th><th>Waar je het oplost</th></tr><tr><td>Elke plek zegt iets anders, geen vaste boodschap</td><td>06 · Je boodschap</td></tr><tr><td>Je bio zegt wat, niet voor wie of waarom, en er is geen volgende stap</td><td>06 · Bio en link in bio</td></tr><tr><td>3 links, geen duidelijke hoofdactie</td><td>06 · Link in bio</td></tr><tr><td>Je pins tonen geen werkwijze, geen bewijs</td><td>06 · 3 vastgezette posts</td></tr><tr><td>Twijfels (prijs, avonden, de studio) worden nergens beantwoord</td><td>07 · Highlights</td></tr><tr><td>Je werkwijze heeft geen naam en is onzichtbaar</td><td>07 · The method · 09 · YouTube</td></tr><tr><td>Weinig bewijs: geen Google-reviews, geen voor/na met tijdlijn</td><td>04 · Reviews · 10 · Google</td></tr><tr><td>±30 vaste klanten niet meer gecontacteerd</td><td>05 · Je vaste klanten</td></tr><tr><td>Wie iets vraagt en niet boekt, hoort niets meer</td><td>05 · Opvolgen · 16 · WhatsApp</td></tr><tr><td>Vriendinnen brengen de beste klanten, maar je vraagt het niet</td><td>05 · Een vriendin meebrengen</td></tr><tr><td>Last-minute annuleringen, geen regel vooraf, niets na het boeken</td><td>15 · Planity</td></tr><tr><td>Je content toont alleen nagels, geen jou en geen uitleg</td><td>02 · Personal brand · 17-19 · Mireille · je contentplan</td></tr><tr><td>Geen vraag (CTA) onder je video's, of altijd dezelfde</td><td>06 · Je call to actions</td></tr><tr><td>Weinig platformen, weinig posten</td><td>08-14 · Alle platformen · je contentplan</td></tr><tr><td>Je weet niet welke video een klant bracht</td><td>20 · Wat we meten</td></tr><tr><td>Geen lead magnet, geen manier om mensen te bereiken</td><td>20 · Lead magnets</td></tr><tr><td>Risico: 'sold out' zeggen als het niet zo is</td><td>21 · Je regels</td></tr><tr><td>Je doet alles alleen, posten lukt niet altijd</td><td>je contentplan · een haalbaar weekschema</td></tr></table><div class="why"><b>Waarom deze volgorde:</b> we lossen eerst op wat nu klanten kost: je profiel, je twijfels en je oude klanten. Pas daarna gaan we voor meer bereik. Meer mensen naar een profiel sturen dat niet overtuigt, heeft geen zin.</div><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="a-ctx">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">01.3</span><h3>Waar dit plan vandaan komt</h3><p>Gebouwd op jouw 4 documenten en je cijfers</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Dit plan is gemaakt op basis van wat jij ons gaf: je <b>4 documenten</b> (je klant, je avatar Junie, je aanbod, hoe klanten je vinden), je <b>editing-intake</b> en je <b>Instagram-cijfers</b>. Daar maakten we eerst een <b>audit</b> van: wat werkt, en waar je klanten verliest. Dit stappenplan is wat er uit die audit komt, in de juiste volgorde. Je audit krijg je er ook bij, als Word-document.</p><p class="note">Wat we van jou leerden, in 4 zinnen:</p><div class="vq"><ol><li>Je beste klant is een drukke vrouw die haar nagels <b>elke 3–4 weken</b> laat doen en geen tijd heeft om te wisselen van nagelstyliste.</li><li>Ze komt bij jou na een <b>teleurstelling</b>: BIAB die na 2 weken breekt, te dik is, of een afspraak die uren duurt.</li><li>Ze vertrouwt pas als ze <b>het resultaat ziet bij iemand die ze vertrouwt</b>, en als ze begrijpt waarom jij een techniek kiest.</li><li>Jij wil gekend worden als de vrouw die <b>"shiny little pearls"</b> maakt: natuurlijke nagels, rustig, in één uur.</li></ol></div><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="a-data">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">01.4</span><h3>Wat we in je cijfers zagen</h3><p>De reden waarom we zo werken</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="data"><div><b>43.581</b><span>views op Instagram in 90 dagen</span></div><div><b>+9</b><span>volgers in diezelfde 90 dagen</span></div><div><b>198–221</b><span>likes op posts mét jou in beeld</span></div><div><b>19–62</b><span>likes op posts met alleen nagels</span></div><div><b>1 → 3</b><span>nieuwe klanten in oktober → november</span></div><div><b>2</b><span>klanten vonden je via ChatGPT</span></div></div><div class="why"><b>Wat dit betekent:</b> mensen zien je werk wel (43.581 views), maar ze blijven niet hangen en boeken niet. Je profiel zegt nog niet duidelijk voor wie je bent, er staan 3 links, en er is geen vast volgend stapje. En: zodra <b>jij</b> in beeld komt, reageren mensen 4 tot 7 keer meer. Mensen boeken bij een persoon die ze vertrouwen, niet bij een foto van nagels. Daarom bouwen we je studio én jou.</div><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="a-how">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">01.5</span><h3>Hoe we samenwerken: 3 fases</h3><p>Eerst je data, dan je profielen, dan je content</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="phase"><b>Fase 1 · Jouw data</b> (nu, tegen maandag 23/11)<br>Wij stellen je alle vragen die we nodig hebben, ook over jou als persoon. Je zet je foto's in je mappen en je stuurt je reviewpagina naar je klanten.</div><div class="phase"><b>Fase 2 · Je profielen</b> (tegen vrijdag 27/11)<br>Je zet Bahami <b>overal</b> op, met de teksten die wij hier voor je uitschreven: Instagram, TikTok, YouTube, Google, Facebook, Threads, X, Pinterest, Planity en WhatsApp. En je eigen pagina als Mireille. Wij maken je <b>YouTube-banner</b>, je <b>Facebook-cover</b> en de <b>achtergronden voor je highlight-covers</b>, zodat je een mooie basis hebt.</div><div class="phase"><b>Fase 3 · Je content</b> (vanaf week 30/11)<br>Je ziet hoe alles samenwerkt: van een video op Instagram tot een boeking. <b>Content, filmen en posten krijg je apart</b>, in je contentplan en op je Miro-bord. Wij maken of editen je video’s niet. Zodra de basis staat, maken we je <b>contentplan en content tracker</b>, gebaseerd op de formats die nu het best werken in jouw niche, voor Bahami én voor jou.</div><p class="note"><b>Zo werkt deze pagina:</b> kies een sectie, open een blok, doe het en vink het af. Tik op <b>Kopieer</b> om een tekst te kopiëren. Bij elke tekst staan <b>3 opties</b>, optie 1 is onze aanrader. Liever je eigen versie? Prima, zorg dan dat de 3 punten die erbij staan erin zitten. Niets gaat online zonder dat jij het goedkeurt.</p><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="a2" data-n="02" data-t="Je vragen" data-g="Fase 1 · Jouw data" data-sub="Alles wat we nog moeten weten · 1 voice note per blok">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 1 · Jouw data</div>
+    <h2><span class="bign">02</span>Je vragen</h2>
+    <p class="secsub">Alles wat we nog moeten weten · 1 voice note per blok</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="q-acc">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">02.1</span><h3>A · Je 2 accounts</h3><p>Waarom we met 2 pagina's werken. Lees dit eerst.</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Jij schreef in je intake dat je alles graag op één pagina combineert, zoals @paintedbyjools. We hebben je cijfers bekeken en kiezen voor <b>2 accounts</b> die elkaar versterken. Elke pagina heeft een eigen rol:</p><div class="opt best"><span class="tag">Pagina 1 · Bahami · je zaak</span><pre>De professionele kant
+Je werk, je resultaten, reviews, en boeken
+Uitleg: waarom je iets op een bepaalde manier doet, en waarom dat belangrijk is voor de nagels van je klant
+Hier boeken mensen</pre></div><div class="opt best"><span class="tag">Pagina 2 · Mireille · jij</span><pre>Jij, helemaal jezelf
+Je ervaringen, je leven, je dag, mama-zijn, je mening
+Hier leren mensen je kennen en gaan ze je vertrouwen</pre></div><div class="why"><b>Waarom 2:</b> je beste posts zijn die met jou erop: 198 tot 221 likes, tegenover 19 tot 62 voor posts met alleen nagels. Heel veel mensen volgen een persoon, niet een zaak. Op je eigen pagina mag je helemaal jezelf zijn, zonder dat je studio rommelig wordt. Je ideale klant scrolt weg van alles wat niet verzorgd oogt, dus Bahami blijft rustig en strak: daar boekt ze. Beide pagina's taggen elkaar, dus wie jou leuk vindt, komt bij je studio terecht. @paintedbyjools combineert alles, maar zij heeft 89.000 volgers en is zelf al het merk. Bij jou bouwen we dat nu op.</div><div class="vq"><ol><li><b>Is er iets dat je zeker níet wil tonen op je persoonlijke pagina? Bijvoorbeeld je kindje, je thuis, je familie.</b><br><i>Waarom:</i> dan houden we daar vanaf dag 1 rekening mee.</li></ol></div><div class="ans">🎙️ <b>Antwoorden:</b> stuur een <b>voice note</b> in onze WhatsApp-groep (onze aanrader: zo hoor je jezelf en wij horen hoe jij praat) of typ het, wat jij wil. Noem gewoon het nummer van de vraag.</div><label class="check"><input type="checkbox"><span>Gelezen en beantwoord</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="q-what">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">02.2</span><h3>B · Wat is een personal brand?</h3><p>Even uitleggen, voor je verder gaat</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Een personal brand is <b>hoe mensen over jou denken</b>, niet over je product. Mensen volgen geen nagels, ze volgen een persoon. Bij een personal brand laat je zien wie je bent, hoe je denkt en hoe je werkt, zodat mensen je leren kennen voor ze je ooit ontmoeten.</p><div class="why"><b>Waarom het werkt:</b> je ideale klant boekt pas als ze het ziet bij iemand die ze vertrouwt. Als ze jou al weken ziet, je stem kent en weet waarom je doet wat je doet, ben jij die persoon. Dan voelt boeken niet meer als een gok, en is de prijs geen vraag meer. Mensen boeken niet als ze je begrijpen, maar als ze zichzelf in jou herkennen.</div><p class="note">Dat betekent <b>niet</b> dat je je hele leven moet delen. Jij kiest wat je toont en wat privé blijft.</p><div class="why"><b>Hoe het bij jou werkt:</b> <ul><li><b>Bahami</b> toont je werk en waarom je het zo doet. Daar boeken mensen.</li><li><b>Mireille</b> toont jou: je dag, je mening, mama-zijn. Daar leren mensen je kennen.</li><li>Wie jou leuk vindt, gaat naar Bahami. Zo werken je 2 pagina's samen.</li><li>Je antwoorden in blok C bepalen waar je persoonlijke pagina over gaat. Daarom stellen we zoveel vragen.</li></ul></div><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="q-pb">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">02.3</span><h3>C · Jij als persoon (personal brand)</h3><p>21 vragen · spreek ze in · daarna je document</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Voor je persoonlijke pagina moeten we jou echt kennen: wie je bent, hoe je gezien wil worden en waar je naartoe wil. In je personal brand-document vulden we al in wat we uit je 4 documenten haalden. Dit zijn de vragen die nog open staan.</p><div class="vq"><ol><li><b>FROM YOUR DOCUMENTS</b> · dit haalden we uit je documenten. Klopt het? Pas aan wat niet als jou voelt.</li><li><b>OUR PROPOSAL</b> · een voorstel van ons. Houden, aanpassen of vervangen.</li><li><b>OPEN</b> · dit weten we nog niet. Een paar zinnen is genoeg.</li></ol></div><div class="sub">Je vragen · spreek ze in, één voice note per paar vragen</div><div class="vq"><ol><li><b>Wie ben je, in een paar zinnen? Waar kom je vandaan, en waarom Brussel?</b><br><i>Waarom:</i> dat is de basis van je persoonlijke pagina en je 'Start here'.</li><li><b>Hoe ben je in de nagels gerold? Wat trok je erin?</b><br><i>Waarom:</i> mensen voelen zich verbonden met waarom je het graag doet, niet alleen dat je het doet.</li><li><b>Waar geef je echt om, los van je werk? Wat drijft je?</b><br><i>Waarom:</i> dat is wat mensen onbewust volgen.</li><li><b>Wat is jouw kijk op het leven of op je werk die niet iedereen deelt?</b><br><i>Waarom:</i> een eigen mening maakt je herkenbaar.</li><li><b>Hoe wil je dat mensen je in één zin omschrijven als je er niet bij bent?</b><br><i>Waarom:</i> die zin wordt de rode draad van al je content.</li><li><b>Welk gevoel moet je content geven? Rustig, echt, luxe, speels?</b><br><i>Waarom:</i> zo kiezen we je stijl, je muziek en je kleuren.</li><li><b>Hoe wil je zeker níet gezien worden?</b><br><i>Waarom:</i> dat is even belangrijk als hoe je wel gezien wil worden.</li><li><b>Welke 2 of 3 personen of merken vind je sterk, en waarom?</b><br><i>Waarom:</i> niet om te kopiëren, maar om je niveau en sfeer te bepalen.</li><li><b>Wat maakt jou anders dan andere nagelstylistes? Wees concreet.</b><br><i>Waarom:</i> dat wordt je hoek in elke video.</li><li><b>Welke sterke mening heb je over je vak, die je zou verdedigen?</b><br><i>Waarom:</i> mensen volgen overtuiging, en het geeft je eindeloos veel content.</li><li><b>Waar wil je om bekend staan, met één ding?</b><br><i>Waarom:</i> één duidelijk ding wint van een beetje van alles.</li><li><b>Wie is de ene persoon die je het liefst als volger hebt? Leeftijd, wat ze doet, hoe ze is.</b><br><i>Waarom:</i> zo praat je in elke video tegen één persoon.</li><li><b>Waar houdt zij van? Waarvoor stopt ze met scrollen?</b><br><i>Waarom:</i> zo weet je wat je haar moet geven.</li><li><b>Wie wil je níet als volger?</b><br><i>Waarom:</i> een duidelijk merk duwt sommigen weg, en trekt zo de juiste aan.</li><li><b>Over welke 3 tot 5 dingen kan je eindeloos praten of tonen zonder je te vervelen?</b><br><i>Waarom:</i> dat worden je vaste onderwerpen.</li><li><b>Hoe ziet een gewone dag eruit? Wat zou je onderweg kunnen filmen?</b><br><i>Waarom:</i> wat je al doet, is content. Je hoeft niets te spelen.</li><li><b>Wat wil je dat mensen voelen als ze naar je kijken?</b><br><i>Waarom:</i> dat ene gevoel verbindt al je video's.</li><li><b>Waar wil je naartoe? Wat wil je bouwen als je een naam hebt?</b><br><i>Waarom:</i> je merk moet daar nu al ruimte voor laten.</li><li><b>Als iemand je al een tijd volgt en je echt graag ziet, wat moet ze dan kunnen doen?</b><br><i>Waarom:</i> boeken, iets kopen, ergens bij horen: dat is waar je pagina naartoe leidt.</li><li><b>Waarom wil je eigenlijk een grotere naam? Wat brengt het je?</b><br><i>Waarom:</i> er zit altijd een echte reden onder. Die houdt je gemotiveerd.</li><li><b>Waar sta je over 1 jaar, als dit werkt? En over 2 à 3 jaar?</b><br><i>Waarom:</i> zo wijst elke post dezelfde kant op.</li></ol></div><div class="why"><b>Waarom zoveel vragen:</b> met deze antwoorden maken we je personal brand-document af, schrijven we je persoonlijke bio's en plannen we waar je persoonlijke pagina over gaat. Hoe eerlijker en concreter, hoe meer je pagina als jou klinkt.</div><p class="note">📁 Je document staat in <b>00 VOOR MIMI · MIMI - PERSONAL BRAND (vul aan)</b>. Wij zetten jouw antwoorden erin, jij leest het daarna na.</p><div class="ans">🎙️ <b>Antwoorden:</b> stuur een <b>voice note</b> in onze WhatsApp-groep (onze aanrader: zo hoor je jezelf en wij horen hoe jij praat) of typ het, wat jij wil. Noem gewoon het nummer van de vraag.</div><label class="check"><input type="checkbox"><span>Alle vragen beantwoord</span></label><label class="check"><input type="checkbox"><span>Wat we invulden nagelezen en aangepast waar nodig</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="q-pb2">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">02.4</span><h3>D · Jij online</h3><p>Wat je wil tonen en hoe · 6 vragen</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="vq"><ol><li><b>Heb je al een persoonlijk Instagram- of TikTok-account? Zo ja: welke naam, en mag het openbaar worden?</b><br><i>Waarom:</i> misschien moeten we niets nieuws maken.</li><li><b>Hoe wil je online heten: Mireille, Mimi, of je volledige naam? Wat is je achternaam, als je die wil gebruiken?</b><br><i>Waarom:</i> die naam komt overal terug, dus we kiezen hem één keer goed.</li><li><b>Wat mag iedereen van je leven zien, en wat blijft privé? Denk aan: mama-zijn (met of zonder je kindje in beeld), je partner, je geloof, sport, reizen, eten, je dag in de studio.</b><br><i>Waarom:</i> we plannen alleen content waar jij je goed bij voelt.</li><li><b>Hoe was het om terug te komen na je bevallingsverlof? Wat was moeilijk, wat was mooi?</b><br><i>Waarom:</i> veel van je klanten zijn of worden ook mama. Dit verhaal raakt hen.</li><li><b>Welke 3 woorden beschrijven jou als persoon, los van je nagels?</b><br><i>Waarom:</i> zo klinkt je pagina echt als jij.</li><li><b>Praat je graag tegen de camera? In welke taal voel je je het best: Engels, Frans of Nederlands?</b><br><i>Waarom:</i> je intake zegt Engels. We willen dat je je er goed bij voelt, anders zie je dat op video.</li></ol></div><div class="ans">🎙️ <b>Antwoorden:</b> stuur een <b>voice note</b> in onze WhatsApp-groep (onze aanrader: zo hoor je jezelf en wij horen hoe jij praat) of typ het, wat jij wil. Noem gewoon het nummer van de vraag.</div><label class="check"><input type="checkbox"><span>Beantwoord</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="q-brand">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">02.5</span><h3>E · Je branding</h3><p>Je kleuren, logo en stijl · 7 vragen</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Wij maken je <b>YouTube-banner</b>, je <b>Facebook-cover</b> en de <b>achtergronden voor je highlight-covers</b>: een basis in jouw kleuren waar je zelf op verder bouwt. Daarvoor moeten we je branding exact kennen.</p><div class="vq"><ol><li><b>Je logo: zet het in map 4, liefst als PNG met een transparante achtergrond. Heb je meerdere versies (licht, donker, alleen een letter)? Zet ze er allemaal in.</b><br><i>Waarom:</i> zonder je echte logo kunnen we niets maken.</li><li><b>Je kleurcodes (bv. #F5EDE6). Weet je ze niet? Een screenshot van je kleuren of van wie je logo maakte is ook goed.</b><br><i>Waarom:</i> elke banner en cover moet exact jouw kleuren hebben, op elk platform hetzelfde.</li><li><b>Gebruik je een vast lettertype? Zo ja, welk?</b><br><i>Waarom:</i> zo ziet alles eruit alsof het bij elkaar hoort.</li><li><b>Wie maakte je logo, en zijn er nog bestanden of een brandbook?</b><br><i>Waarom:</i> dan werken we verder op wat er al is.</li><li><b>Welke van je eigen foto's of posts vind jij het mooist, en waarom?</b><br><i>Waarom:</i> dat vertelt ons je smaak beter dan woorden.</li><li><b>Zijn er kleuren, stijlen of dingen die je NIET wil zien?</b><br><i>Waarom:</i> zo verspillen we geen tijd aan iets wat je toch niet mooi vindt.</li><li><b>Wil je dat je studio en je persoonlijke pagina dezelfde kleuren hebben, of mag je eigen pagina vrijer zijn?</b><br><i>Waarom:</i> zo kiezen we hoe dicht je 2 pagina's bij elkaar liggen.</li></ol></div><div class="ans">🎙️ <b>Antwoorden:</b> stuur een <b>voice note</b> in onze WhatsApp-groep (onze aanrader: zo hoor je jezelf en wij horen hoe jij praat) of typ het, wat jij wil. Noem gewoon het nummer van de vraag.</div><label class="check"><input type="checkbox"><span>Logo en kleuren in map 4</span></label><label class="check"><input type="checkbox"><span>Vragen beantwoord</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="q-wk">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">02.6</span><h3>F · Je klanten en je werk</h3><p>Voor je highlights, je teksten en je video's · 8 vragen</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="vq"><ol><li><b>Welk woord kies jij voor als mensen iets van je willen krijgen? Bijvoorbeeld PEARL (van je eigen "shiny little pearls"), NAILS of BOOK. En mag "shiny little pearls" je vaste zin worden in je bio?</b><br><i>Waarom:</i> een eigen woord voelt als jij en mensen onthouden het. We gebruiken het niet onder elke video, zie sectie 06.</li><li><b>Heb je de voor-foto van de klant met de korte, brede nagels die je in 3 à 4 behandelingen langer maakte? Mogen we die tonen, zonder naam?</b><br><i>Waarom:</i> dat is je sterkste bewijs. Het wordt een van je 3 vastgezette posts.</li><li><b>Heb je nog meer voor- en na-foto's? Zet ze in map 2 of 4, ook als ze niet perfect zijn.</b><br><i>Waarom:</i> voor/na is wat je klant het snelst overtuigt.</li><li><b>Welke vragen krijg je het vaakst in je DM of aan je tafel? Noem er zoveel als je kan.</b><br><i>Waarom:</i> die worden je FAQ-highlight en je YouTube-video's.</li><li><b>Welke kleuren of vormen kiezen je klanten het meest?</b><br><i>Waarom:</i> je 'nude shades' zijn je handtekening. We tonen ze op Pinterest en in je highlights.</li><li><b>Welke merken gebruik je (bv. The Gel Bottle, Staleks) en wil je ze vermelden?</b><br><i>Waarom:</i> kwaliteit van producten is iets waar je klant volgens jou meer naar zou moeten vragen.</li><li><b>Mag je klanten na hun afspraak vragen om hun handen 10 seconden te filmen? Altijd zonder gezicht en zonder naam.</b><br><i>Waarom:</i> zo heb je elke dag nieuw beeld zonder extra werk.</li><li><b>Wat is jouw regel bij annuleren of niet komen opdagen?</b><br><i>Waarom:</i> die zetten we duidelijk in je highlight 'The studio', zodat je dat gesprek nooit meer moet voeren.</li></ol></div><div class="ans">🎙️ <b>Antwoorden:</b> stuur een <b>voice note</b> in onze WhatsApp-groep (onze aanrader: zo hoor je jezelf en wij horen hoe jij praat) of typ het, wat jij wil. Noem gewoon het nummer van de vraag.</div><label class="check"><input type="checkbox"><span>Beantwoord</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="q-pr">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">02.7</span><h3>G · Praktisch</h3><p>Kleine dingen die we nodig hebben · 5 vragen</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="vq"><ol><li><b>Je juiste werkdagen en uren? Op Planity en op je website staat nu niet hetzelfde.</b><br><i>Waarom:</i> overal moet hetzelfde staan, anders verlies je mensen.</li><li><b>Welk nummer gebruik je voor je zaak? Heb je WhatsApp Business al?</b><br><i>Waarom:</i> daarmee zetten we automatische antwoorden en labels op (sectie 16).</li><li><b>Wat is je TikTok-naam, en heb je al een YouTube-kanaal, Facebook-pagina of Pinterest?</b><br><i>Waarom:</i> dan weten we wat we maken en wat we alleen aanpassen.</li><li><b>Mogen we je studio-adres tonen op Instagram en Google? Het staat nu al in je bio en op Planity.</b><br><i>Waarom:</i> op Google is je adres hoe mensen in de buurt je vinden. Je kiest zelf.</li><li><b>Mogen we foto's van je Instagram gebruiken voor je covers en pagina's?</b><br><i>Waarom:</i> echte foto's van je werk geven meer vertrouwen dan tekst.</li></ol></div><div class="ans">🎙️ <b>Antwoorden:</b> stuur een <b>voice note</b> in onze WhatsApp-groep (onze aanrader: zo hoor je jezelf en wij horen hoe jij praat) of typ het, wat jij wil. Noem gewoon het nummer van de vraag.</div><label class="check"><input type="checkbox"><span>Beantwoord</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="q-check">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">02.8</span><h3>H · Klopt alles?</h3><p>Jij bent de specialist · kijk onze info na</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Deze dingen gebruiken we in al je teksten: je bio's, je highlights, YouTube, Google en je video's. Kijk ze na. Klopt iets niet, of zeg je het anders? Zeg het ons, dan passen we het overal aan.</p><label class="check"><input type="checkbox"><span>Je werkt <b>5 jaar</b> met natuurlijke nagels</span></label><label class="check"><input type="checkbox"><span>Je doet <b>alleen natuurlijke nagels</b>: geen tips, geen acryl, geen verlengingen</span></label><label class="check"><input type="checkbox"><span>Je BIAB en Russische manicure blijven <b>3 tot 4 weken</b> mooi</span></label><label class="check"><input type="checkbox"><span>Een afspraak duurt <b>ongeveer 1 uur</b></span></label><label class="check"><input type="checkbox"><span>Een afspraak kost <b>rond €70</b> (welke behandeling kost wat?)</span></label><label class="check"><input type="checkbox"><span>Je BIAB blijft omdat je <b>elke keer dezelfde routine</b> volgt, eerst vraagt hoe je klant leeft, en na 2 dagen opvolgt</span></label><label class="check"><input type="checkbox"><span>Je spreekt <b>Frans, Nederlands en Engels</b></span></label><label class="check"><input type="checkbox"><span>Je studio is in <b>Ixelles</b>, Av. Emile de Beco 89</span></label><div class="vq"><ol><li><b>Waarom breekt BIAB bij sommige vrouwen na 2 weken? Leg het uit zoals je het aan een klant zou zeggen.</b><br><i>Waarom:</i> dat wordt een van je eerste YouTube-video's en je highlight 'The method'. Het moet 100% juist zijn, dus in jouw woorden.</li><li><b>Wat is het verschil tussen BIAB en Russische manicure, en voor wie raad je wat aan?</b><br><i>Waarom:</i> dat is de vraag die klanten het vaakst hebben voor ze boeken. We maken er een korte check van voor je klanten.</li><li><b>Wat moet een klant doen na haar afspraak, zodat haar nagels 3 tot 4 weken mooi blijven?</b><br><i>Waarom:</i> dat wordt je nazorgkaart, die je klanten na elke afspraak krijgen.</li></ol></div><div class="why"><b>Waarom:</b> één fout cijfer of één verkeerde vakterm kost meer vertrouwen dan geen cijfer. Jouw klanten weten veel over nagels. Daarom gaat niets online voor jij het nakeek.</div><div class="ans">🎙️ <b>Antwoorden:</b> stuur een <b>voice note</b> in onze WhatsApp-groep (onze aanrader: zo hoor je jezelf en wij horen hoe jij praat) of typ het, wat jij wil. Noem gewoon het nummer van de vraag.</div><label class="check"><input type="checkbox"><span>Nagekeken</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="q-info">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">02.9</span><h3>I · Laatste info voor je teksten</h3><p>Zodat wij alles kunnen invullen · 8 vragen</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Met deze antwoorden vullen we je Planity, Google en Facebook volledig in. Zonder deze info moeten we gokken, en dat doen we niet.</p><div class="vq"><ol><li><b>Welke behandelingen bied je aan, met de prijs en de duur van elke behandeling?</b><br><i>Waarom:</i> die komen op Planity, Google en Facebook, overal hetzelfde.</li><li><b>Welk e-mailadres gebruik je voor je zaak?</b><br><i>Waarom:</i> dat komt op Google, Facebook en Instagram als contactknop.</li><li><b>Hoe vindt een klant je tafel in het gebouw? Ingang, verdieping, bel?</b><br><i>Waarom:</i> dat zetten we in je welkomstbericht na het boeken en in je highlight 'The studio'.</li><li><b>Staan je herinneringen op Planity al aan? Weet je het niet, stuur een screenshot van je Planity-instellingen.</b><br><i>Waarom:</i> zo zien we of je klanten de dag ervoor een herinnering krijgen.</li><li><b>Hoeveel nieuwe klanten kan je per week nog aan?</b><br><i>Waarom:</i> zo weten we hoeveel we je laten groeien, en zeggen we nooit 'sold out' als het niet zo is.</li><li><b>Wil je je website bahami.be houden? Wie beheert hem?</b><br><i>Waarom:</i> dan weten we of je link naar Planity of naar je site gaat.</li><li><b>Wat zijn je beste dagen en uren voor nieuwe klanten?</b><br><i>Waarom:</i> die zetten we in je berichten aan oud-klanten en in je highlights.</li><li><b>Is er iets in je audit dat niet klopt, of dat je anders ziet?</b><br><i>Waarom:</i> jij kent je zaak het best. Dan passen we het plan aan.</li></ol></div><div class="ans">🎙️ <b>Antwoorden:</b> stuur een <b>voice note</b> in onze WhatsApp-groep (onze aanrader: zo hoor je jezelf en wij horen hoe jij praat) of typ het, wat jij wil. Noem gewoon het nummer van de vraag.</div><label class="check"><input type="checkbox"><span>Beantwoord</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="a3" data-n="03" data-t="Je mappen" data-g="Fase 1 · Jouw data" data-sub="Hier zet je alles in">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 1 · Jouw data</div>
+    <h2><span class="bign">03</span>Je mappen</h2>
+    <p class="secsub">Hier zet je alles in</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="m-clips">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">03.1</span><h3>1 · Je werk</h3><p>Je mooiste foto's en clips van je werk</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Zet hier je mooiste foto's en clips van je werk: close-ups, voor/na, je tafel. Daarmee kiezen we wat je vastzet en maken we je banner en je highlight-achtergronden. <b>Wij editen geen video's</b>: hoe je filmt en post, krijg je apart in je contentplan.</p><p class="note">📁 Map: <b>00 VOOR MIMI · 1 JE WERK (foto's en clips)</b> (de link krijg je in de groep)</p><label class="check"><input type="checkbox"><span>Alles wat ik heb staat erin</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="m-rev">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">03.2</span><h3>2 · Reviews en screenshots</h3><p>Lieve berichten, Planity-reviews, voor/na</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Screenshots van berichten en reviews van klanten, en je voor/na-foto's. Namen maken wij onleesbaar.</p><p class="note">📁 Map: <b>2 REVIEWS &amp; SCREENSHOTS</b></p><label class="check"><input type="checkbox"><span>Erin gezet</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="m-me">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">03.3</span><h3>3 · Mireille</h3><p>Foto's en video's van jezelf</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Foto's en video's van jou: in je studio, onderweg, je dag. Hier maken we je persoonlijke content en je profielfoto mee. Selfies mogen ook.</p><p class="note">📁 Map: <b>3 MIREILLE (personal brand)</b></p><label class="check"><input type="checkbox"><span>Erin gezet</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="m-ex">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">03.4</span><h3>4 · Studio en extra</h3><p>Je studio, je logo, je kleuren</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Foto's van je studio en je tafel, je logo, je kleurcodes en alles wat nergens anders past.</p><p class="note">📁 Map: <b>4 STUDIO &amp; EXTRA</b></p><label class="check"><input type="checkbox"><span>Logo en kleurcodes erin gezet</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="m-ons">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">03.5</span><h3>5 · Van ons</h3><p>Hier zetten wij dingen voor jou klaar</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Hier vind je straks je YouTube-banner, je Facebook-cover en de achtergronden voor je highlights. Je downloadt ze gewoon.</p><p class="note">📁 Map: <b>5 VAN ONS (covers, banners)</b></p><label class="check"><input type="checkbox"><span>Gezien</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="m-up">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">03.6</span><h3>Zo upload je vanaf je gsm</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Google Drive-app → open de map → + → Uploaden</b></div><label class="check"><input type="checkbox"><span>Kies je bestanden en wacht tot ze klaar zijn met uploaden. Zet je gsm niet op slot tijdens het uploaden.</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="a4" data-n="04" data-t="Reviews" data-g="Fase 1 · Jouw data" data-sub="Vraag het opnieuw aan al je klanten">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 1 · Jouw data</div>
+    <h2><span class="bign">04</span>Reviews</h2>
+    <p class="secsub">Vraag het opnieuw aan al je klanten</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="r-page">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">04.1</span><h3>Je reviewpagina</h3><p>Je klanten vullen hem in 2 minuten in</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="fld"><b>Jouw link</b><span><a href="https://tinyurl.com/bahami-review" target="_blank" rel="noopener">https://tinyurl.com/bahami-review</a></span><div class="q">4 korte hoofdstukken met foto’s van jouw werk, in het Engels, Frans of Nederlands. Bijna alles is aantikken, en bij de belangrijke vragen kan je klant zeggen <b>waarom</b>. Op het einde zegt je klant ja of nee op delen. Daarna vragen we haar om je <b>een video</b> te sturen (onze aanrader), of een <b>spraakbericht</b> of haar <b>tekst</b>, in de chat waar jij haar de link stuurde. Ze krijgt er korte tips bij: wat ze kan zeggen en hoe ze filmt. Geen tijdslimiet, gewoon praten.</div></div><div class="why"><b>Waarom opnieuw vragen:</b> je hebt nu 6 reviews op Planity. Je ideale klant boekt pas als ze het ziet bij iemand die ze vertrouwt. Deze pagina vraagt niet alleen "was het goed?", maar ook <b>hoe ze je vonden, wat hen bijna tegenhield en wat ze vooraf wilden weten</b>. Met die antwoorden schrijven we je highlights, je bio en je video's. Zo praat je pagina met de woorden van je eigen klanten.</div><div class="why"><b>Waar we de antwoorden voor gebruiken:</b> <ul><li><b>Je highlight Reviews</b> en je 3 vastgezette posts: echte woorden van echte klanten.</li><li><b>Je boekingspagina</b> (Planity en later je eigen pagina): de twijfels die je klanten hadden, beantwoorden we daar op voorhand.</li><li><b>Je video's</b>: de waarom-antwoorden zijn de beste hooks, want het zijn de woorden van je klant.</li><li><b>Je bio en Google-profiel</b>: hoe klanten je vinden, vertelt ons waar we je moeten tonen.</li></ul></div><label class="check"><input type="checkbox"><span>Ik heb de pagina zelf eens bekeken om te zien hoe hij werkt</span></label><label class="check"><input type="checkbox"><span>Stuurt een klant je een video of spraakbericht? Zet het in <b>map 2</b> of stuur het door in onze groep.</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="r-send">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">04.2</span><h3>Stuur hem naar al je klanten</h3><p>Eén voor één, met hun naam</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="sub">Zo doe je het best</div><label class="check"><input type="checkbox"><span>Begin bij je <b>trouwste klanten</b> (die al jaren komen). Zij antwoorden het snelst en het best.</span></label><label class="check"><input type="checkbox"><span>Stuur <b>één voor één</b>, met hun naam, in de taal en toon die je altijd met haar gebruikt. Geen groepsbericht of broadcast: dat voelt als reclame.</span></label><label class="check"><input type="checkbox"><span>Geen antwoord na 3 dagen? Stuur <b>één keer</b> het korte opvolgbericht. Daarna laat je het.</span></label><label class="check"><input type="checkbox"><span>Klanten die al lang niet meer kwamen: stuur hen <b>eerst</b> het bericht uit sectie 05. De reviewvraag pas als ze terug zijn geweest.</span></label><div class="sub">English</div><div class="opt best"><span class="tag">Plakken</span><pre>Hi [name], it&#x27;s Mireille from Bahami 🤍 I&#x27;m working on my page and your opinion means a lot to me. Would you answer a few quick questions about your nails? It takes 2 minutes and it&#x27;s almost all tapping:
+https://tinyurl.com/bahami-review
+Thank you so much</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">Français</div><div class="opt best"><span class="tag">Plakken</span><pre>Coucou [prénom], c&#x27;est Mireille de Bahami 🤍 Je retravaille ma page et ton avis compte beaucoup pour moi. Tu veux bien répondre à quelques petites questions sur tes ongles ? Ça prend 2 minutes et presque tout se fait en un clic :
+https://tinyurl.com/bahami-review
+Merci beaucoup</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">Nederlands</div><div class="opt best"><span class="tag">Plakken</span><pre>Hoi [naam], Mireille hier van Bahami 🤍 Ik werk aan mijn pagina en jouw mening betekent veel voor me. Wil je een paar korte vragen over je nagels beantwoorden? Het duurt 2 minuutjes en bijna alles is aantikken:
+https://tinyurl.com/bahami-review
+Heel erg bedankt</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">Opvolging na 3 dagen (1 keer)</div><div class="sub">EN</div><div class="opt best"><span class="tag">Plakken</span><pre>Hi [name], did you get a chance to fill it in? No worries if not 🤍</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">FR</div><div class="opt best"><span class="tag">Plakken</span><pre>Coucou [prénom], tu as eu le temps de le remplir ? Pas de souci sinon 🤍</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">NL</div><div class="opt best"><span class="tag">Plakken</span><pre>Hoi [naam], heb je het al kunnen invullen? Geen probleem als het niet lukt 🤍</pre><button class="copy" type="button">Kopieer</button></div><label class="check"><input type="checkbox"><span>Gestuurd naar al mijn klanten van de laatste maanden</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="r-after">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">04.3</span><h3>Vanaf nu: na elke afspraak</h3><p>Zo groeien je reviews vanzelf</p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Na elke afspraak, de dag erna: stuur de link. Het beste moment is als ze net blij is met haar nagels.</span></label><label class="check"><input type="checkbox"><span>Krijg je een lief bericht of review? Screenshot → in <b>map 2</b>.</span></label><label class="check"><input type="checkbox"><span>Vraag vaste klanten na 3 à 4 weken om een foto van hun nagels, met de datum. Zo bewijs je dat je BIAB echt blijft.</span></label><label class="check"><input type="checkbox"><span>Zodra je Google-profiel live staat (sectie 10): vraag je 5 trouwste klanten om ook daar een review te zetten. Wij maken die link voor je.</span></label><div class="why"><b>Wat wij ermee doen:</b> wat er binnenkomt via je reviewpagina, zetten wij in je highlight 'Reviews', op je boekingspagina en in je video's. Alleen van klanten die ja zeiden.</div>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="a5" data-n="05" data-t="Je vaste klanten van vroeger" data-g="Fase 1 · Jouw data" data-sub="±30 klanten terughalen · je snelste winst">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 1 · Jouw data</div>
+    <h2><span class="bign">05</span>Je vaste klanten van vroeger</h2>
+    <p class="secsub">±30 klanten terughalen · je snelste winst</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="w-list">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">05.1</span><h3>Maak je lijst</h3><p>Op je gsm, de namen blijven bij jou</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Je vertelde ons dat je na je verlof ongeveer <b>30 vaste klanten</b> kwijt bent. Je hebt hun nummers. Dit is je snelste winst: geen nieuwe mensen zoeken, gewoon terug contact maken.</p><label class="check"><input type="checkbox"><span>Maak een lijstje in je notities met 3 kolommen: <b>gestuurd · antwoord · geboekt</b>. Wij krijgen geen namen of nummers.</span></label><div class="why"><b>Waarom:</b> elke vaste klant die terugkomt, komt elke 3 à 4 weken. Als 10 van de 30 terugkomen, is dat elke maand een volle week werk extra.</div>
+    </div>
+  </div>
+  <div class="step" data-id="w-msg">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">05.2</span><h3>Stuur dit bericht</h3><p>Persoonlijk, zonder link, zonder korting</p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Eén voor één, met haar naam, in jouw toon (tu/vous, jij/u zoals altijd). Geen link in het eerste bericht: eerst een antwoord, dan pas plannen.</span></label><div class="sub">English</div><div class="opt best"><span class="tag">Plakken</span><pre>Hi [name], it&#x27;s Mireille from Bahami 🤍 I&#x27;m back after my maternity leave and I was thinking of my regular ladies. How are your nails doing? I&#x27;m opening my December spots this week, before the holidays. Want me to keep one for you? Just tell me which day suits you best and I&#x27;ll take care of the rest.</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">Français</div><div class="opt best"><span class="tag">Plakken</span><pre>Coucou [prénom], c&#x27;est Mireille de Bahami 🤍 Je suis de retour après mon congé de maternité et je pensais à mes clientes fidèles. Comment vont tes ongles en ce moment ? J&#x27;ouvre mes places de décembre cette semaine, avant les fêtes. Tu veux que je t&#x27;en garde une ? Dis-moi juste quel jour te convient le mieux et je m&#x27;occupe du reste.</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">Nederlands</div><div class="opt best"><span class="tag">Plakken</span><pre>Hoi [naam], Mireille hier van Bahami 🤍 Ik ben terug na mijn bevallingsverlof en ik dacht aan mijn vaste klanten. Hoe gaat het met je nagels? Ik open deze week mijn plekjes voor december, voor de feestdagen. Zal ik er eentje voor je vrijhouden? Laat me gewoon weten welke dag je het best past en ik regel de rest.</pre><button class="copy" type="button">Kopieer</button></div><p class="note">Een sterke band met iemand? Stuur dan liever een korte <b>voice note</b> met dezelfde boodschap.</p><label class="check"><input type="checkbox"><span>Alle 30 gestuurd</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="w-fu">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">05.3</span><h3>Opvolging na 4 dagen</h3><p>Eén keer, kort, daarna stop je</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="sub">EN</div><div class="opt best"><span class="tag">Plakken</span><pre>Hi [name], still want your nails done before the holidays?</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">FR</div><div class="opt best"><span class="tag">Plakken</span><pre>Coucou [prénom], tu veux toujours te faire les ongles avant les fêtes ?</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">NL</div><div class="opt best"><span class="tag">Plakken</span><pre>Hoi [naam], wil je je nagels nog laten doen voor de feestdagen?</pre><button class="copy" type="button">Kopieer</button></div><label class="check"><input type="checkbox"><span>Opvolging gestuurd</span></label><label class="check"><input type="checkbox"><span>Laat ons op vrijdag weten: hoeveel gestuurd, hoeveel antwoord, hoeveel geboekt. Alleen de aantallen.</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="w-ask">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">05.4</span><h3>Mensen die iets vroegen maar niet boekten</h3><p>2 keer opvolgen, daarna stop je</p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Dag 2: <i>Hi [name], did you find a moment that works for you?</i></span></label><label class="check"><input type="checkbox"><span>Dag 7: <i>Hi [name], I have a few spots next week, want me to keep one for you?</i></span></label><div class="why"><b>Waarom:</b> nu volg je 1 keer op. De meeste boekingen komen na de tweede keer, gewoon omdat iemand het druk had.</div><label class="check"><input type="checkbox"><span>Label <b>Opvolgen</b> in WhatsApp (sectie 16)</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="w-first">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">05.5</span><h3>Nieuwe klanten die niet terugkomen</h3><p>Na 6 weken één berichtje</p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Kwam een nieuwe klant na 6 weken niet terug? Stuur: <i>Hi [name], how are your nails holding up? I'd love to hear how they lasted.</i></span></label><div class="why"><b>Waarom:</b> zo hoor je waarom iemand niet terugkomt, en komt ze vaak alsnog terug.</div><label class="check"><input type="checkbox"><span>Gedaan</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="w-ref">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">05.6</span><h3>Laat je klanten een vriendin meebrengen</h3><p>Je beste klanten komen via vriendinnen</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Je zaak begon met één klant die haar vriendinnen meebracht. Je ideale klant boekt op wat ze bij haar vriendinnen ziet.</p><label class="check"><input type="checkbox"><span>Is een klant blij met haar nagels? Vraag: <i>If you have a friend who's tired of BIAB that chips, send her my way 🤍</i></span></label><label class="check"><input type="checkbox"><span>Noteer wie wie stuurde (de reviewpagina vraagt het ook)</span></label><p class="note"><b>Jouw keuze:</b> een kleine attentie voor wie een vriendin stuurt, bv. een gratis nail oil. Geen korting op je prijs.</p><label class="check"><input type="checkbox"><span>Ik vraag het aan mijn blije klanten</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s1" data-n="06" data-t="Instagram" data-g="Fase 2 · Bahami" data-sub="@bahami.be · je studio, hier boeken mensen">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">06</span>Instagram</h2>
+    <p class="secsub">@bahami.be · je studio, hier boeken mensen</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="i-line">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.1</span><h3>Je boodschap</h3><p>Wat je doet, voor wie, en hoe je het zegt</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note"><b>Waar dit vandaan komt:</b> je audit zag dat elke plek iets anders zegt. Je website zegt 'Your natural nails, always', Planity 'juste ce qu’il faut de sexy', je pin 'I am a Nail Artist and these are my masterpieces'. Daarom leggen we één keer vast wat je zegt. Dit komt uit je eigen aanbod-document en je klantprofiel.</p><table class="f"><tr><th>Wat je doet</th><td>Natuurlijke nagels: Russische manicure en BIAB, die 3 tot 4 weken mooi blijven</td></tr><tr><th>Voor wie</th><td>Vrouwen die verzorgde, natuurlijke nagels willen, zonder verlengingen en zonder uren in de salon</td></tr><tr><th>Hoe je het zegt</th><td>Rustig, verzorgd en eerlijk. Geen hype, geen grote beloftes. Je eigen woorden mogen: <i>shiny little pearls</i></td></tr></table><div class="sub">Je zin, overal dezelfde (bio, Planity, Google, YouTube)</div><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Natural nails that last 3 to 4 weeks.</pre><span class="cnt">37/80 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Russian manicure &amp; BIAB, made to last 3 to 4 weeks.</pre><span class="cnt">51/80 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Refined natural nails that last, done in about an hour.</pre><span class="cnt">55/80 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 4</span><pre>Shiny little pearls: natural nails that last.</pre><span class="cnt">45/80 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: wat je doet: natuurlijke nagels · het resultaat: ze blijven 3 tot 4 weken · kort en rechtuit</p><div class="why"><b>Waarom:</b> wie op 3 plekken 3 verschillende dingen leest, onthoudt niets. Eén zin die overal terugkomt, blijft hangen.</div><label class="check"><input type="checkbox"><span>Mijn zin gekozen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="i-type">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.2</span><h3>Accounttype en categorie</h3><p>Zakelijk account, zodat je knoppen en cijfers krijgt</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Instagram → Profiel → ☰ → Accounttype en tools</b></div><label class="check"><input type="checkbox"><span>Account: <b>Bedrijf</b> · categorie <b>Nagelsalon</b> (Nail Salon) · categorie tonen: <b>aan</b></span></label><p class="note">Staat er al 'Bedrijf'? Dan is dit klaar.</p>
+    </div>
+  </div>
+  <div class="step" data-id="i-handle">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.3</span><h3>Je handle (@naam)</h3><p>Eerst @bahami proberen · altijd met een punt</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Profiel bewerken → Gebruikersnaam</b></div><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>bahami</pre><span class="cnt">6/30 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>bahami.co</pre><span class="cnt">9/30 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>bahami.nails</pre><span class="cnt">12/30 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: Bahami · een punt als er iets bij komt · geen land (.be)</p><div class="why"><b>Waarom:</b> je handle is je merknaam, en die mag groter zijn dan één land, voor als Bahami later groeit. Een punt tussen de woorden leest rustiger en ziet er verzorgder uit. Is @bahami bezet? Neem dan @bahami.co, daarna @bahami.nails of @bahami.studio. Je locatie staat op je boekingspagina en je Google-profiel: daar zoeken mensen op.</div><p class="note">Let op: wie zijn handle verandert, laat de oude vrij voor iemand anders, en oude links (Planity, Google, visitekaartjes) moeten mee veranderen. Dat doen wij met je mee. We checken eerst of je keuze vrij is. Hieronder schrijven we overal nog @bahami.be: kies je een nieuwe, dan passen wij alle teksten aan.</p><label class="check"><input type="checkbox"><span>Gekozen, en overal dezelfde handle gezet</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="i-name">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.4</span><h3>Naam</h3><p>Doorzoekbaar: je naam en je zoekwoord</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Profiel bewerken → Naam</b></div><p class="note">Het naamveld is <b>doorzoekbaar</b>. Nu staat er 'Natural Nail Specialist | Brussels'. Bahami staat al in je handle, dus hier zet je <b>je eigen naam</b> en je zoekwoord. Mensen boeken bij een persoon.</p><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Mireille | Natural Nails</pre><span class="cnt">24/30 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Natural Nails by Mireille</pre><span class="cnt">25/30 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Mireille | BIAB Specialist</pre><span class="cnt">26/30 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: je naam (Bahami staat al in je handle) · een zoekwoord: natural nails of BIAB · max 30 tekens · je locatie staat op je boekingspagina</p><p class="note">Je kan je naam maar 2 keer in 14 dagen veranderen. Kies dus één keer.</p>
+    </div>
+  </div>
+  <div class="step" data-id="i-bio">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.5</span><h3>Bio</h3><p>Voor wie, wat het oplost, en waar ze boeken</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Profiel bewerken → Bio</b></div><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>I help women keep their natural nails beautiful for 3 to 4 weeks
+Russian manicure &amp; BIAB · 5 years of experience
+Brussels
+Book here ↓</pre><span class="cnt">133/150 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>I install BIAB on natural nails, made to last 3 to 4 weeks
+5 years in natural nail care · Brussels
+Book here ↓</pre><span class="cnt">110/150 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Natural nails only · Russian manicure &amp; BIAB
+5 years of experience · made to last 3 to 4 weeks · Brussels
+Book here ↓</pre><span class="cnt">117/150 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 4</span><pre>I help busy women keep polished natural nails
+Russian manicure &amp; BIAB · 5 years of experience · Brussels
+Book here ↓</pre><span class="cnt">116/150 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: wat je doet: natuurlijke nagels, Russische manicure en BIAB · 5 jaar ervaring · waar ze boekt: Book here ↓</p><div class="why"><b>Waarom:</b> rechtuit werkt het best: wat je doet, wat het oplevert, en waar ze boekt. Wie je profiel opent, moet het in 3 seconden snappen. Je straatadres halen we uit de bio: dat staat al in je adresknop en op Planity.</div><p class="note">Je eigen versie mag altijd, zolang de 3 punten hierboven erin staan.</p>
+    </div>
+  </div>
+  <div class="step" data-id="i-link">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.6</span><h3>Link in bio</h3><p>Eén link, voor nu</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Profiel bewerken → Links</b></div><label class="check"><input type="checkbox"><span>Hou alleen: <b>https://www.planity.com/bahami-studio-1050-ixelles</b> · titel: <b>Book your visit</b></span></label><label class="check"><input type="checkbox"><span>Verwijder je website- en WhatsApp-link uit je bio. WhatsApp zit al in je contactknop.</span></label><div class="why"><b>Waarom:</b> 3 links = 3 keuzes = mensen twijfelen en klikken niets. Eén link naar boeken is één duidelijke volgende stap.</div><p class="note">Dit is <b>voor nu</b>. Komt er later een eigen boekingspagina of een gratis gids, dan passen we de link aan.</p>
+    </div>
+  </div>
+  <div class="step" data-id="i-photo">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.7</span><h3>Profielfoto</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Je logo, zodra je het in map 4 zet. Wij maken het rond en scherp en zetten het in map 5.</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="i-contact">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.8</span><h3>Contactknoppen</h3><p>Zo kan iemand je meteen bereiken</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Profiel bewerken → Contactopties</b></div><label class="check"><input type="checkbox"><span>WhatsApp: je zaaknummer koppelen</span></label><label class="check"><input type="checkbox"><span>E-mail: je zaak-e-mail</span></label><label class="check"><input type="checkbox"><span>Adres: je studio in Ixelles (zie vraag G4)</span></label><label class="check"><input type="checkbox"><span>Actieknop: <b>Reserveren</b> → Planity</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="i-meta">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.9</span><h3>Koppelen met Facebook en Threads</h3><p>Eén keer posten, overal te zien</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Instagram → ☰ → Accountcentrum → Accounts → Accounts toevoegen</b></div><label class="check"><input type="checkbox"><span>Voeg je Facebook-pagina toe (sectie 11)</span></label><label class="check"><input type="checkbox"><span>Threads koppel je in sectie 12</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="i-priv">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.10</span><h3>Privacy en berichten</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Privé-account: <b>uit</b></span></label><label class="check"><input type="checkbox"><span>Berichtverzoeken van iedereen: <b>aan</b>, zodat nieuwe klanten je kunnen sturen</span></label><div class="where">Waar: <b>Instagram → Profiel → ☰ → Zakelijke tools → Opgeslagen antwoorden</b></div><label class="check"><input type="checkbox"><span>Zet dezelfde snelle antwoorden als op WhatsApp (sectie 16): /book, /first, /aftercare</span></label><label class="check"><input type="checkbox"><span>Antwoord op een vraag altijd met een zin en een volgende stap, nooit alleen een like of emoji</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="i-set">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.11</span><h3>Instellingen</h3><p>Eén keer goed zetten</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Instagram → Profiel → ☰ → Instellingen en privacy</b></div><label class="check"><input type="checkbox"><span>Tweestapsverificatie: <b>aan</b> (Accountcentrum → Wachtwoord en beveiliging)</span></label><label class="check"><input type="checkbox"><span>Reacties: verborgen woorden <b>aan</b>, zodat spam verdwijnt</span></label><label class="check"><input type="checkbox"><span>Reels: automatisch delen naar Facebook <b>aan</b></span></label><label class="check"><input type="checkbox"><span>Ondertitels automatisch: <b>aan</b></span></label><label class="check"><input type="checkbox"><span>Meldingen voor berichten en reacties: <b>aan</b>, zodat je niemand mist</span></label><div class="why"><b>Waarom:</b> je account is je etalage. Beveiligd, zonder spam, en je mist geen enkele vraag van een klant.</div>
+    </div>
+  </div>
+  <div class="step" data-id="i-hl">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.12</span><h3>Highlights</h3><p>7 highlights die twijfels wegnemen · zie sectie 07</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Je highlights zijn je etalage: ze beantwoorden de vragen die een klant zich stelt <b>voor</b> ze boekt, zonder dat ze het jou moet vragen. Elke highlight neemt één twijfel weg. Alles staat uitgewerkt in <b>sectie 07</b>.</p><label class="check"><input type="checkbox"><span>Gelezen, ik doe ze in sectie 07</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="i-pin">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.13</span><h3>3 vastgezette posts</h3><p>Ongeveer · definitief in je contentplan</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Je pins zijn de eerste 3 posts op je profiel. Een nieuwe bezoeker kijkt er bijna altijd naar. Om je een beeld te geven, ongeveer zo:</p><div class="vq"><ol><li><b>Wie je bent</b> · jij en Bahami: wie je bent, wat je doet en waarom alleen natuurlijke nagels.</li><li><b>Je werk van A tot Z</b> · een volledige afspraak, van binnenkomen tot de finale.</li><li><b>Wat je klanten zeggen</b> · hun woorden, mooi in beeld gebracht en zonder namen, bv. <i>What makes you keep coming back?</i></li></ol></div><p class="note">We werken ze helemaal uit in je <b>contentplan</b>, samen met wat je zegt en hoe je het filmt. Je hoeft nu nog niets te doen.</p><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="i-cta">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">06.14</span><h3>Je call to actions: afwisselen</h3><p>Ongeveer · definitief in je contentplan</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Niet elke video eindigt met 'comment …'. Dat wordt saai en voelt als verkopen. We wisselen af, afhankelijk van wat de video moet doen. Dit is <b>ongeveer</b>, zodat je een beeld hebt: in je contentplan staat per video welke vraag erbij hoort.</p><div class="vq"><ol><li><b>Comment-woord</b> (hoogstens 1 op 3 video's): <i>"Comment [jouw woord] and I'll send you my booking link and how your first visit works."</i> Voor wie al bijna wil boeken.</li><li><b>Boeken</b>: <i>"Book your visit, link in bio."</i> Onder resultaat-video's.</li><li><b>Bewaren</b>: <i>"Save this for your next appointment."</i> Onder uitleg-video's.</li><li><b>Doorsturen</b>: <i>"Send this to the friend whose BIAB always chips."</i> Zo kom je bij nieuwe mensen.</li><li><b>Geen vraag</b>: soms gewoon een mooie video. Mensen moeten je ook gewoon leuk vinden.</li></ol></div><div class="why"><b>Waarom:</b> elke video heeft een ander doel. Een uitleg-video wil je laten bewaren, en dat ziet Instagram als een sterk signaal. Een resultaat-video moet naar boeken leiden. Een woord in de comments is een kleine stap voor wie twijfelt om te boeken, en jij weet meteen wie interesse heeft. Zet je het onder elke video, dan haken mensen af.</div><label class="check"><input type="checkbox"><span>Mijn woord gekozen (vraag F1)</span></label><p class="note">Later, als het werkt, kan het antwoord op je woord automatisch vertrekken. Dat zetten wij dan samen met jou op.</p>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s2" data-n="07" data-t="Highlights" data-g="Fase 2 · Bahami" data-sub="7 highlights · elk neemt één twijfel weg">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">07</span>Highlights</h2>
+    <p class="secsub">7 highlights · elk neemt één twijfel weg</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="h-why">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">07.1</span><h3>Welke highlights je maakt</h3><p>7 soorten · elk neemt één twijfel weg</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">In je documenten schreef je zelf waarom mensen niet boeken: ze kennen niemand die er al was, ze twijfelen over de prijs, de studio is geen 'Instagram-salon', ze zijn al eens teleurgesteld, en ze snappen het verschil tussen BIAB en Russian manicure niet.</p><div class="vq"><ol><li><b>Start here</b> · wie je bent</li><li><b>Reviews</b> · wat je klanten zeggen</li><li><b>Results</b> · voor en na</li><li><b>The method</b> · hoe je werkt</li><li><b>The studio</b> · je plek en je eerste afspraak</li><li><b>Aftercare</b> · nazorg</li><li><b>FAQ</b> · de vragen die je elke dag krijgt</li></ol></div><div class="why"><b>Waarom:</b> een klant stelt die vragen nooit hardop. Ze scrolt door je highlights, en als ze daar geen antwoord vindt, gaat ze weg. Dus beantwoorden we ze vóór ze het vraagt, rustig en zonder te verkopen. In deze volgorde, van links naar rechts.</div><p class="note">Wat erin komt, staat hieronder als voorbeeld. <b>Je hoeft het niet letterlijk zo te zeggen</b>: geef er je eigen draai aan, met jouw woorden en jouw beelden. Zorg alleen dat het duidelijk is en dat elke highlight zijn twijfel wegneemt.</p><label class="check"><input type="checkbox"><span>Wij maken de achtergronden voor je covers in jouw kleuren (map 5). Jij zet er je icoontje of woord op en maakt de verhaaltjes.</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="h-1">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">07.2</span><h3>1 · Start here</h3><p>Wie je bent en hoe het werkt, in 4 verhaaltjes</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="obj"><b>Twijfel die dit wegneemt:</b> "ik ken niemand die er al geweest is"</div><div class="sub">Wat erin komt</div><p class="story">1. Jij in beeld: "Hi, I'm Mireille, welcome to Bahami."</p><p class="story">2. 5 jaar ervaring, alleen natuurlijke nagels, Russian manicure + BIAB.</p><p class="story">3. Voor wie: vrouwen die nagels willen die blijven, zonder uren in de salon.</p><p class="story">4. Hoe boeken: je Planity-link in je bio.</p><label class="check"><input type="checkbox"><span>Verhaaltjes gemaakt en toegevoegd</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="h-2">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">07.3</span><h3>2 · Reviews</h3><p>Wat je klanten zeggen</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="obj"><b>Twijfel die dit wegneemt:</b> "werkt het echt? ik ben al eens teleurgesteld"</div><div class="sub">Wat erin komt</div><p class="story">1. Screenshots van je reviewpagina, Planity en berichten. Namen weg.</p><p class="story">2. Per verhaaltje één review, met een grote zin eruit gelicht.</p><p class="story">3. Elke maand 2 nieuwe erbij.</p><label class="check"><input type="checkbox"><span>Verhaaltjes gemaakt en toegevoegd</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="h-3">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">07.4</span><h3>3 · Results</h3><p>Voor en na, met hoe lang het duurde</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="obj"><b>Twijfel die dit wegneemt:</b> "werkt het op MIJN nagels?"</div><div class="sub">Wat erin komt</div><p class="story">1. Per klant: voor → na, en het aantal behandelingen ("4 treatments").</p><p class="story">2. Verschillende nageltypes: kort, breed, zwak, bijtnagels.</p><p class="story">3. Altijd alleen handen, met toestemming.</p><label class="check"><input type="checkbox"><span>Verhaaltjes gemaakt en toegevoegd</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="h-4">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">07.5</span><h3>4 · The method</h3><p>Waarom jouw BIAB blijft zitten</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="obj"><b>Twijfel die dit wegneemt:</b> "waarom €70 als het elders goedkoper kan?"</div><div class="sub">Wat erin komt</div><p class="story">1. Stap 1 · Consult: je nagels en je levensstijl.</p><p class="story">2. Stap 2 · Russian manicure: de basis die bijna niemand goed doet.</p><p class="story">3. Stap 3 · BIAB op maat van jouw nagel, niet te dik.</p><p class="story">4. Stap 4 · Finish en nazorg.</p><p class="story">5. Laatste verhaaltje: "That's why it lasts." Geen prijzen, wel waarom het waard is.</p><label class="check"><input type="checkbox"><span>Verhaaltjes gemaakt en toegevoegd</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="h-5">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">07.6</span><h3>5 · The studio</h3><p>Je studio en hoe je eerste afspraak verloopt</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="obj"><b>Twijfel die dit wegneemt:</b> "de studio, de tijd, het onbekende"</div><div class="sub">Wat erin komt</div><p class="story">1. Een korte rondleiding: de ingang, het gebouw en je tafel, zodat ze weet waar ze moet zijn.</p><p class="story">2. Je studio: rustig, privé, alleen jij en zij. Laat het zien zoals het is, verzorgd en mooi belicht.</p><p class="story">3. Duur: ongeveer 1 uur, max 1u15.</p><p class="story">4. Je dagen en uren, en: "I don't work evenings, so I can give you my full focus."</p><p class="story">5. Je annuleringsregel (vraag F8), vriendelijk gezegd.</p><label class="check"><input type="checkbox"><span>Verhaaltjes gemaakt en toegevoegd</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="h-6">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">07.7</span><h3>6 · Aftercare</h3><p>Hoe je nagels 3 à 4 weken mooi blijven</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="obj"><b>Twijfel die dit wegneemt:</b> "bij mij breekt het altijd na 2 weken"</div><div class="sub">Wat erin komt</div><p class="story">1. Elke dag cuticle oil.</p><p class="story">2. Handschoenen bij de afwas en het poetsen.</p><p class="story">3. Niet pulken of afpellen.</p><p class="story">4. Boek je volgende afspraak na 3 à 4 weken.</p><label class="check"><input type="checkbox"><span>Verhaaltjes gemaakt en toegevoegd</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="h-7">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">07.8</span><h3>7 · FAQ</h3><p>De vragen die je elke dag krijgt</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="obj"><b>Twijfel die dit wegneemt:</b> "ik begrijp het verschil niet, is dit iets voor mij?"</div><div class="sub">Wat erin komt</div><p class="story">1. BIAB of Russian manicure: wat is het verschil?</p><p class="story">2. Welke techniek past bij mijn nageltype?</p><p class="story">3. Hoe lang blijft het zitten?</p><p class="story">4. Kan ik lange nagels of nail art? (eerlijk: nee, en waarom)</p><p class="story">5. Welke talen spreek je? FR · NL · EN</p><p class="story">6. Waar vind ik de prijzen? → op Planity</p><label class="check"><input type="checkbox"><span>Verhaaltjes gemaakt en toegevoegd</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="h-rules">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">07.9</span><h3>Regels voor al je highlights</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Zelfde covers, zelfde stijl, in jouw kleuren</span></label><label class="check"><input type="checkbox"><span>Korte tekst per verhaaltje, groot en leesbaar</span></label><label class="check"><input type="checkbox"><span>Nooit prijzen tonen: die staan op Planity</span></label><label class="check"><input type="checkbox"><span>Nooit gezichten of namen van klanten</span></label><label class="check"><input type="checkbox"><span>Max 6 à 8 verhaaltjes per highlight, wat oud is gaat eruit</span></label><label class="check"><input type="checkbox"><span>Het laatste verhaaltje van elke highlight zegt waar ze boekt: link in bio of je woord</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s3" data-n="08" data-t="TikTok" data-g="Fase 2 · Bahami" data-sub="Dezelfde video&#x27;s, extra klanten">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">08</span>TikTok</h2>
+    <p class="secsub">Dezelfde video's, extra klanten</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="t-type">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">08.1</span><h3>Accounttype</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="why"><b>Mijn advies:</b> post dezelfde video's als op Instagram. Geen extra werk. TikTok bracht je al berichten van mensen die vroegen welk product je gebruikt.</div><div class="where">Waar: <b>TikTok → Profiel → ☰ → Instellingen en privacy → Account</b></div><label class="check"><input type="checkbox"><span>Overschakelen naar <b>bedrijfsaccount</b> · categorie <b>Beauty &amp; persoonlijke verzorging</b></span></label>
+    </div>
+  </div>
+  <div class="step" data-id="t-bio">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">08.2</span><h3>Naam en bio</h3><p>Max 80 tekens</p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Naam: dezelfde als op Instagram, bv. <b>Mireille | Natural Nails</b></span></label><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>I help women keep natural nails beautiful for 3-4 weeks. 5 years exp. Book ↓</pre><span class="cnt">76/80 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>I install BIAB on natural nails that last 3-4 weeks. 5 years of experience ↓</pre><span class="cnt">76/80 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>I do Russian manicure &amp; BIAB, 5 years of experience. Nails that last. Book ↓</pre><span class="cnt">76/80 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: begin met I: I help, I install of I do · het resultaat: 3 tot 4 weken mooi · waar ze boekt ↓, gebruik de 80 tekens</p>
+    </div>
+  </div>
+  <div class="step" data-id="t-set">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">08.3</span><h3>Instellingen</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>TikTok → Profiel → ☰ → Instellingen en privacy</b></div><label class="check"><input type="checkbox"><span>Tweestapsverificatie: <b>aan</b></span></label><label class="check"><input type="checkbox"><span>Reacties filteren: <b>aan</b></span></label><label class="check"><input type="checkbox"><span>Wie mag je berichten sturen: <b>iedereen</b></span></label><label class="check"><input type="checkbox"><span>Automatische ondertitels: <b>aan</b> bij elke upload</span></label><div class="why"><b>Waarom:</b> zo kan elke nieuwe klant je bereiken, en blijft je account veilig.</div>
+    </div>
+  </div>
+  <div class="step" data-id="t-rest">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">08.4</span><h3>Link, foto en koppelen</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Website: <b>https://www.planity.com/bahami-studio-1050-ixelles</b></span></label><label class="check"><input type="checkbox"><span>Profielfoto: dezelfde als op Instagram</span></label><label class="check"><input type="checkbox"><span>Instagram @bahami.be en je YouTube-kanaal toevoegen</span></label><label class="check"><input type="checkbox"><span>Privé-account: uit · berichten: iedereen</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s4" data-n="09" data-t="YouTube" data-g="Fase 2 · Bahami" data-sub="Je kanaal als bron van kennis">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">09</span>YouTube</h2>
+    <p class="secsub">Je kanaal als bron van kennis</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="y-why">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">09.1</span><h3>Waarom YouTube</h3><p>Lees dit eerst</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Op Instagram ziet iemand je 30 seconden. Op YouTube zoekt iemand zelf naar <b>"why does my BIAB lift"</b> of <b>"BIAB vs Russian manicure"</b>, en kijkt ze 5 minuten naar jou. Wie dat doet, ziet jou als de expert. Als ze daarna boekt, twijfelt ze niet meer over de prijs.</p><p class="note">Je Instagram-reels gaan als <b>Shorts</b> op YouTube (geen extra werk). Om de 2 weken komt er een <b>langere video</b>: een volledige afspraak, of een uitleg over een vraag die je vaak krijgt.</p><div class="where">Waar: <b>YouTube-app → je profielfoto → Kanaal maken</b></div><label class="check"><input type="checkbox"><span>Naam: <b>Bahami</b> · handle: dezelfde als op Instagram</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="y-choice">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">09.2</span><h3>Jouw keuze: 1 of 2 kanalen</h3><p>Jij beslist</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="opt best"><span class="tag">Keuze 1 · onze aanrader voor nu</span><pre>1 kanaal: Bahami
+Je werk, je uitleg, en jij af en toe in beeld
+Minder werk, alles op één plek</pre></div><div class="opt"><span class="tag">Keuze 2</span><pre>2 kanalen: Bahami + Mireille
+Bahami voor je werk en uitleg
+Mireille voor je leven, mama-zijn, je dag
+Meer bereik, maar dubbel zoveel posten</pre></div><div class="why"><b>Waarom:</b> met 1 kanaal bouw je sneller op, want alles telt voor hetzelfde kanaal. Een tweede kanaal is zinvol zodra je persoonlijke pagina op Instagram goed loopt. Je kan altijd later een tweede starten.</div><label class="check"><input type="checkbox"><span>Mijn keuze doorgegeven in de groep</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="y-desc">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">09.3</span><h3>Beschrijving</h3><p>Met je boekingslink in de tekst</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>YouTube Studio → Aanpassen → Profiel → Beschrijving</b></div><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Welcome to Bahami, a calm natural nail studio in Ixelles, Brussels.
+
+I&#x27;m Mireille. I&#x27;ve worked on natural nails for more than 5 years. In the beginning I did a bit of everything, until I chose what I love most and do best: natural nails that look refined and stay beautiful. No extensions, no tips, no long nail art.
+
+Every appointment starts with a short chat about your nails and your daily life. Then I combine the Russian manicure with BIAB, adapted to your own nails, so they stay beautiful for 3 to 4 weeks. It takes about an hour.
+
+On this channel: full appointments from start to finish, the difference between techniques, aftercare, and the questions my clients ask me every day.
+
+Book your appointment: https://www.planity.com/bahami-studio-1050-ixelles</pre><span class="cnt">763/1000 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Bahami is a natural nail studio in Ixelles, founded by Mireille.
+
+The idea is simple: beautiful nails don&#x27;t need to be long or loud. True luxury is in the details: healthy-looking natural nails, careful preparation and a clean finish that lasts.
+
+About me: I&#x27;ve been a nail technician for more than 5 years. I work only on natural nails, with the Russian manicure and BIAB, and every client gets an approach that fits her nails and her lifestyle. My studio is calm and private, a moment for yourself.
+
+Here you&#x27;ll find my work up close, how I do it and why, and tips to keep your nails beautiful between appointments.
+
+Book your appointment: https://www.planity.com/bahami-studio-1050-ixelles</pre><span class="cnt">692/1000 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Shiny little pearls.
+
+Bahami is my natural nail studio in Ixelles, Brussels. I&#x27;m Mireille, nail technician for more than 5 years and mom. I focus on one thing I truly love: natural nails, done with care, with the Russian manicure and BIAB.
+
+What you can expect at Bahami: a calm studio, an appointment of about an hour, a short consultation about your nails and routine, and nails that stay beautiful for 3 to 4 weeks with the right aftercare.
+
+On this channel I share full appointments, before and after, the details behind my method, and answers to your questions.
+
+Book your appointment: https://www.planity.com/bahami-studio-1050-ixelles</pre><span class="cnt">641/1000 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: Bahami: wat je studio is en waar je voor staat · jij: wie je bent en waarom natuurlijke nagels · wat je doet, wat ze op je kanaal vindt en waar ze boekt</p><p class="note">Je 'over'-tekst mag wat langer: vertel over je merk én over jou, niet alleen over één probleem. Kort en duidelijk blijft de regel.</p>
+    </div>
+  </div>
+  <div class="step" data-id="y-links">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">09.4</span><h3>Links</h3><p>In deze volgorde</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>YouTube Studio → Aanpassen → Profiel → Links</b></div><label class="check"><input type="checkbox"><span>1 · Book your visit · https://www.planity.com/bahami-studio-1050-ixelles</span></label><label class="check"><input type="checkbox"><span>2 · Instagram · je Bahami-Instagram</span></label><label class="check"><input type="checkbox"><span>3 · TikTok</span></label><label class="check"><input type="checkbox"><span>4 · Pinterest</span></label><label class="check"><input type="checkbox"><span>5 · Facebook</span></label><label class="check"><input type="checkbox"><span>6 · Google Maps · je Google-profiel</span></label><label class="check"><input type="checkbox"><span>7 · Threads</span></label><label class="check"><input type="checkbox"><span>8 · X</span></label><label class="check"><input type="checkbox"><span>9 · Website · https://bahami.be</span></label><label class="check"><input type="checkbox"><span>10 · Mireille · je persoonlijke Instagram</span></label><p class="note">De eerste link staat ook op je banner, daarom staat boeken bovenaan. Gebruik je nieuwe handle overal zodra je hem gekozen hebt.</p><div class="why"><b>Waarom:</b> wie je op YouTube vindt, wil vaak meer zien. Met al je links vindt ze je overal, en elke plek brengt haar dichter bij boeken.</div>
+    </div>
+  </div>
+  <div class="step" data-id="y-look">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">09.5</span><h3>Foto, banner en instellingen</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Profielfoto: dezelfde als op Instagram</span></label><label class="check"><input type="checkbox"><span>Banner: wij maken er 3 in jouw kleuren (map 5), jij kiest er één</span></label><div class="where">Waar: <b>YouTube Studio → Instellingen → Standaardinstellingen voor uploads</b></div><label class="check"><input type="checkbox"><span>Standaardbeschrijving: eerste regel <b>Book your visit:</b> + je Planity-link, tweede regel <b>Instagram @bahami.be</b></span></label><label class="check"><input type="checkbox"><span>Taal: Engels · ondertitels: aan</span></label><label class="check"><input type="checkbox"><span>Afspeellijsten: <b>Full appointments</b> · <b>Your questions</b> · <b>Before &amp; after</b></span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s5" data-n="10" data-t="Google" data-g="Fase 2 · Bahami" data-sub="Je bedrijfsprofiel · gratis, werkt elke dag">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">10</span>Google</h2>
+    <p class="secsub">Je bedrijfsprofiel · gratis, werkt elke dag</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="g-why">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">10.1</span><h3>Waarom Google</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="why"><b>Waarom:</b> wie 'BIAB Brussels' of 'nagelsalon Ixelles' zoekt op Google Maps, vindt je nu niet. En 2 klanten vonden je al via ChatGPT: AI-tools halen hun antwoorden onder andere uit Google-profielen en reviews. Een goed Google-profiel met reviews is gratis en werkt 24 op 24.</div>
+    </div>
+  </div>
+  <div class="step" data-id="g-make">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">10.2</span><h3>Profiel maken</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>google.com/business → Beheer nu</b></div><label class="check"><input type="checkbox"><span>Naam: <b>Bahami</b> · categorie: <b>Nagelsalon</b></span></label><label class="check"><input type="checkbox"><span>Adres: je studio (of 'servicegebied', als je je adres liever niet toont)</span></label><label class="check"><input type="checkbox"><span>Uren: exact dezelfde als op Planity</span></label><label class="check"><input type="checkbox"><span>Website: https://bahami.be · boekingslink: https://www.planity.com/bahami-studio-1050-ixelles</span></label><label class="check"><input type="checkbox"><span>Telefoon: je zaaknummer</span></label><label class="check"><input type="checkbox"><span>Verifiëren: Google stuurt een code of vraagt een korte video van je studio</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="g-desc">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">10.3</span><h3>Beschrijving</h3><p>Max 750 tekens</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Bahami is the natural nail studio of Mireille in Ixelles, Brussels. For more than 5 years she has focused on one thing: healthy-looking natural nails with a flawless finish. Every appointment combines a precise Russian manicure with BIAB (Builder in a Bottle), adapted to your own nails and lifestyle, and takes about one hour. No extensions and no long nail art, just refined natural nails in a wide choice of nude shades, made to last 3 to 4 weeks with the right aftercare. The studio is calm and private, and Mireille speaks French, Dutch and English. Your first visit starts with a short consultation about your nails, shape and colour. Book online via Planity.</pre><span class="cnt">665/750 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Natural nail care in Ixelles. At Bahami, Mireille combines the Russian manicure with BIAB to give you natural nails that look refined and are made to last 3 to 4 weeks. Every appointment takes about one hour and is adapted to your own nails, so it never looks too thick. Many clients come after a disappointing experience elsewhere and stay for years. French, Dutch and English spoken. Book your appointment online via Planity.</pre><span class="cnt">427/750 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Shiny little pearls in Brussels. Bahami is a calm, private nail studio in Ixelles specialised in natural nails only: Russian manicure and BIAB, done in about one hour by Mireille, with 5 years of experience. Nude shades, clean shapes and aftercare advice so your nails stay beautiful between appointments. Book online via Planity.</pre><span class="cnt">330/750 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: natural nails, Russian manicure en BIAB · Ixelles of Brussels · ongeveer één uur en hoe je boekt</p>
+    </div>
+  </div>
+  <div class="step" data-id="g-set">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">10.4</span><h3>Instellingen</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Google → zoek Bahami → je profiel → Profiel bewerken</b></div><label class="check"><input type="checkbox"><span>Openingsuren: dezelfde als op Planity</span></label><label class="check"><input type="checkbox"><span>Afsprakenlink: https://www.planity.com/bahami-studio-1050-ixelles</span></label><label class="check"><input type="checkbox"><span>Diensten: Russian manicure · BIAB · Natural nail care, met korte uitleg</span></label><label class="check"><input type="checkbox"><span>Berichten (chat): <b>aan</b></span></label><label class="check"><input type="checkbox"><span>Kenmerken: <b>op afspraak</b>, en wat verder klopt voor jouw studio</span></label><div class="why"><b>Waarom:</b> hoe vollediger je profiel, hoe vaker Google en AI-tools je tonen.</div>
+    </div>
+  </div>
+  <div class="step" data-id="g-photos">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">10.5</span><h3>Foto's</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Minstens 10 foto's: je studio, je tafel, 6 x je werk, 1 van jou</span></label><label class="check"><input type="checkbox"><span>Elke maand 2 nieuwe foto's erbij: Google toont actieve profielen hoger</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="g-rev">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">10.6</span><h3>Eerste reviews</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Vraag je 5 trouwste klanten om een review, met de link die Google je geeft (Profiel → Reviews vragen)</span></label><label class="check"><input type="checkbox"><span>Antwoord op elke review, kort en warm</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s6" data-n="11" data-t="Facebook" data-g="Fase 2 · Bahami" data-sub="Je pagina, volledig ingevuld en gekoppeld aan Instagram">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">11</span>Facebook</h2>
+    <p class="secsub">Je pagina, volledig ingevuld en gekoppeld aan Instagram</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="f-make">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">11.1</span><h3>Pagina maken</h3><p>Op je persoonlijke Facebook-account, de pagina staat apart</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="why"><b>Mijn advies:</b> je post één keer, het verschijnt op Instagram én Facebook. Wie je zoekt op Facebook of via Google, vindt een volledige pagina met reviews en een boekknop. Veel vrouwen tussen 30 en 45 zoeken nog op Facebook.</div><div class="where">Waar: <b>facebook.com/pages/create</b></div><label class="check"><input type="checkbox"><span>Naam: <b>Bahami</b></span></label><label class="check"><input type="checkbox"><span>Categorie: <b>Nagelsalon</b> · tweede categorie: <b>Schoonheidssalon</b></span></label><label class="check"><input type="checkbox"><span>Gebruikersnaam (facebook.com/…): dezelfde als je Instagram-handle</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="f-intro">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">11.2</span><h3>Bio (intro)</h3><p>Max 101 tekens · bovenaan je pagina</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Je pagina → Profiel bewerken → Bio</b></div><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>I help women keep their natural nails beautiful for 3 to 4 weeks. 5 years of experience.</pre><span class="cnt">88/101 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>I do Russian manicure &amp; BIAB on natural nails, with 5 years of experience. Book below.</pre><span class="cnt">86/101 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>I install BIAB on natural nails that last 3 to 4 weeks. 5 years of experience in Brussels.</pre><span class="cnt">90/101 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: wat je doet: natuurlijke nagels, Russische manicure en BIAB · het resultaat: 3 tot 4 weken mooi · kort en rechtuit</p>
+    </div>
+  </div>
+  <div class="step" data-id="f-about">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">11.3</span><h3>Over (details)</h3><p>Je langere tekst · merk, jij en wat je doet</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Je pagina → Over → Details / Paginatransparantie → Beschrijving</b></div><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Bahami is the natural nail studio of Mireille in Ixelles, Brussels. For more than 5 years she has worked only on natural nails: no extensions, no tips, no long nail art. Every appointment starts with a short chat about your nails and your daily life, then she combines the Russian manicure with BIAB, adapted to your own nails. It takes about an hour, and with the right aftercare your nails stay beautiful for 3 to 4 weeks. The studio is calm and private, a moment just for you. Book online via Planity.</pre><span class="cnt">504/1000 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Beautiful nails don&#x27;t need to be long or loud. At Bahami in Ixelles, Mireille focuses on natural nails done with care: precise preparation, the Russian manicure and BIAB, and a clean finish in nude, milky and soft shades. Appointments take about an hour and start with a short consultation. Book your visit online.</pre><span class="cnt">314/1000 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Shiny little pearls. Bahami is a natural nail studio in Ixelles, Brussels, where Mireille, nail technician for more than 5 years, does the Russian manicure and BIAB on natural nails. Calm studio, about an hour per appointment, nails that last 3 to 4 weeks. Book via the link.</pre><span class="cnt">275/1000 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: Bahami: wat je studio is · jij: wie je bent en hoe je werkt · hoe een afspraak verloopt en hoe ze boekt</p>
+    </div>
+  </div>
+  <div class="step" data-id="f-info">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">11.4</span><h3>Contact, adres en uren</h3><p>Alles wat een klant moet weten</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Je pagina → Over → Contact- en basisgegevens</b></div><label class="check"><input type="checkbox"><span>Adres: je studio in Ixelles (zie vraag G4) · kaart tonen: aan</span></label><label class="check"><input type="checkbox"><span>Openingsuren: dezelfde als op Planity en Google</span></label><label class="check"><input type="checkbox"><span>Telefoon en WhatsApp: je zaaknummer</span></label><label class="check"><input type="checkbox"><span>E-mail: je zaak-e-mail</span></label><label class="check"><input type="checkbox"><span>Website: https://www.planity.com/bahami-studio-1050-ixelles</span></label><label class="check"><input type="checkbox"><span>Prijsklasse: <b>€€</b></span></label><label class="check"><input type="checkbox"><span>Diensten: Russian manicure · BIAB · Natural nail care, met een korte uitleg per dienst</span></label><label class="check"><input type="checkbox"><span>Links naar je andere accounts: Instagram, TikTok, YouTube, Pinterest</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="f-look">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">11.5</span><h3>Foto en cover</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Profielfoto: dezelfde als op Instagram</span></label><label class="check"><input type="checkbox"><span>Coverfoto: maken wij in jouw kleuren (map 5)</span></label><div class="why"><b>Waarom:</b> dezelfde foto en kleuren als overal: wie je op Instagram zag, herkent je meteen.</div>
+    </div>
+  </div>
+  <div class="step" data-id="f-btn">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">11.6</span><h3>Actieknop</h3><p>De belangrijkste knop van je pagina</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Je pagina → Knop toevoegen</b></div><label class="check"><input type="checkbox"><span><b>Nu boeken</b> → https://www.planity.com/bahami-studio-1050-ixelles</span></label><div class="why"><b>Waarom:</b> één duidelijke knop naar boeken, net als je link in bio.</div>
+    </div>
+  </div>
+  <div class="step" data-id="f-msg">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">11.7</span><h3>Berichten</h3><p>Niemand blijft zonder antwoord</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Meta Business Suite → Inbox → Automatiseringen</b></div><label class="check"><input type="checkbox"><span>Direct antwoord: <i>Hi! Thanks for your message. I'm with a client right now and will reply as soon as I can. Book directly here: </i>https://www.planity.com/bahami-studio-1050-ixelles</span></label><label class="check"><input type="checkbox"><span>Veelgestelde vragen (tot 4): <i>How do I book?</i> · <i>How long does it last?</i> · <i>BIAB or Russian manicure?</i> · <i>Where is the studio?</i>, met jouw korte antwoord</span></label><label class="check"><input type="checkbox"><span>Afwezigheidsbericht buiten je uren: aan</span></label><div class="why"><b>Waarom:</b> in je documenten schreef je dat je nergens bijhoudt wie wat vroeg. Met een direct antwoord weet de klant dat je haar zag, en kan ze meteen boeken.</div>
+    </div>
+  </div>
+  <div class="step" data-id="f-set">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">11.8</span><h3>Instellingen</h3><p>Eén keer goed zetten</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Je pagina → Instellingen en privacy</b></div><label class="check"><input type="checkbox"><span>Tweestapsverificatie: <b>aan</b> (Accountcentrum → Wachtwoord en beveiliging)</span></label><label class="check"><input type="checkbox"><span>Recensies (aanbevelingen): <b>aan</b></span></label><label class="check"><input type="checkbox"><span>Berichten: <b>aan</b></span></label><label class="check"><input type="checkbox"><span>Wie mag op je pagina posten: <b>alleen jij</b> · reacties: iedereen, met spamfilter aan</span></label><label class="check"><input type="checkbox"><span>Taggen door anderen: aan, met goedkeuring</span></label><label class="check"><input type="checkbox"><span>Paginabeheer: geef jezelf volledige toegang en eventueel één back-up (iemand die je vertrouwt)</span></label><div class="why"><b>Waarom:</b> zo blijft je pagina veilig en verzorgd, en kunnen klanten je een recensie geven.</div>
+    </div>
+  </div>
+  <div class="step" data-id="f-link">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">11.9</span><h3>Koppelen met Instagram</h3><p>Eén keer posten, twee plekken</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Instagram → ☰ → Accountcentrum → Accounts</b></div><label class="check"><input type="checkbox"><span>Je Facebook-pagina koppelen</span></label><div class="where">Waar: <b>Instagram → ☰ → Accountcentrum → Delen tussen profielen</b></div><label class="check"><input type="checkbox"><span>Posts en reels automatisch naar Facebook: <b>aan</b></span></label><label class="check"><input type="checkbox"><span>Berichten van Instagram en Facebook in één inbox: Meta Business Suite-app installeren</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="f-rev">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">11.10</span><h3>Eerste aanbevelingen</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Vraag je 5 trouwste klanten om je ook op Facebook aan te bevelen, samen met je Google-review (sectie 10)</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s7" data-n="12" data-t="Threads" data-g="Fase 2 · Bahami" data-sub="2 minuten werk">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">12</span>Threads</h2>
+    <p class="secsub">2 minuten werk</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="th">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">12.1</span><h3>Profiel en bio</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Threads-app → inloggen met @bahami.be → Importeren van Instagram</b></div><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>I help women keep their natural nails beautiful for 3 to 4 weeks. Russian manicure &amp; BIAB, 5 years of experience. Book via the link.</pre><span class="cnt">132/150 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>I&#x27;m Mireille, 5 years in natural nail care. I share the details behind long-lasting BIAB and calm, polished hands.</pre><span class="cnt">114/150 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>I do Russian manicure &amp; BIAB on natural nails at Bahami in Brussels. 5 years of experience. Book below.</pre><span class="cnt">103/150 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: natural nails, BIAB of Russian manicure · Mireille of Ixelles · wat het oplost</p><label class="check"><input type="checkbox"><span>Openbaar profiel: aan · bij een nieuwe Instagram-post: Delen op Threads aan</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s7x" data-n="13" data-t="X (Twitter)" data-g="Fase 2 · Bahami" data-sub="5 minuten werk · zodat Google en AI je vinden">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">13</span>X (Twitter)</h2>
+    <p class="secsub">5 minuten werk · zodat Google en AI je vinden</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="x-why">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">13.1</span><h3>Waarom X</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="why"><b>Waarom:</b> X wordt door Google gelezen en door AI-zoekers zoals Grok. Twee van je nieuwe klanten vonden je al via ChatGPT. Hoe vaker 'Bahami, natural nails Brussels' online staat, hoe vaker je gevonden en aangeraden wordt. Het kost je bijna niets: je deelt gewoon je video's opnieuw.</div><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="x-prof">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">13.2</span><h3>Profiel</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>x.com of de X-app → Account maken (met je zaak-e-mail)</b></div><label class="check"><input type="checkbox"><span>Handle: dezelfde als op Instagram (zie sectie 06)</span></label><div class="sub">Naam</div><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Mireille | Natural Nails</pre><span class="cnt">24/50 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Natural Nails by Mireille | Bahami</pre><span class="cnt">34/50 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Mireille | BIAB Specialist</pre><span class="cnt">26/50 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="sub">Bio</div><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>I help women keep their natural nails beautiful for 3 to 4 weeks. Russian manicure &amp; BIAB, 5 years of experience. Book via the link below.</pre><span class="cnt">138/160 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>I&#x27;m Mireille, founder of Bahami. 5 years in natural nail care: Russian manicure &amp; BIAB in Brussels. Book below.</pre><span class="cnt">111/160 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>I install BIAB on natural nails that last 3 to 4 weeks. 5 years of experience. Book via the link below.</pre><span class="cnt">103/160 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: natural nails, BIAB of Russian manicure · Ixelles of Brussels · boeken via de link</p><label class="check"><input type="checkbox"><span>Locatie: <b>Ixelles, Brussels</b></span></label><label class="check"><input type="checkbox"><span>Website: <b>https://www.planity.com/bahami-studio-1050-ixelles</b></span></label><label class="check"><input type="checkbox"><span>Profielfoto: dezelfde als op Instagram · banner: maken wij (map 5)</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="x-set">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">13.3</span><h3>Instellingen en ritme</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Je posts beschermen: <b>uit</b>, zodat Google ze kan lezen</span></label><label class="check"><input type="checkbox"><span>Berichten van iedereen: <b>aan</b></span></label><label class="check"><input type="checkbox"><span>Pin je 'wie ik ben'-video bovenaan zodra hij klaar is</span></label><p class="note">Ritme: 2 à 3 keer per week een video opnieuw posten, met één zin erbij. Af en toe een tip in één zin, bijvoorbeeld waarom BIAB bij sommige nagels na 2 weken breekt.</p><div class="why"><b>Waarom:</b> je doet geen extra werk, je hergebruikt wat je al hebt. Elke post is één plek meer waar je naam online staat.</div>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s8" data-n="14" data-t="Pinterest" data-g="Fase 2 · Bahami" data-sub="Waar vrouwen hun volgende nagels zoeken">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">14</span>Pinterest</h2>
+    <p class="secsub">Waar vrouwen hun volgende nagels zoeken</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="p-why">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">14.1</span><h3>Waarom Pinterest</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="why"><b>Mijn advies:</b> veel vrouwen zoeken hun volgende nagels op Pinterest: 'nude BIAB', 'short natural nails', 'milky white nails'. Een pin blijft maanden gevonden worden, een reel maar een paar dagen. Elke pin linkt naar je Planity.</div><div class="where">Waar: <b>pinterest.com/business/create</b></div><label class="check"><input type="checkbox"><span>Bedrijfsaccount · naam <b>Natural Nails by Mireille | Bahami</b></span></label>
+    </div>
+  </div>
+  <div class="step" data-id="p-set">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">14.2</span><h3>Instellingen</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Pinterest → Instellingen → Claimen</b></div><label class="check"><input type="checkbox"><span>Je website claimen (bahami.be), zodat je pins je naam dragen</span></label><label class="check"><input type="checkbox"><span>Instagram koppelen</span></label><label class="check"><input type="checkbox"><span>Profiel: openbaar</span></label><div class="why"><b>Waarom:</b> een geclaimde website en gekoppelde Instagram tonen Pinterest dat jij de maker bent. Dan worden je pins vaker getoond.</div>
+    </div>
+  </div>
+  <div class="step" data-id="p-about">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">14.3</span><h3>Over</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Bahami is the natural nail studio of Mireille in Ixelles, Brussels. For more than 5 years she has worked only on natural nails, with the Russian manicure and BIAB, in nude shades and clean, refined shapes. Every appointment takes about an hour and is adapted to your nails and lifestyle. Here you&#x27;ll find ideas for your next manicure. Save what you love and book via the link.</pre><span class="cnt">376/500 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Natural nail inspiration from Bahami, a calm studio in Ixelles. I&#x27;m Mireille, nail technician for more than 5 years, and I believe beautiful nails don&#x27;t need to be long or loud: the luxury is in the details. Nude shades, short to mid-length shapes, Russian manicure and BIAB. Save your favourites and book via the link.</pre><span class="cnt">319/500 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Shiny little pearls from Brussels. Bahami is Mireille&#x27;s natural nail studio in Ixelles: Russian manicure and BIAB on natural nails, made to last 3 to 4 weeks. Boards full of nude, milky and pearl nails, bridal ideas and short elegant shapes. Book your appointment via the link.</pre><span class="cnt">277/500 tekens</span><button class="copy" type="button">Kopieer</button></div><label class="check"><input type="checkbox"><span>Website: https://www.planity.com/bahami-studio-1050-ixelles</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="p-boards">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">14.4</span><h3>Borden</h3><p>4 om te starten</p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span><b>Nude BIAB</b></span></label><label class="check"><input type="checkbox"><span><b>Short natural nails</b></span></label><label class="check"><input type="checkbox"><span><b>Milky &amp; pearl nails</b></span></label><label class="check"><input type="checkbox"><span><b>Bridal &amp; holiday nails</b></span></label><p class="note">Je beste foto's en reels komen erop, telkens met je Planity-link.</p>
+    </div>
+  </div>
+  <div class="step" data-id="p-post">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">14.5</span><h3>Zo post je op Pinterest</h3><p>Ongeveer · je Pinterest-systeem komt in je contentplan</p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Elke video of foto die je op Instagram zet, zet je ook als pin</span></label><label class="check"><input type="checkbox"><span>Titel met wat vrouwen zoeken, bv. <b>Nude BIAB nails · Brussels</b></span></label><label class="check"><input type="checkbox"><span>Link: je Planity</span></label><label class="check"><input type="checkbox"><span>Kies het juiste bord</span></label><div class="why"><b>Waarom:</b> een pin blijft maanden gevonden worden. Zo werkt je content van vorige maand nog altijd voor je.</div><p class="note">Dit is <b>ongeveer</b>, zodat je een beeld hebt. Je volledige Pinterest-systeem (welke pins, hoe vaak, titels en borden) staat straks in je <b>contentplan</b>.</p>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s9" data-n="15" data-t="Planity" data-g="Fase 2 · Bahami" data-sub="Hier boeken je klanten, dus die moet kloppen">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">15</span>Planity</h2>
+    <p class="secsub">Hier boeken je klanten, dus die moet kloppen</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="pl-1">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">15.1</span><h3>Je Planity-pagina bijwerken</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Je Planity-link staat straks overal. Iedereen die klikt, ziet eerst die pagina. Die moet dus dezelfde rust en kwaliteit uitstralen als je Instagram.</p><label class="check"><input type="checkbox"><span>Foto's: je beste werk + 1 van jou + 1 van je studio</span></label><label class="check"><input type="checkbox"><span>Per dienst een korte tekst: wat erin zit en hoe lang het duurt</span></label><label class="check"><input type="checkbox"><span>Uren: dezelfde als op Google en je website</span></label><label class="check"><input type="checkbox"><span>Een zin voor nieuwe klanten: 'Your first visit starts with a short consultation about your nails and lifestyle.'</span></label><label class="check"><input type="checkbox"><span>Je zin uit sectie 06 (Je boodschap) bovenaan je beschrijving</span></label><label class="check"><input type="checkbox"><span>Je adres en hoe je je tafel vindt in het gebouw</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="pl-rules">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">15.2</span><h3>Annuleren en herinneringen</h3><p>Minder lege plekken</p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Herinneringen per sms of mail: <b>aan</b> (in je Planity-instellingen)</span></label><label class="check"><input type="checkbox"><span>Je annuleringsregel zichtbaar in je beschrijving, bv. <i>Please cancel at least 24h before your appointment.</i></span></label><p class="note"><b>Jouw keuze:</b> een kleine aanbetaling bij online boeken, als Planity dat toelaat voor jouw account. Het houdt mensen weg die toch niet komen. Wil je dat liever niet, dan is je annuleringsregel genoeg.</p><div class="why"><b>Waarom:</b> in je documenten schreef je dat klanten last minute annuleren en dat je no-shows pas achteraf blokkeert. Een duidelijke regel vooraf en een herinnering de dag ervoor lossen het meeste op.</div><label class="check"><input type="checkbox"><span>Herinneringen aan</span></label><label class="check"><input type="checkbox"><span>Regel zichtbaar</span></label><label class="check"><input type="checkbox"><span>Keuze over aanbetaling gemaakt</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="pl-after">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">15.3</span><h3>Na het boeken</h3><p>Een warm welkom, zodat ze zeker komt</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Nu krijgt een nieuwe klant alleen de bevestiging van Planity. Stuur haar na het boeken één bericht:</p><div class="sub">English</div><div class="opt best"><span class="tag">Plakken</span><pre>Hi [name], it&#x27;s Mireille 🤍 So happy you booked! Your visit takes about an hour and starts with a short chat about your nails and your routine. You&#x27;ll find me at Av. Emile de Beco 89, Ixelles. Any questions before? Just ask me here</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">Français</div><div class="opt best"><span class="tag">Plakken</span><pre>Coucou [prénom], c&#x27;est Mireille 🤍 Trop contente que tu aies réservé ! Ton rendez-vous dure environ une heure et commence par un petit échange sur tes ongles et ta routine. Tu me trouves Av. Emile de Beco 89, Ixelles. Une question avant ? Demande-moi ici</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">Nederlands</div><div class="opt best"><span class="tag">Plakken</span><pre>Hallo [naam], Mireille hier 🤍 Fijn dat je geboekt hebt! Je afspraak duurt ongeveer een uur en begint met een kort gesprekje over je nagels en je routine. Je vindt me op de Av. Emile de Beco 89, Ixelles. Nog een vraag op voorhand? Stuur ze gerust hier</pre><button class="copy" type="button">Kopieer</button></div><div class="why"><b>Waarom:</b> het gebouw is geen klassieke salon, en dat is een twijfel die klanten hebben. Een warm bericht vooraf zegt: je bent welkom, en zo vind je me.</div><label class="check"><input type="checkbox"><span>Ik stuur dit na elke nieuwe boeking</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="s10" data-n="16" data-t="WhatsApp Business" data-g="Fase 2 · Bahami" data-sub="Nooit meer een klant vergeten">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Bahami</div>
+    <h2><span class="bign">16</span>WhatsApp Business</h2>
+    <p class="secsub">Nooit meer een klant vergeten</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="wa-why">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">16.1</span><h3>Waarom</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="why"><b>Waarom:</b> in je documenten schreef je dat je nergens bijhoudt wie wat vroeg en wie nog antwoord nodig heeft. WhatsApp Business doet dat voor je, gratis: automatische antwoorden en labels per klant.</div><label class="check"><input type="checkbox"><span>WhatsApp Business geïnstalleerd op je zaaknummer (je chats blijven behouden)</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="wa-prof">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">16.2</span><h3>Bedrijfsprofiel</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>WhatsApp Business → Instellingen → Zakelijke tools → Bedrijfsprofiel</b></div><label class="check"><input type="checkbox"><span>Naam: Bahami · categorie: Beauty, cosmetica &amp; persoonlijke verzorging</span></label><label class="check"><input type="checkbox"><span>Website: https://www.planity.com/bahami-studio-1050-ixelles · uren: dezelfde als Planity</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="wa-auto">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">16.3</span><h3>Automatische berichten</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Zakelijke tools → Welkomstbericht en Afwezigheidsbericht</b></div><div class="sub">Welkomstbericht</div><div class="opt best"><span class="tag">Plakken</span><pre>Hi, thank you for your message 🤍 It&#x27;s Mireille from Bahami. You can book your appointment here: https://www.planity.com/bahami-studio-1050-ixelles
+Have a question? Ask it here and I&#x27;ll reply between clients.</pre><button class="copy" type="button">Kopieer</button></div><div class="sub">Afwezigheidsbericht</div><div class="opt best"><span class="tag">Plakken</span><pre>Hi, I&#x27;m with a client right now 🤍 I&#x27;ll reply as soon as I can. Want to book straight away? https://www.planity.com/bahami-studio-1050-ixelles</pre><button class="copy" type="button">Kopieer</button></div><p class="note">Liever in het Frans of Nederlands? Zeg het ons, dan sturen we die versie.</p>
+    </div>
+  </div>
+  <div class="step" data-id="wa-lab">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">16.4</span><h3>Labels en snelle antwoorden</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="where">Waar: <b>Zakelijke tools → Labels</b></div><label class="check"><input type="checkbox"><span>Labels: <b>Nieuwe vraag</b> · <b>Geboekt</b> · <b>Opvolgen</b> · <b>Vaste klant</b> · <b>Oud-klant</b></span></label><div class="where">Waar: <b>Zakelijke tools → Snelle antwoorden</b></div><label class="check"><input type="checkbox"><span>/book → je Planity-link</span></label><label class="check"><input type="checkbox"><span>/aftercare → je 4 nazorgtips</span></label><label class="check"><input type="checkbox"><span>/first → hoe een eerste afspraak verloopt</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="p1" data-n="17" data-t="Instagram" data-g="Fase 2 · Mireille" data-sub="Jouw eigen pagina · hier leren mensen je kennen">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Mireille</div>
+    <h2><span class="bign">17</span>Instagram</h2>
+    <p class="secsub">Jouw eigen pagina · hier leren mensen je kennen</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="pi-type">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">17.1</span><h3>Account</h3><p>Hier zijn de regels losser</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Dit is jouw pagina, niet die van je studio. De opties zijn een start, je eigen tekst mag altijd. We maken ze definitief na je antwoorden op blok C en D.</p><label class="check"><input type="checkbox"><span>Bestaat je persoonlijke account al (vraag D1)? Dan gebruiken we dat. Zo niet: nieuw account, handle bv. <b>@mireille.bahami</b> of <b>@mimi.basubi</b></span></label><label class="check"><input type="checkbox"><span>Professioneel account → <b>Maker</b> · categorie <b>Digitale maker</b></span></label>
+    </div>
+  </div>
+  <div class="step" data-id="pi-name">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">17.2</span><h3>Naam</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Mireille</pre><span class="cnt">8/30 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Mireille | Bahami</pre><span class="cnt">17/30 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Mireille | Nails &amp; Motherhood</pre><span class="cnt">29/30 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: je naam · eventueel waar je voor staat · max 30 tekens</p>
+    </div>
+  </div>
+  <div class="step" data-id="pi-bio">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">17.3</span><h3>Bio</h3><p>Voorlopig · definitief na je antwoorden</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Mom and founder of @bahami.be
+5 years into natural nails, one shiny little pearl at a time
+The real days behind the studio</pre><span class="cnt">122/150 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Building @bahami.be while raising my little one
+Nails, motherhood and everything in between</pre><span class="cnt">91/150 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Mireille behind @bahami.be
+Balancing motherhood, my studio and the life I&#x27;m building</pre><span class="cnt">84/150 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: wie je bent · @bahami.be · waar je pagina over gaat</p>
+    </div>
+  </div>
+  <div class="step" data-id="pi-set">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">17.4</span><h3>Instellingen</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Openbaar account, tenzij je het anders wil (vraag A)</span></label><label class="check"><input type="checkbox"><span>Tweestapsverificatie: <b>aan</b></span></label><label class="check"><input type="checkbox"><span>Wat je niet wil tonen (vraag A): nooit in beeld</span></label><div class="why"><b>Waarom:</b> je persoonlijke pagina moet gevonden worden, maar jij beslist wat privé blijft.</div>
+    </div>
+  </div>
+  <div class="step" data-id="pi-tag">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">17.5</span><h3>Elkaar taggen</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>@bahami.be in je bio</span></label><label class="check"><input type="checkbox"><span>Tag @bahami.be in elke video over je werk, en tag je persoonlijke account in de 'Start here'-highlight van Bahami</span></label><div class="why"><b>Waarom:</b> wie jou leuk vindt, komt zo bij je studio. En wie je werk ziet, leert jou kennen.</div>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="p2" data-n="18" data-t="TikTok" data-g="Fase 2 · Mireille" data-sub="Je eigen account">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Mireille</div>
+    <h2><span class="bign">18</span>TikTok</h2>
+    <p class="secsub">Je eigen account</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="pt-1">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">18.1</span><h3>Account, bio en instellingen</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Persoonlijk account · zelfde naam als op Instagram</span></label><div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Mom and founder of @bahami.be. 5 years in natural nails, the real days behind it</pre><span class="cnt">80/80 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Building @bahami.be while raising my little one. 5 years of nails and motherhood</pre><span class="cnt">80/80 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Mireille behind @bahami.be. 5 years in nails, motherhood and my life</pre><span class="cnt">68/80 tekens</span><button class="copy" type="button">Kopieer</button></div><label class="check"><input type="checkbox"><span>Instagram toevoegen · privé: uit</span></label><label class="check"><input type="checkbox"><span>Tweestapsverificatie: <b>aan</b></span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="p3" data-n="19" data-t="LinkedIn" data-g="Fase 2 · Mireille" data-sub="Waar je ideale klant ook zit">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 2 · Mireille</div>
+    <h2><span class="bign">19</span>LinkedIn</h2>
+    <p class="secsub">Waar je ideale klant ook zit</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="pl-why">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">19.1</span><h3>Waarom LinkedIn</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="why"><b>Mijn advies:</b> je schreef dat je ideale klant op LinkedIn zit: ondernemers en vrouwen met een drukke job. Een kort, proper profiel is genoeg. Zo vindt een klant je ook als ze je naam opzoekt, en kunnen bedrijven je vragen voor events.</div><label class="check"><input type="checkbox"><span>Profiel met je naam en dezelfde foto als op Instagram</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="pl-head">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">19.2</span><h3>Headline</h3><p>Max 220 tekens</p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>Founder of Bahami | Natural nail specialist in Brussels | Russian manicure &amp; BIAB</pre><span class="cnt">81/220 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Nail technician and founder of Bahami | 5 years in natural nail care</pre><span class="cnt">68/220 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Founder of Bahami, a natural nail studio in Ixelles | Helping busy professionals stay polished</pre><span class="cnt">94/220 tekens</span><button class="copy" type="button">Kopieer</button></div><p class="note"><b>Liever je eigen versie?</b> Zorg dat deze 3 dingen erin staan: wat je doet · Bahami · Brussel of je talen</p>
+    </div>
+  </div>
+  <div class="step" data-id="pl-about">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">19.3</span><h3>Over</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<div class="opt best"><span class="tag">Optie 1 · onze aanrader</span><pre>I&#x27;m Mireille, founder of Bahami, a natural nail studio in Ixelles. For more than 5 years I&#x27;ve worked only on natural nails, combining the Russian manicure with BIAB. Most of my clients are busy women and entrepreneurs who want polished, long-lasting nails without spending hours in a salon. Every appointment takes about one hour and is adapted to their own nails and lifestyle. I speak French, Dutch and English, and I&#x27;m open to collaborations with brands and events that value quality and quiet luxury.</pre><span class="cnt">504/2600 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 2</span><pre>Founder of Bahami in Brussels. I help busy professionals keep their nails polished with one appointment every 3 to 4 weeks: a precise Russian manicure and BIAB, done in about an hour. 5 years in natural nail care, three languages, and a calm private studio in Ixelles.</pre><span class="cnt">268/2600 tekens</span><button class="copy" type="button">Kopieer</button></div><div class="opt"><span class="tag">Optie 3</span><pre>Natural nails, done with care. I&#x27;m Mireille, and at Bahami I combine the Russian manicure with BIAB for women who don&#x27;t have time for nails that chip after two weeks. 5 years of experience, appointments of about one hour, and a studio in Ixelles where you can switch off for a moment.</pre><span class="cnt">284/2600 tekens</span><button class="copy" type="button">Kopieer</button></div><label class="check"><input type="checkbox"><span>Ervaring: <b>Founder · Bahami</b></span></label><label class="check"><input type="checkbox"><span>Instellingen: profiel <b>openbaar</b>, link naar Bahami bij contactgegevens</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="z1" data-n="20" data-t="Je funnel" data-g="Fase 3 · Je content" data-sub="Hoe een video een boeking wordt">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 3 · Je content</div>
+    <h2><span class="bign">20</span>Je funnel</h2>
+    <p class="secsub">Hoe een video een boeking wordt</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="fn-1">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">20.1</span><h3>Het grote plaatje</h3><p>Kort uitgelegd · je volledige funnel staat op je Miro-bord</p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Je volledige funnel, met alle stappen en pijlen, zetten we op je <b>Miro-bord</b> (de link krijg je erbij). Hier leggen we het kort uit. Elke video heeft één taak. Samen brengen ze iemand van <b>"wie is zij?"</b> naar <b>"ik boek"</b>:</p><table class="f"><tr><th>Laag</th><th>Taak</th><th>Wat je toont</th></tr><tr><td><b>1 · Gezien worden</b></td><td>Nieuwe mensen bereiken</td><td>Rustige close-ups van je werk, een satisfying proces, jij in je dag</td></tr><tr><td><b>2 · Vertrouwen</b></td><td>Laten zien dat jij het weet</td><td>Uitleg: BIAB of Russian manicure, waarom het na 2 weken breekt, nazorg, waarom jij een andere techniek kiest per klant</td></tr><tr><td><b>3 · Boeken</b></td><td>De laatste twijfel wegnemen</td><td>Een klant die van ver kwam, je eerste afspraak in beeld, reviews, je comment-woord</td></tr></table><div class="why"><b>Waarom:</b> de meeste nagelstylistes posten alleen laag 1: mooie nagels. Mensen kijken, en gaan door. Je ideale klant heeft vertrouwen nodig voor ze €70 uitgeeft, en dat komt uit laag 2 en 3. Daarom wisselen je video's elke week tussen de 3 lagen.</div><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="fn-yt">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">20.2</span><h3>YouTube: jij als de expert</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Je langere video's op YouTube zijn laag 2 op zijn sterkst. Wie 5 minuten naar jou kijkt terwijl je uitlegt waarom haar BIAB lift, ziet jou daarna als <b>dé</b> BIAB-specialist in Brussel. Onder elke video staat je Planity-link.</p><div class="sub">Onderwerpen om mee te starten</div><div class="vq"><ol><li>A full appointment, start to finish</li><li>BIAB vs Russian manicure: what's the difference?</li><li>Why your BIAB lifts after 2 weeks</li><li>How to keep your nails beautiful for 4 weeks</li><li>Why I did her nails completely differently than hers</li></ol></div><p class="note">Deze komen uit jouw eigen documenten: de woorden die je klanten gebruiken. In je contentplan schrijven we per video uit wat je zegt.</p><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="fn-lm">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">20.3</span><h3>Lead magnets: iets gratis dat vertrouwen geeft</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<p class="note">Een lead magnet is iets kleins en nuttigs dat je gratis geeft, zodat iemand je een bericht stuurt of haar nummer achterlaat. Nu heb je er geen, dus mensen die twijfelen verdwijnen. Deze passen bij jou:</p><div class="vq"><ol><li><b>Your first visit guide</b> · wat je mag verwachten, en of BIAB bij jouw nagels past. Krijgt iedereen die je woord zet.</li><li><b>The 4-week nail care card</b> · je nazorg op één mooie kaart. Ook voor je klanten na hun afspraak, zodat hun nagels langer mooi blijven.</li><li><b>BIAB or Russian manicure?</b> · een korte check van 5 vragen, met jouw advies erbij. Eindigt met boeken.</li><li><b>Priority list</b> · je vaste klanten en geïnteresseerden horen als eerste wanneer je nieuwe plekjes opent.</li></ol></div><div class="why"><b>Wat we doen:</b> we starten met nummer 1 en 2. Wij maken ze in jouw stijl, jij keurt goed. Zo bouw je eindelijk een lijst van mensen die je kan bereiken, in plaats van te hopen dat ze terugkomen.</div><label class="check"><input type="checkbox"><span>Gelezen</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="ed-2">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">20.4</span><h3>Wat we meten</h3><p>Boekingen, niet likes</p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Vraag elke nieuwe klant: <b>"Where did you find me?"</b> en noteer het (bron + datum)</span></label><label class="check"><input type="checkbox"><span>Elke comment met je woord en elk DM telt</span></label><div class="why"><b>Waarom:</b> zo zien we welke video echt klanten brengt, en maken we daar meer van.</div>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+<section class="sec" id="z4" data-n="21" data-t="Je regels" data-g="Fase 3 · Je content" data-sub="Wat altijd geldt, op elk account">
+  <div class="sechead">
+    <button class="back" type="button">← Alle secties</button>
+    <div class="sk">Fase 3 · Je content</div>
+    <h2><span class="bign">21</span>Je regels</h2>
+    <p class="secsub">Wat altijd geldt, op elk account</p>
+    <div class="bar small"><i></i></div><small class="sc"></small>
+  </div>
+  <div class="step" data-id="rl-1">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">21.1</span><h3>Altijd</h3><p></p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Rustig, zacht, verzorgd: <b>quiet luxury</b></span></label><label class="check"><input type="checkbox"><span>Jouw eigen woorden: shiny little pearls, natural nails</span></label><label class="check"><input type="checkbox"><span>Eén vraag per video, niet meer</span></label><label class="check"><input type="checkbox"><span>Engels, zoals je koos</span></label>
+    </div>
+  </div>
+  <div class="step" data-id="rl-2">
+    <div class="head"><input type="checkbox" aria-label="Klaar"><div class="ht"><span class="sn">21.2</span><h3>Nooit</h3><p>Echt is sterker dan groot</p></div><span class="chev">›</span></div>
+    <div class="body">
+<label class="check"><input type="checkbox"><span>Prijzen in je content: die staan op Planity</span></label><label class="check"><input type="checkbox"><span>Kortingen, 'promo', 'last spots!'</span></label><label class="check"><input type="checkbox"><span>'Sold out' of 'wachtlijst' zeggen als het niet zo is. Pas als je echt volgeboekt bent, mag je het zeggen.</span></label><label class="check"><input type="checkbox"><span>Beloven dat nagels nooit breken: je praat over nazorg, zoals je zelf schreef</span></label><label class="check"><input type="checkbox"><span>Gezichten, namen of gegevens van klanten</span></label><label class="check"><input type="checkbox"><span>Iets wat niet bij je merk past: lange nagels, nail art</span></label>
+    </div>
+  </div>
+  <div class="secnav"></div>
+</section>
+
+<footer>AS Media · voor Mireille · Bahami</footer>
+</div>
+<script>
+  document.documentElement.classList.remove('nojs');document.documentElement.classList.add('js');
+  const KEY='bahami-steps-v1';
+  let saved={}; try{saved=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+  const secs=[...document.querySelectorAll('.sec')];
+  const allSteps=[...document.querySelectorAll('.step')];
+  const GROUPS=[['Fase 1 · Jouw data','a','Wij leren jou kennen · klaar tegen maandag 23/11'],['Fase 2 · Bahami','s','Je studio · hier boeken mensen · klaar tegen vrijdag 27/11'],['Fase 2 · Mireille','p','Jij, als persoon · alleen als je kiest voor 2 accounts'],['Fase 3 · Je content','z','Hoe alles samenwerkt · content en filmen krijg je apart']];
+  const tiles={}; const gEls=[];
+  const gEl=document.getElementById('groups');
+  GROUPS.forEach(([name,cls,sub])=>{
+    const list=secs.filter(s=>s.dataset.g===name); if(!list.length) return;
+    const g=document.createElement('div'); g.className='group';
+    g.innerHTML='<div class="ghead"><b>'+name+'</b><span>'+sub+'</span><div class="gp"><span class="bar"><i></i></span><em></em></div></div><div class="grid"></div>'; g.dataset.g=name; gEls.push(g);
+    list.forEach(s=>{
+      const b=document.createElement('button'); b.className='tile'; b.type='button';
+      b.innerHTML='<span class="n">'+s.dataset.n+'</span><span class="t">'+s.dataset.t+'</span><span class="s">'+s.dataset.sub+'</span><span class="p"><span class="bar"><i></i></span><em></em></span>';
+      b.querySelector('em').style.fontStyle='normal';
+      b.onclick=()=>{go(s.id)};
+      g.querySelector('.grid').appendChild(b); tiles[s.id]=b;
+    });
+    gEl.appendChild(g);
+  });
+  secs.forEach((s,i)=>{
+    s.querySelector('.back').onclick=()=>{go('')};
+    const nav=s.querySelector('.secnav');
+    if(i>0){const p=document.createElement('button');p.textContent='← '+secs[i-1].dataset.n+' '+secs[i-1].dataset.t;p.onclick=()=>{go(secs[i-1].id)};nav.appendChild(p)}
+    const n=document.createElement('button');n.className='next';
+    if(i<secs.length-1){n.textContent='Volgende: '+secs[i+1].dataset.n+' '+secs[i+1].dataset.t+' →';n.onclick=()=>{go(secs[i+1].id)}}
+    else{n.textContent='Terug naar alle secties';n.onclick=()=>{go('')}}
+    nav.appendChild(n);
+  });
+  function update(){
+    const done=allSteps.filter(s=>s.querySelector('input').checked).length;
+    document.getElementById('bar').style.width=(done/allSteps.length*100)+'%';
+    document.getElementById('count').textContent=done+' van '+allSteps.length+' blokken klaar';
+    secs.forEach(s=>{
+      const st=[...s.querySelectorAll('.step')],d=st.filter(x=>x.querySelector('input').checked).length,pc=st.length?d/st.length*100:0;
+      s.querySelector('.sechead .bar i').style.width=pc+'%';
+      s.querySelector('.sc').textContent=d+' van '+st.length+' klaar';
+      const t=tiles[s.id]; t.querySelector('.bar i').style.width=pc+'%'; t.querySelector('em').textContent=d+'/'+st.length;
+      t.classList.toggle('complete',st.length>0&&d===st.length);
+    });
+    gEls.forEach(g=>{
+      const st=secs.filter(s=>s.dataset.g===g.dataset.g).flatMap(s=>[...s.querySelectorAll('.step')]),d=st.filter(x=>x.querySelector('input').checked).length;
+      g.querySelector('.gp .bar i').style.width=(st.length?d/st.length*100:0)+'%';
+      g.querySelector('.gp em').textContent=d+' van '+st.length+' klaar';
+    });
+  }
+  allSteps.forEach(s=>{
+    const cb=s.querySelector('input');
+    cb.checked=!!saved[s.dataset.id]; s.classList.toggle('done',cb.checked);
+    cb.addEventListener('change',()=>{
+      saved[s.dataset.id]=cb.checked; s.classList.toggle('done',cb.checked);
+      if(cb.checked) s.classList.remove('open');
+      try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}
+      update();
+    });
+    const tg=()=>s.classList.toggle('open');
+    s.querySelector('.ht').onclick=tg; s.querySelector('.chev').onclick=tg;
+  });
+  document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
+    const t=b.parentElement.querySelector('pre').innerText;
+    b.textContent='Gekopieerd ✓'; setTimeout(()=>b.textContent='Kopieer',1500); let ok=false; try{const a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();ok=document.execCommand('copy');a.remove()}catch(e){} if(!ok){try{navigator.clipboard.writeText(t)}catch(e){}} return;
+    b.textContent='Gekopieerd ✓'; setTimeout(()=>b.textContent='Kopieer',1500);
+  }));
+  function go(id){cur=id;try{history.replaceState(null,'',id?'#'+id:location.pathname)}catch(e){}route()}
+  let cur=(location.hash||'').slice(1);
+  function route(){
+    const id=cur, s=document.getElementById(id);
+    const show=s&&s.classList.contains('sec');
+    document.getElementById('home').hidden=!!show;
+    secs.forEach(x=>x.hidden=x!==s);
+    if(show){const f=s.querySelector('.step:not(.done)'); if(f&&!s.querySelector('.step.open')) f.classList.add('open')}
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',()=>{cur=location.hash.slice(1);route()});
+  update(); route();
+
+  const MSG=[[100,'Alles klaar, Mireille. Je pagina\'s staan 🤍'],[75,'Bijna. Nog een paar blokken.'],[50,'Halfweg. De rest gaat sneller.'],[25,'Een kwart klaar. Je bent vertrokken.'],[1,'Goed bezig. Eén blok per keer.'],[0,'Begin bij 01. Eén blok per keer.']];
+  const isDone=s=>{const st=[...s.querySelectorAll('.step')];return st.length>0&&st.every(x=>x.querySelector('input').checked)};
+  const prevDone={}; secs.forEach(s=>prevDone[s.id]=isDone(s));
+  let prevPct=null, tt;
+  function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2600)}
+  const baseUpdate=update;
+  update=function(){
+    baseUpdate();
+    const d=allSteps.filter(s=>s.querySelector('input').checked).length, pc=Math.round(d/allSteps.length*100);
+    document.getElementById('pct').textContent=pc+'%';
+    document.getElementById('msg').textContent=MSG.find(m=>pc>=m[0])[1];
+    let fresh=null;
+    secs.forEach(s=>{const c=isDone(s); s.classList.toggle('complete',c); if(c) s.querySelector('.sc').textContent='Klaar ✓'; if(c&&!prevDone[s.id]) fresh=s; prevDone[s.id]=c;});
+    if(prevPct!==null){
+      const hit=[25,50,75,100].find(m=>prevPct<m&&pc>=m);
+      if(hit===100) toast('Alles klaar, Mireille 🤍');
+      else if(fresh) toast(fresh.dataset.n+' '+fresh.dataset.t+' klaar ✓'+(hit?' · '+hit+'% van alles':''));
+      else if(hit) toast(hit+'% klaar. '+MSG.find(m=>hit>=m[0])[1]);
+    }
+    prevPct=pc;
+  };
+  update();
+</script>
+</body>
+</html>
