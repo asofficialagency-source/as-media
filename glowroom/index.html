@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Glow Room — Your hair, your words</title>
+<meta name="description" content="A few quiet questions about your hair from The Glow Room.">
+<meta property="og:title" content="The Glow Room — Your hair, your words">
+<meta property="og:description" content="A few quiet questions about your hair from The Glow Room.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Italiana&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<!-- AS Media · The Glow Room reviews (Web3Forms, antwoorden komen per mail naar AS Media) -->
+<style>
+:root{--bg:#FFFCFA;--ink:#2A2421;--soft:#857770;--line:#E9E1DB;--acc:#A9826F;--acc-d:#7D5B4B;--acc-l:#F4ECE7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:34px 22px 80px}
+header{text-align:center;margin-bottom:26px}
+.brand{font-family:Italiana,Georgia,serif;font-size:34px;letter-spacing:9px;font-weight:400;margin:0;padding-left:9px}
+.sub{font-size:10.5px;letter-spacing:4px;text-transform:uppercase;color:var(--acc);margin-top:4px}
+.lang{display:flex;justify-content:center;gap:16px;margin-top:16px}
+.lang button{background:none;border:0;font:inherit;font-size:11px;letter-spacing:2px;color:var(--soft);cursor:pointer;padding:4px 2px;border-bottom:1px solid transparent}
+.lang button.on{color:var(--ink);border-color:var(--acc)}
+.prog{display:none}
+.pearls{display:flex;justify-content:center;gap:12px;margin:6px 0 8px}
+.pearls i{width:12px;height:12px;border-radius:50%;background:#fff;border:1px solid #DCCBC1;transition:all .4s}
+.pearls i.on{background:radial-gradient(circle at 35% 30%,#fff 0,#F3E7E1 35%,#C9A898 100%);border-color:#C9A898;box-shadow:0 1px 4px rgba(125,91,75,.25)}
+.prog .ln{flex:1;height:1px;background:var(--line);position:relative}
+.prog .ln i{position:absolute;left:0;top:-1px;height:3px;background:var(--acc);border-radius:3px;transition:width .6s ease}
+.prog .ln b{position:absolute;top:-6px;width:13px;height:13px;border-radius:50%;background:#F3E6E0;border:1px solid var(--acc);transition:left .6s ease;margin-left:-6px}
+.meta{display:flex;justify-content:center;gap:10px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--soft);margin-bottom:22px}
+.meta em{font-style:normal;color:var(--acc)}
+.meta em::before{content:'·';margin-right:10px;color:var(--line)}
+.step{display:none;animation:in .5s ease}
+.step.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pic{width:62%;max-width:260px;aspect-ratio:4/5;object-fit:cover;display:block;margin:4px auto 24px;border-radius:999px 999px 16px 16px;box-shadow:0 10px 30px rgba(125,91,75,.12)}
+h1{font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:31px;line-height:1.15;text-align:center;margin:0 0 12px}
+.intro{text-align:center;color:var(--soft);font-weight:300;margin:0 auto 6px;max-width:440px}
+hr{border:0;border-top:1px solid var(--line);margin:30px 0}
+.q{margin:0 0 30px}
+.q h2{font-family:'DM Sans',sans-serif;font-weight:400;font-size:18px;margin:0 0 4px;line-height:1.4}
+.q p.h{color:var(--soft);font-weight:300;font-size:14.5px;margin:0 0 12px}
+.q h2+.chips,.q h2+textarea,.q h2+input,.q h2+.two,.q h2+.ph{margin-top:12px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-block;border:1px solid var(--line);background:#fff;padding:11px 16px;font-size:15px;font-weight:300;cursor:pointer;transition:all .2s;border-radius:4px}
+.chip input:checked+span{border-color:var(--acc);background:var(--acc-l);color:var(--acc-d)}
+.chip input:focus-visible+span{outline:2px solid var(--acc);outline-offset:2px}
+textarea,input[type=text],input[type=email]{width:100%;font:inherit;font-weight:300;font-size:16px;background:#fff;border:1px solid var(--line);padding:13px 14px;color:var(--ink);border-radius:4px}
+textarea{min-height:92px;resize:vertical}
+textarea:focus,input:focus{outline:none;border-color:var(--acc)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.why{margin-top:12px;display:none}
+.why.on{display:block;animation:in .3s ease}
+.why label{display:block;color:var(--acc-d);font-size:14.5px;font-weight:500;margin-bottom:6px}
+.why label::before{content:'↳ ';color:var(--acc)}
+.why textarea{min-height:64px}
+.ph{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ph label{position:relative;aspect-ratio:4/5;border:1px dashed #D9C9BF;background:#fff;display:grid;place-items:center;cursor:pointer;overflow:hidden;font-size:13px;color:var(--soft);text-align:center;padding:10px}
+.ph input{position:absolute;opacity:0;width:1px;height:1px}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+.ph label.has img{display:block}
+.ph small{position:absolute;top:8px;left:8px;background:#fff;color:var(--acc-d);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;z-index:2}
+.nav{display:flex;gap:10px;margin-top:10px}
+.btn{flex:1;border:0;background:var(--acc-d);color:#fff;font:inherit;font-size:15px;font-weight:500;padding:16px;cursor:pointer;border-radius:4px}
+.btn.ghost{flex:0 0 auto;background:#fff;color:var(--ink);border:1px solid var(--line);padding:16px 22px}
+.btn:disabled{opacity:.6}
+.err{color:#A3392F;font-size:14px;min-height:20px;margin-top:10px;text-align:center}
+.gal{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -22px;padding:0 22px 4px;scrollbar-width:none}
+.gal::-webkit-scrollbar{display:none}
+.gal a{flex:0 0 44%;max-width:210px;aspect-ratio:4/5;overflow:hidden;border-radius:16px;scroll-snap-align:start;position:relative;display:block;background:var(--acc-l)}
+.gal img{width:100%;height:100%;object-fit:cover;display:block}
+.gal .v::after{content:'';position:absolute;right:8px;top:8px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%237D5B4B'/%3E%3C/svg%3E") center/14px no-repeat}
+.cap{display:flex;justify-content:space-between;font-size:12px;color:var(--soft);margin-top:10px}
+.cap a{color:var(--acc-d);text-decoration:none}
+.sig{font-family:'Playfair Display',serif;font-style:italic;font-size:24px;color:var(--acc-d);text-align:center;margin:8px 0 0}
+.pick{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);padding:16px 18px;margin-bottom:10px;font:inherit;color:var(--ink);cursor:pointer;border-radius:4px}
+.pick b{font-weight:500}
+.pick span{display:block;font-size:13.5px;color:var(--soft);font-weight:300}
+.pick.top{border-color:var(--acc)}
+.pick .best{float:right;font-style:normal;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--acc-d)}
+.pick.on{background:var(--acc-l);border-color:var(--acc)}
+.how{display:none;background:#fff;border:1px solid var(--line);border-radius:0 0 4px 4px;border-top:0;margin:-14px 0 10px;padding:14px 18px 16px;font-size:15px;font-weight:300}
+.how.on{display:block;animation:in .3s ease}
+.how ol{margin:6px 0 10px;padding-left:20px}
+.how li{margin-bottom:4px}
+.copy{border:1px solid var(--acc);background:var(--acc-l);color:var(--acc-d);font:inherit;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:11px 14px;cursor:pointer;border-radius:2px}
+pre.rv{white-space:pre-wrap;font:inherit;font-size:14px;background:var(--bg);border:1px solid var(--line);padding:12px;margin:8px 0 10px;max-height:220px;overflow:auto}
+.cta{display:block;text-align:center;margin-top:12px;background:var(--acc-d);color:#fff;text-decoration:none;font-size:15px;font-weight:500;padding:16px;border-radius:4px}
+.cta.o{background:none;color:var(--ink);border:1px solid var(--line)}
+.hp{position:absolute;left:-9999px;opacity:0}
+.oth,.who{margin-top:10px;display:none}.oth.on,.who.on{display:block;animation:in .3s ease}
+.oth input,.who input{font-size:15px}
+.who label{display:block;color:var(--soft);font-size:14px;margin-bottom:6px}
+.ib{display:inline-grid;place-items:center;width:20px;height:20px;margin-left:6px;border:1px solid var(--acc);border-radius:50%;background:#fff;color:var(--acc-d);font:italic 600 12px/1 'Playfair Display',serif;cursor:pointer;vertical-align:2px;padding:0}
+.ib[aria-expanded=true]{background:var(--acc);color:#fff}
+.inf{display:none;font-size:13.5px;color:var(--acc-d);background:var(--acc-l);padding:9px 12px;margin:0 0 12px;border-radius:4px;font-weight:300}.inf.on{display:block;animation:in .3s ease}
+.ph label{border:1.5px dashed var(--acc)}
+.ph label span.pb{display:inline-block;margin-top:8px;background:var(--acc-d);color:#fff;padding:9px 14px;border-radius:4px;font-size:13.5px}
+.nudge{display:none;border:1px solid var(--acc);background:var(--acc-l);padding:14px 16px;margin:14px 0 0;border-radius:4px;font-size:15px}.nudge.on{display:block;animation:in .3s ease}
+.nudge b{display:block;font-weight:500;margin-bottom:4px}.nudge .nav{margin-top:12px}
+@media (max-width:380px){h1{font-size:30px}.chip span{padding:10px 13px;font-size:14.5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="brand">THE GLOW ROOM</p>
+    <div class="sub" id="tSub"></div>
+    <div class="lang" id="lang"><button data-l="en">EN</button><button data-l="nl">NL</button></div>
+  </header>
+  <div id="top">
+    <div class="prog"><div class="ln"><i id="pl"></i><b id="pd"></b></div></div><div class="pearls" id="pearls"><i></i><i></i><i></i><i></i></div>
+    <div class="meta"><span id="tOf"></span><em id="tTime"></em></div>
+  </div>
+  <form id="f" novalidate>
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div id="steps"></div>
+    <div class="nudge" id="nudge"></div>
+    <div class="err" id="err"></div>
+    <div class="nav"><button type="button" class="btn ghost" id="back"></button><button type="button" class="btn" id="next"></button></div>
+  </form>
+  <section class="step" id="thanks"></section>
+</div>
+<script>
+const WEB3FORMS_KEY='7680a646-88d4-4589-bccd-52b0b216d328';
+const PLANITY='https://theglowroom.nl/', IG='https://www.instagram.com/theglowroom.nl/';
+const GAL=[];
+const UI={
+ en:{sub:'Premium hair extensions · Netherlands',of:['1 of 4','2 of 4','3 of 4','4 of 4'],time:'about 2 minutes',cont:'Continue',back:'Back',send:'Send',sending:'Sending…',fail:'Something went wrong. Please try again.',needName:'Just your first name, so Anisa knows who wrote this.',
+  ph:['Before','Now'],phPick:'Add photo',other:'Tell me what',who:'Who? (optional)',whoPh:'A name or an @, if you like',iLbl:'Why I ask',nudgeH:'Forgot a photo?',nudgeP:'A photo of your hair helps the next woman see what is possible. Only shared with your yes.',addPh:'Add a photo',sendAny:'Send without',
+  tyH:'Thank you',tyP:'Your answers just reached me. Every one of them helps me make the next experience even better, for you and for the next woman.',
+  last:'One last thing, if you have a minute',lastP:'A few words in your own voice mean the world to the next client. Send them to Anisa in the chat where she sent you this link (WhatsApp or Instagram). How would you like to do it?',
+  best:'Helps most',v:'Send a video',vS:'Your phone is enough. Show your hair and just talk',vo:'Voice note',voS:'Just talk, the same points',tx:'Send it as text',txS:'Your answers, ready to paste',how:'How:',vTips:['Film in daylight, near a window','Show your hair from the front, side and back','Talk like you would to a friend, no script needed'],voTips:['Hold the mic button in your chat with Anisa','Talk like you would to a friend, no script needed'],
+  say:'What to say:',pts:['Your first name','What bothered you about your hair before','Why you chose The Glow Room','How your hair is now, and how long it has lasted','Who you would send to Anisa'],
+  vEnd:'Then send it to Anisa in your chat with her.',copy:'Copy my words',copied:'Copied ✓',txEnd:'Then paste it in your chat with Anisa.',
+  book:'Visit The Glow Room',follow:'Follow @theglowroom.nl',work:'Recent work · tap to watch'},
+ nl:{sub:'Premium hair extensions · Nederland',of:['1 van 4','2 van 4','3 van 4','4 van 4'],time:'ongeveer 2 minuten',cont:'Verder',back:'Terug',send:'Versturen',sending:'Versturen…',fail:'Er ging iets mis. Probeer het opnieuw.',needName:'Alleen je voornaam, zodat Anisa weet wie dit schreef.',
+  ph:['Voor','Nu'],phPick:'Foto toevoegen',other:'Zeg me wat',who:'Wie? (optioneel)',whoPh:'Een naam of een @, als je wilt',iLbl:'Waarom ik dit vraag',nudgeH:'Foto vergeten?',nudgeP:'Een foto van je haar laat de volgende vrouw zien wat mogelijk is. Alleen gedeeld met jouw ja.',addPh:'Foto toevoegen',sendAny:'Toch versturen',
+  tyH:'Dank je',tyP:'Je antwoorden zijn net bij me aangekomen. Elk antwoord helpt me om de volgende ervaring nog beter te maken, voor jou en voor de volgende.',
+  last:'Nog één ding, als je een minuutje hebt',lastP:'Een paar woorden in je eigen stem betekenen enorm veel voor de volgende klant. Stuur ze naar Anisa in de chat waar ze je deze link stuurde (WhatsApp of Instagram). Hoe doe je het liefst?',
+  best:'Helpt het meest',v:'Een video',vS:'Je telefoon is genoeg. Laat je haar zien en praat gewoon',vo:'Spraakbericht',voS:'Gewoon praten, dezelfde punten',tx:'Als tekst',txS:'Je antwoorden, klaar om te plakken',how:'Zo doe je het:',vTips:['Film bij daglicht, bij een raam','Laat je haar zien van voren, opzij en achter','Praat zoals tegen een vriendin, geen tekst nodig'],voTips:['Houd de microfoonknop ingedrukt in je chat met Anisa','Praat zoals tegen een vriendin, geen tekst nodig'],
+  say:'Wat je kunt zeggen:',pts:['Je voornaam','Wat je vroeger stoorde aan je haar','Waarom je voor The Glow Room koos','Hoe je haar nu is, en hoe lang het al meegaat','Wie jij naar Anisa zou sturen'],
+  vEnd:'Stuur hem daarna naar Anisa in je chat met haar.',copy:'Kopieer mijn woorden',copied:'Gekopieerd ✓',txEnd:'Plak het daarna in je chat met Anisa.',
+  book:'Naar The Glow Room',follow:'Volg @theglowroom.nl',work:'Recent werk · tik om te kijken'}
+};
+UI.fr=UI.en;
+const L3=(en,nl)=>({en,fr:en,nl});
+const CH=[
+ {img:'',h:L3('Hi, it’s Anisa','Hoi, met Anisa'),
+  p:L3('Thank you for choosing The Glow Room. These questions help me understand what you love, so I can keep doing it for you. Skip anything you like.','Dank je dat je voor The Glow Room koos. Deze vragen helpen me begrijpen wat je fijn vindt, zodat ik dat voor je kan blijven doen. Sla gerust iets over.'),
+  qs:[
+   {k:'Naam',t:'name',q:L3('Your first name','Je voornaam')},
+   {k:'Product',t:'multi',q:L3('What did you get from The Glow Room?','Wat heb je bij The Glow Room gekocht of laten doen?'),o:[L3('Bundles (raw hair)','Bundels (raw hair)'),L3('Clip-ins','Clip-ins'),L3('Tape-ins','Tape-ins'),L3('Microlinks','Microlinks'),L3('A wig','Een pruik'),L3('Hair Botox','Hair Botox'),L3('Bridal hair','Bruidshaar')]},
+   {k:'Klant sinds',t:'one',q:L3('When did you first buy from me?','Wanneer kocht je voor het eerst bij mij?'),o:[L3('This year','Dit jaar'),L3('1 to 2 years ago','1 à 2 jaar geleden'),L3('3 to 4 years ago','3 à 4 jaar geleden'),L3('5 years or more','5 jaar of langer')]},
+   {k:'Haartype',t:'one',q:L3('Your own hair is…','Je eigen haar is…'),o:[L3('Straight or wavy','Steil of golvend'),L3('Curly (type 3)','Krullend (type 3)'),L3('Coily (type 4)','Kroes (type 4)'),L3('Fine or thin','Fijn of dun')]}
+  ]},
+ {img:'',h:L3('Finding me','Hoe je me vond'),
+  p:L3('Most of my clients come through someone or something. I’d love to know yours.','De meeste klanten komen via iemand of iets. Ik ben benieuwd naar het jouwe.'),
+  qs:[
+   {k:'Gevonden via',t:'multi',q:L3('How did you first come across The Glow Room?','Hoe kwam je The Glow Room voor het eerst tegen?'),o:[L3('Instagram','Instagram'),L3('TikTok','TikTok'),L3('A friend told me','Een vriendin vertelde het me'),L3('I saw someone’s hair','Ik zag iemands haar'),L3('Google','Google'),L3('ChatGPT or another AI','ChatGPT of een andere AI'),L3('Through a bride or a wedding','Via een bruid of bruiloft')],
+    why:{l:L3('What caught your eye?','Wat viel je op?')},
+    i:L3('So I know where to show my work, and where women like you are looking.','Zodat ik weet waar ik mijn werk moet laten zien, en waar vrouwen zoals jij zoeken.')},
+   {k:'Doorverwezen door',t:'text',q:L3('If someone sent you my way, who was it?','Als iemand je naar mij stuurde, wie was het?'),h:L3('A friend, a sister, a colleague.','Een vriendin, een zus, een collega.')},
+   {k:'Gevolgd voor kopen',t:'one',q:L3('How long did you follow me before you bought or booked?','Hoe lang volgde je me voor je kocht of boekte?'),o:[L3('I bought right away','Ik kocht meteen'),L3('A few days','Een paar dagen'),L3('A few weeks','Een paar weken'),L3('A few months','Een paar maanden'),L3('Over a year','Langer dan een jaar')],
+    why:{except:['I bought right away'],l:L3('What made you finally go for it?','Waardoor deed je het uiteindelijk?')},
+    i:L3('It helps me understand what makes someone feel ready.','Zo begrijp ik waardoor iemand zich klaar voelt.')},
+   {k:'Andere aanbieders bekeken',t:'one',q:L3('Were you looking at other hair brands or salons too?','Keek je ook naar andere haarmerken of salons?'),o:[L3('Only The Glow Room','Alleen The Glow Room'),L3('Two or three','Twee of drie'),L3('More than three','Meer dan drie')],
+    why:{except:['Only The Glow Room'],l:L3('Why did you choose me over them?','Waarom koos je voor mij en niet voor hen?')},
+    who:{except:['Only The Glow Room']},
+    i:L3('So I learn what makes my hair different. Names stay private.','Zo leer ik wat mijn haar anders maakt. Namen blijven privé.')}
+  ]},
+ {img:'',h:L3('Before you bought','Voor je kocht'),
+  p:L3('What was going on with your hair, and what made you say yes.','Wat er met je haar was, en waardoor je ja zei.'),
+  qs:[
+   {k:'Probleem ervoor',t:'multi',q:L3('Before The Glow Room, what bothered you about your hair or extensions?','Wat stoorde je voor The Glow Room aan je haar of extensions?'),o:[L3('My hair was thin or wouldn’t grow','Mijn haar was dun of groeide niet'),L3('Extensions tangled or shed','Extensions klitten of verhaarden'),L3('You could see the extensions','Je zag de extensions'),L3('The texture didn’t match my hair','De textuur paste niet bij mijn haar'),L3('I kept buying new hair','Ik kocht steeds nieuw haar'),L3('I never found someone I trusted','Ik vond nooit iemand die ik vertrouwde'),L3('Nothing, I just wanted more length','Niets, ik wilde gewoon meer lengte')],
+    why:{except:['Nothing, I just wanted more length'],l:L3('Why did that bother you so much?','Waarom stoorde dat je zo?')},
+    i:L3('So I can explain to new clients, in your words, what I fix.','Zodat ik nieuwe klanten in jouw woorden kan uitleggen wat ik oplos.')},
+   {k:'Moment van kopen',t:'text',q:L3('What made you buy or book at that moment?','Waarom kocht of boekte je net op dat moment?'),h:L3('A wedding, a holiday, a new job, or just a moment for yourself?','Een bruiloft, een vakantie, een nieuwe baan, of gewoon een moment voor jezelf?')},
+   {k:'Waarom The Glow Room',t:'multi',q:L3('What made The Glow Room feel right for you?','Waardoor voelde The Glow Room goed voor jou?'),o:[L3('The quality of the raw hair','De kwaliteit van het raw hair'),L3('It matched my texture','Het paste bij mijn textuur'),L3('Same price for every texture','Zelfde prijs voor elke textuur'),L3('Hair that lasts for years','Haar dat jaren meegaat'),L3('Her work on Instagram','Haar werk op Instagram'),L3('How she advised me','Hoe ze me adviseerde'),L3('The reviews','De reviews'),L3('Free shipping and returns','Gratis verzending en retour')],
+    why:{l:L3('Why did that matter to you?','Waarom was dat belangrijk voor jou?')},
+    i:L3('So I keep doing exactly what made you choose me.','Zodat ik blijf doen waardoor jij koos.')},
+   {k:'Twijfel',t:'multi',q:L3('Was there anything you hesitated about?','Twijfelde je ergens over?'),h:L3('Be honest, it really helps me.','Wees eerlijk, dat helpt me echt.'),o:[L3('The price','De prijs'),L3('Whether it would last','Of het zou meegaan'),L3('Whether it would match my hair','Of het bij mijn haar zou passen'),L3('Damage to my own hair','Schade aan mijn eigen haar'),L3('I didn’t know anyone who had bought','Ik kende niemand die het al had'),L3('Nothing, really','Niets eigenlijk')],
+    why:{except:['Nothing, really'],l:L3('What finally made up your mind?','Wat deed je uiteindelijk beslissen?')},
+    i:L3('So I can answer these doubts before the next woman even has them.','Zodat ik die twijfels kan beantwoorden voor de volgende ze heeft.')},
+   {k:'Wilde vooraf weten',t:'multi',q:L3('What did you want to see or know before you bought?','Wat wilde je zien of weten voor je kocht?'),o:[L3('Results on hair like mine','Resultaten op haar zoals het mijne'),L3('Reviews from other women','Reviews van andere vrouwen'),L3('The price up front','De prijs vooraf'),L3('How long the hair lasts','Hoe lang het haar meegaat'),L3('How many bundles I need','Hoeveel bundels ik nodig heb'),L3('Whether I can colour it','Of ik het kan kleuren')],
+    why:{l:L3('Why was that important to you?','Waarom was dat belangrijk voor jou?')},
+    i:L3('So I put exactly this on my website.','Zodat ik precies dit op mijn website zet.')}
+  ]},
+ {img:'',h:L3('Your hair today','Je haar vandaag'),
+  p:L3('Almost done. Just a few words about now.','Bijna klaar. Nog een paar woorden over nu.'),
+  qs:[
+   {k:'Gaat mee',t:'one',q:L3('How long have you been using your hair from The Glow Room?','Hoe lang gebruik je je haar van The Glow Room al?'),o:[L3('Less than 3 months','Minder dan 3 maanden'),L3('3 to 12 months','3 tot 12 maanden'),L3('1 to 3 years','1 tot 3 jaar'),L3('More than 3 years','Langer dan 3 jaar')]},
+   {k:'Gevoel nu',t:'multi',q:L3('How do you feel with your hair now?','Hoe voel je je nu met je haar?'),o:[L3('More confident','Zelfverzekerder'),L3('Feminine and put together','Vrouwelijk en verzorgd'),L3('Less time styling','Minder tijd kwijt aan stylen'),L3('No more worries about my hair','Geen zorgen meer over mijn haar'),L3('Like myself, but better','Mezelf, maar beter')],
+    why:{l:L3('Why does that matter to you?','Waarom is dat belangrijk voor jou?')}},
+   {k:'Complimenten',t:'one',q:L3('Has anyone asked you about your hair?','Heeft iemand je al gevraagd naar je haar?'),o:[L3('Several people','Meerdere mensen'),L3('One or two','Een of twee'),L3('Not really','Niet echt')],
+    why:{except:['Not really'],l:L3('What did they say?','Wat zeiden ze?')}},
+   {k:'Review',t:'text',i:L3('Your own words help the next woman decide if The Glow Room is right for her. Short is perfect.','Jouw eigen woorden helpen de volgende vrouw beslissen of The Glow Room bij haar past. Kort is perfect.'),q:L3('If a friend asked you about The Glow Room, what would you tell her?','Als een vriendin je naar The Glow Room vraagt, wat zeg je haar?'),h:L3('A few words is enough. Write it the way you would say it.','Een paar woorden is genoeg. Schrijf het zoals je het zou zeggen.')},
+   {k:'Foto',t:'photos',q:L3('A photo of your hair?','Een foto van je haar?'),h:L3('A before photo of your old hair is a big help.','Een voor-foto van je oude haar helpt enorm.'),
+    i:L3('Real photos help other women see what is possible on hair like theirs. Only shared with your yes below.','Echte foto’s laten andere vrouwen zien wat mogelijk is op haar zoals het hunne. Alleen gedeeld met jouw ja hieronder.')},
+   {k:'Beter maken',t:'text',q:L3('Is there one thing I could do even better?','Is er één ding dat ik nog beter kan doen?'),h:L3('Only Anisa reads this.','Alleen Anisa leest dit.')},
+   {k:'Toestemming',t:'one',noOther:1,i:L3('Your words help the next woman decide. Only your first name is shown, never your contact details.','Jouw woorden helpen de volgende vrouw beslissen. Alleen je voornaam wordt getoond, nooit je contactgegevens.'),q:L3('Can I share what you wrote?','Mag ik delen wat je schreef?'),o:[L3('Yes, with my first name','Ja, met mijn voornaam'),L3('Yes, but anonymously','Ja, maar anoniem'),L3('No, keep my story private','Nee, houd mijn verhaal privé')]},
+   {k:'Contact',t:'contact',i:L3('Only Anisa sees this. It is never shown on the page.','Alleen Anisa ziet dit. Het komt nooit op de pagina.'),q:L3('Your Instagram or email','Je Instagram of e-mail'),h:L3('Optional. Only so Anisa can thank you or tag you.','Optioneel. Alleen zodat Anisa je kan bedanken of taggen.')}
+  ]}
+];
+let L=(()=>{try{const s=localStorage.getItem('gr-l');if(UI[s])return s}catch(e){} const n=(navigator.language||'en').slice(0,2);return UI[n]?n:'en'})();
+const $=id=>document.getElementById(id), st={}, photos={}; let cur=0;
+const OTHER=L3('Other','Autre','Iets anders');
+CH.forEach(c=>c.qs.forEach(q=>{ if(q.o&&!q.noOther) q.o.push(OTHER); }));
+const ALLQ=CH.flatMap(c=>c.qs);
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function save(){document.querySelectorAll('#steps input,#steps textarea').forEach(i=>{if(i.type==='file')return; if(i.type==='checkbox'||i.type==='radio'){if(!st[i.name])st[i.name]=new Set(); i.checked?st[i.name].add(i.value):st[i.name].delete(i.value);} else st[i.name]=i.value;});}
+function gal(){return '<div class="gal">'+GAL.map(([f,h,v])=>`<a href="${IG}${h}/" target="_blank" rel="noopener"${v?' class="v"':''}><img src="img/${f}.jpg" alt="Hair by The Glow Room" loading="lazy"></a>`).join('')+'</div>';}
+function build(){
+  save(); const u=UI[L]; let h='';
+  CH.forEach(c=>{
+    h+=`<section class="step"><h1>${c.h[L]}</h1><p class="intro">${c.p[L]}</p><hr>`;
+    c.qs.forEach(q=>{
+      h+=`<div class="q"><h2>${q.q[L]}${q.i?`<button type="button" class="ib" aria-expanded="false" aria-label="${u.iLbl}">i</button>`:''}</h2>${q.i?`<p class="inf">${q.i[L]}</p>`:''}${q.h?`<p class="h">${q.h[L]}</p>`:''}`;
+      if(q.t==='name') h+=`<input type="text" name="${q.k}" autocomplete="given-name">`;
+      else if(q.t==='text') h+=`<textarea name="${q.k}"></textarea>`;
+      else if(q.t==='contact') h+=`<div class="two"><input type="text" name="Instagram" placeholder="@" autocomplete="off"><input type="email" name="Email" placeholder="email" autocomplete="email"></div>`;
+      else if(q.t==='photos') h+=`<div class="ph">${u.ph.map((p,i)=>`<label data-ph="${['Foto voor','Foto nu'][i]}"><input type="file" accept="image/*"><small>${p}</small><img alt=""><span class="pb">📷 ${u.phPick}</span></label>`).join('')}</div>`;
+      else { const ty=q.t==='one'?'radio':'checkbox'; h+=`<div class="chips" data-k="${q.k}">`+q.o.map(o=>`<label class="chip"><input type="${ty}" name="${q.k}" value="${esc(o.en)}"><span>${o[L]}</span></label>`).join('')+'</div>';
+        if(q.o.includes(OTHER)) h+=`<div class="oth" data-for="${q.k}"><input type="text" name="${q.k} - anders" placeholder="${u.other}"></div>`;
+        if(q.who) h+=`<div class="who" data-for="${q.k}"><label>${u.who}</label><input type="text" name="${q.k} - wie" placeholder="${u.whoPh}"></div>`;
+        if(q.why) h+=`<div class="why" data-for="${q.k}"><label>${q.why.l[L]}</label><textarea name="${q.k} - waarom"></textarea></div>`; }
+      h+='</div>';
+    });
+    h+='</section>';
+  });
+  $('steps').innerHTML=h;
+  document.querySelectorAll('#steps input,#steps textarea').forEach(i=>{ if(i.type==='file')return; if(i.type==='checkbox'||i.type==='radio'){ if(st[i.name]&&st[i.name].has(i.value)) i.checked=true; } else if(st[i.name]) i.value=st[i.name]; });
+  ALLQ.filter(q=>q.why).forEach(q=>{ const box=document.querySelector(`.why[data-for="${q.k}"]`), g=document.querySelector(`.chips[data-k="${q.k}"]`);
+    const sync=()=>{ const vals=[...g.querySelectorAll('input:checked')].map(i=>i.value).filter(v=>!(q.why.except||[]).includes(v)); box.classList.toggle('on',vals.length>0); };
+    g.addEventListener('change',sync); sync(); });
+  ALLQ.filter(q=>q.o).forEach(q=>{ const g=document.querySelector(`.chips[data-k="${q.k}"]`), o=document.querySelector(`.oth[data-for="${q.k}"]`), w=document.querySelector(`.who[data-for="${q.k}"]`);
+    const sync=()=>{ const v=[...g.querySelectorAll('input:checked')].map(i=>i.value); if(o){ const was=o.classList.contains('on'), on=v.includes('Other'); o.classList.toggle('on',on); if(on&&!was&&document.activeElement&&g.contains(document.activeElement)) o.querySelector('input').focus(); }
+      if(w) w.classList.toggle('on',v.filter(x=>!(q.who.except||[]).includes(x)).length>0); };
+    g.addEventListener('change',sync); sync(); });
+  document.querySelectorAll('.ib').forEach(b=>b.onclick=()=>{ const inf=b.closest('.q').querySelector('.inf'), on=!inf.classList.contains('on'); inf.classList.toggle('on',on); b.setAttribute('aria-expanded',on); });
+  document.querySelectorAll('.ph label').forEach(l=>{ const k=l.dataset.ph; if(photos[k]){l.querySelector('img').src=URL.createObjectURL(photos[k]);l.classList.add('has');}
+    l.querySelector('input').addEventListener('change',e=>{ const f=e.target.files[0]; if(!f)return; const img=new Image(), url=URL.createObjectURL(f);
+      img.onload=()=>{ const r=Math.min(1,1400/Math.max(img.width,img.height)), c=document.createElement('canvas'); c.width=Math.round(img.width*r); c.height=Math.round(img.height*r); c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+        c.toBlob(b=>{ photos[k]=b; l.querySelector('img').src=URL.createObjectURL(b); l.classList.add('has'); },'image/jpeg',0.8); URL.revokeObjectURL(url); }; img.src=url; }); });
+  $('tSub').textContent=u.sub; $('tTime').textContent=u.time; $('back').textContent=u.back;
+  document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===L)); document.documentElement.lang=L;
+  show(cur);
+}
+function show(i){ const u=UI[L], s=[...document.querySelectorAll('#steps .step')]; cur=i; s.forEach((x,k)=>x.classList.toggle('on',k===i));
+  const pct=(i+1)/s.length*100; $('pl').style.width=pct+'%'; $('pd').style.left=pct+'%'; $('tOf').textContent=u.of[i]; document.querySelectorAll('#pearls i').forEach((x,k)=>x.classList.toggle('on',k<=i));
+  $('back').style.display=i?'':'none'; $('next').textContent=i===s.length-1?u.send:u.cont; $('err').textContent=''; }
+function answers(){ save(); const out=[]; ALLQ.forEach(q=>{ if(['photos','contact'].includes(q.t))return;
+  if(q.t==='name'||q.t==='text'){ const v=(st[q.k]||'').trim(); if(v) out.push([q.k,v]); }
+  else { const v=st[q.k]?[...st[q.k]]:[]; if(v.length) out.push([q.k,v.join(', ')]); ['anders','wie','waarom'].forEach(x=>{ const w=(st[q.k+' - '+x]||'').trim(); if(w) out.push([q.k+' - '+x,w]); }); } });
+  ['Instagram','Email'].forEach(k=>{const v=(st[k]||'').trim(); if(v) out.push([k,v]);}); return out; }
+function myWords(){ save(); const lines=[], name=(st['Naam']||'').trim(); if(name) lines.push(name);
+  const pick=k=>{const q=ALLQ.find(x=>x.k===k); const v=st[k]?[...st[k]]:[]; const oth=(st[k+' - anders']||'').trim(); return v.map(en=>{ if(en==='Other') return oth||OTHER[L]; const o=q.o.find(o=>o.en===en);return o?o[L]:en}).join(', ');};
+  const add=k=>{ const q=ALLQ.find(x=>x.k===k), v=pick(k), w=(st[k+' - waarom']||'').trim(); if(v||w) lines.push(q.q[L]+'\n'+[v,w].filter(Boolean).join('. ')); };
+  ['Probleem ervoor','Waarom The Glow Room','Gaat mee','Gevoel nu'].forEach(add);
+  const r=(st['Review']||'').trim(); if(r) lines.push('“'+r+'”');
+  return lines.join('\n\n'); }
+function thanks(){ const u=UI[L], name=(st['Naam']||'').trim(), pts='<ol>'+u.pts.map(p=>'<li>'+p+'</li>').join('')+'</ol>';
+  $('thanks').innerHTML=`<h1>${u.tyH}${name?', '+esc(name):''}</h1><p class="intro">${u.tyP}</p><p class="sig">Anisa</p><hr>
+   <div class="q"><h2>${u.last}</h2><p class="h">${u.lastP}</p>
+   <button type="button" class="pick top" data-p="v"><em class="best">${u.best}</em><b>🎥 ${u.v}</b><span>${u.vS}</span></button>
+   <div class="how" id="h-v">${u.how}<ol>${u.vTips.map(t=>"<li>"+t+"</li>").join("")}</ol>${u.say}${pts}${u.vEnd}</div>
+   <button type="button" class="pick" data-p="vo"><b>🎙️ ${u.vo}</b><span>${u.voS}</span></button>
+   <div class="how" id="h-vo">${u.how}<ol>${u.voTips.map(t=>"<li>"+t+"</li>").join("")}</ol>${u.say}${pts}${u.vEnd}</div>
+   <button type="button" class="pick" data-p="tx"><b>✍️ ${u.tx}</b><span>${u.txS}</span></button>
+   <div class="how" id="h-tx"><pre class="rv" id="rv"></pre><button type="button" class="copy" id="cp">${u.copy}</button><p class="h" style="margin-top:10px">${u.txEnd}</p></div></div>
+   <hr>${gal()}<div class="cap"><span>${u.work}</span><a href="${IG}" target="_blank" rel="noopener">@theglowroom.nl →</a></div>
+   <a class="cta" href="${PLANITY}" target="_blank" rel="noopener">${u.book}</a><a class="cta o" href="${IG}" target="_blank" rel="noopener">${u.follow}</a>`;
+  $('rv').textContent=myWords();
+  document.querySelectorAll('.pick').forEach(b=>b.onclick=()=>{ const id='h-'+b.dataset.p, open=!$(id).classList.contains('on');
+    document.querySelectorAll('.how').forEach(x=>x.classList.remove('on')); document.querySelectorAll('.pick').forEach(x=>x.classList.remove('on'));
+    if(open){$(id).classList.add('on'); b.classList.add('on');} });
+  $('cp').onclick=async()=>{ try{await navigator.clipboard.writeText($('rv').textContent);}catch(e){ const r=document.createRange(); r.selectNodeContents($('rv')); const s=getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); } $('cp').textContent=u.copied; };
+}
+$('back').onclick=()=>{ show(Math.max(0,cur-1)); scrollTo({top:0,behavior:'smooth'}); };
+$('next').onclick=async()=>{ const u=UI[L], n=document.querySelectorAll('#steps .step').length; save();
+  if(cur===0 && !(st['Naam']||'').trim()){ $('err').textContent=u.needName; document.querySelector('[name="Naam"]').focus(); return; }
+  if(cur<n-1){ show(cur+1); scrollTo({top:0,behavior:'smooth'}); return; }
+  if(!Object.keys(photos).length && !window._nudged){ window._nudged=1; const nd=$('nudge'); nd.innerHTML=`<b>📷 ${u.nudgeH}</b>${u.nudgeP}<div class="nav"><button type="button" class="btn" id="nAdd">${u.addPh}</button><button type="button" class="btn ghost" id="nSkip">${u.sendAny}</button></div>`; nd.classList.add('on');
+    $('nAdd').onclick=()=>{ nd.classList.remove('on'); const ph=document.querySelector('.ph'); ph.scrollIntoView({behavior:'smooth',block:'center'}); ph.querySelector('input').click(); };
+    $('nSkip').onclick=()=>{ nd.classList.remove('on'); $('next').click(); }; nd.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  const b=$('next'); b.disabled=true; b.textContent=u.sending;
+  const nm=(st['Naam']||'').trim(), fd=new FormData(); fd.append('access_key',WEB3FORMS_KEY); fd.append('subject','Nieuwe review - The Glow Room'+(nm?' - '+nm:'')); fd.append('from_name','The Glow Room reviews');
+  fd.append('botcheck',document.querySelector('[name=botcheck]').checked?'1':''); fd.append('Taal',L.toUpperCase());
+  answers().forEach(([k,v])=>fd.append(k,v)); for(const k in photos) fd.append(k,photos[k],k.replace(' ','-').toLowerCase()+'.jpg');
+  try{ const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd,headers:{Accept:'application/json'}}); const j=await r.json(); if(!j.success) throw 0;
+    $('f').style.display='none'; $('top').style.display='none'; thanks(); $('thanks').classList.add('on'); scrollTo(0,0);
+  }catch(e){ b.disabled=false; b.textContent=u.send; $('err').textContent=u.fail; } };
+document.querySelectorAll('#lang button').forEach(b=>b.onclick=()=>{ L=b.dataset.l; try{localStorage.setItem('gr-l',L)}catch(e){} build(); if($('thanks').classList.contains('on')) thanks(); });
+build();
+</script>
+</body>
+</html>
